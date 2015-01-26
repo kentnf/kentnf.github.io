@@ -92,7 +92,7 @@
   <center>
 
 <div class=rec_left>
-<h3 align=center>iTAK (v1.2)</h3><br>
+<h3 align=center>iTAK (v1.5)</h3><br>
 
 <table width=800 align=center>
  <tr><td>
@@ -131,13 +131,23 @@ with your browser, please feel free to <a href=contsci.cgi>contact us</a>.</p>
 <a name=release></a>
 <h3>Release notes</h3><br>
 <ul>
-  <li>iTAK v1.2 - 08/26/11<br>
+  <li>iTAK v1.5 - Jan-26-2015<br>
+   Desc <br>
+
+  <li>iTAK v1.4 - Jan-19-2014<br>
+   update the hmmscan to version 3.1, wich is 2x faster than hmm 3.0. <br> 
+   add new classification system for plant protein kinase, which build by Shiu et al. 2012 (PMDID) <br>
+
+  <li>iTAK v1.3 - Jun-22-2013 <br>
+   update Pfam database to version 27, and fix some small bugs <br>
+
+  <li>iTAK v1.2 - Aug-26-2011<br>
    report unusual sequences<br><br>
   </li>
-  <li>iTAK v1.1 - 06/03/11<br>
+  <li>iTAK v1.1 - Jun-03-2011<br>
    remove unsignificiant domain using GA score<br><br>
   </li>
-  <li>iTAK v1.0 - 10/10/10</li>
+  <li>iTAK v1.0 - Dec-14-2010</li>
 </ul>
 
 <br>
@@ -195,18 +205,22 @@ against protein domains are also provided.<br><br>
 An example output is provided <a href=/cgi-bin/itak/itak.cgi?rid=PTEST target=_blank>here</a>.
 
 <h4>>>iTAK standalone program</h4><br>
-<p>Six files will be generated in the output directory - "input_seq_output" (assuming the input file name is "input_seq").<br>
+<p>Eight files will be generated in the output directory - "input_seq_output" (assuming the input file name is "input_seq").<br>
 
 <ol>
-	<li><b>input_seq_tf_seq:</b> sequences of all identified transcription factors (FASTA format).</li>
-	<li><b>input_seq_tf_family:</b> classification of all identified transcription factors. A tab-delimited txt file 
+	<li><b>tf_sequence.fasta:</b> sequences of all identified transcription factors (FASTA format).</li>
+	<li><b>tf_classification.txt:</b> classification of all identified transcription factors. A tab-delimited txt file 
 containing sequence IDs and their corresponding transcription factor families.</li>
-	<li><b>input_seq_tf_align:</b> A tab-delimited txt file containing alignments of all identified transcription factors 
+	<li><b>tf_alignment.txt:</b> A tab-delimited txt file containing alignments of all identified transcription factors 
 to the protein domain database (from hmmscan analysis).</li>
-	<li><b>input_seq_pkseq:</b> sequences of all identified protein kinases (FASTA format).</li>
-	<li><b>input_seq_pkcat:</b> classification of all identified protein kinases. A tab-delimited txt file containing sequence 
+	<li><b>pk_sequence.fasta:</b> sequences of all identified protein kinases (FASTA format).</li>
+	<li><b>PPC_classification.txt:</b> classification of all identified protein kinases. A tab-delimited txt file containing sequence 
 IDs and their corresponding protein kinase families.</li>
-	<li><b>input_seq_pkaln:</b> A tab-delimited txt file containing alignments of all identified transcription factors to 
+	<li><b>PPC_alignment.txt:</b> A tab-delimited txt file containing alignments of all identified transcription factors to 
+the protein domain database (from hmmscan analysis).</li>
+	<li><b>Shiu_classification.txt:</b> classification of all identified protein kinases. A tab-delimited txt file containing sequence     
+IDs and their corresponding protein kinase families.</li>
+	<li><b>Shiu_alignment.txt:</b> A tab-delimited txt file containing alignments of all identified transcription factors to
 the protein domain database (from hmmscan analysis).</li>
 </ol>
 <br>
@@ -214,7 +228,7 @@ the protein domain database (from hmmscan analysis).</li>
 <h3>Performance</h3><br>
 We run iTAK on a single CPU on a 32-bit laptop with Intel Core2 Duo P9400 @ 2.40GHz and 4GB memory. It took aout 3.5 hours to 
 identify both transcription factors and protein kinases from 33,410 Arabidopsis protein sequences (<a 
-href=ftp://ftp.arabidopsis.org/home/tair/Sequences/blast_datasets/TAIR9_blastsets/ target=_blank>TAIR9 release</a>).  
+href=ftp://ftp.arabidopsis.org/home/tair/Sequences/blast_datasets/TAIR9_blastsets/ target=_blank>TAIR10 release</a>).  
 
 </p>
 </div>
