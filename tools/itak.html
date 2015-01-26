@@ -124,7 +124,6 @@ with your browser, please feel free to <a href=contsci.cgi>contact us</a>.</p>
   href=http://www.bioperl.org/wiki/Installing_BioPerl target=_blank>
   wiki/Installing_BioPerl</a> for more details on installation of BioPerl.</li>
   <li><a href=http://hmmer.janelia.org>HMMER3</a> (required). Provided in iTAK.</li>
-  <li>2.0 GB free hard disk space.</li>
 </ul>
 
 <br>
@@ -132,7 +131,9 @@ with your browser, please feel free to <a href=contsci.cgi>contact us</a>.</p>
 <h3>Release notes</h3><br>
 <ul>
   <li>iTAK v1.5 - Jan-26-2015<br>
-   Desc <br>
+   The version 1.5 is a, which including new rule classifion system for  <br>
+
+   Only 64-bit version will be provide from iTAK v1.5. If you want use iTAK on 32-bit machine, please check installation for details. <br>
 
   <li>iTAK v1.4 - Jan-19-2014<br>
    update the hmmscan to version 3.1, wich is 2x faster than hmm 3.0. <br> 
@@ -144,9 +145,11 @@ with your browser, please feel free to <a href=contsci.cgi>contact us</a>.</p>
   <li>iTAK v1.2 - Aug-26-2011<br>
    report unusual sequences<br><br>
   </li>
+
   <li>iTAK v1.1 - Jun-03-2011<br>
    remove unsignificiant domain using GA score<br><br>
   </li>
+
   <li>iTAK v1.0 - Dec-14-2010</li>
 </ul>
 
@@ -154,15 +157,26 @@ with your browser, please feel free to <a href=contsci.cgi>contact us</a>.</p>
 <a name=install></a>
 <h3>Installation</h3><br>
 <h4>>>iTAK standalone program</h4><br>
-<p>Installation of iTAK is straightforward. First download the latest version of iTAK for 
-your system and uncompress the downloaded file. It will generate a folder named "iTAK-1.0.x32" 
-on a 32-bit machine or "iTAK-1.0.x64" on a 64-bit machine (we call this folder "iTAK home 
-folder"). iTAK home folder includes three subfolders, a "bin" folder containing the HMMER3 
-executable, a "database" folder containing the domain database files and a "doc" folder 
-containing the program documentation files. The home folder also contains a perl script, 
-iTAK.pl, which is the core script to run the whole iTAK pipeline. <b>Next download the formatted 
-domain database files from the <a href=download.cgi>download page</a>. Uncompress and move the 
-database files to the "database" folder.</b></p>
+<p>Installation of iTAK is more straightforward then before. Everything you need is to download 
+the lastest version of iTAK and unzip it. It will generate a folder named "iTAK-1.x" and we call 
+this folder "iTAK home folder". iTAK home folder includes three subfolders, a "bin" folder containing 
+the HMMER3 executable, a "database" folder containing the domain database files and a "doc" folder 
+containing the program documentation files. The home folder also contains a perl script, iTAK.pl, 
+which is the core script to run the whole iTAK pipeline. <br>
+
+After download and unpack the iTAK, please using below commands to init databases and run test sequences<br>
+<table border=1 style="border-collapse: collapse" cellpadding=5 bordercolor=#555555 width=610>
+<tr><td bgcolor=#EEEEEE><font face=courier><b>
+	$ tar -xzvf iTAK-1.5.tar.gz <br>
+	$ cd iTAK-1.5 <br>
+	$ perl iTAK.pl test_seq 
+<br></b></font></td>
+</tr></table>
+
+<br>
+From iTAK v1.5, The only difference between 64-bit and 32-bit iTAK is recruitment different versions of HMMER. To 
+run iTAK on 32-bit machine, please replace the HMMER with ia32 version.
+</p>
 <br>
 
 <a name=run></a>
@@ -175,7 +189,7 @@ database files to the "database" folder.</b></p>
 name is input_seq)</li>
 <br>
 <table border=1 style="border-collapse: collapse" cellpadding=5 bordercolor=#555555 width=610>
-<tr><td bgcolor=#EEEEEE><font face=courier><b>shell$ perl iTAK.pl -i input_seq</b></font></td>
+<tr><td bgcolor=#EEEEEE><font face=courier><b>shell$ perl iTAK.pl input_seq</b></font></td>
 </tr></table>
 <br>
 <li>The program will generate an output folder named input_seq_output which contains all the 
@@ -184,16 +198,28 @@ output files. See below for the description of the output files.</li>
 
 <b><font color=#A208A0>Parameters</font></b><br><br>
 <table border=0 cellspacing=0 cellpadding=5>
-<tr valign=top><th width=15>-i</th><th>[String]</th><td >Name of the input sequence file in 
-FASTA format  (<i>required</i>)</td></tr>
-<tr valign=top><th>-s</th><th>[String]</th><td >Type of input sequence. 'p' for protein 
-sequences | 'n' for nucleotide sequences. (default = p)
-</td></tr>
-<tr valign=top><th>-m</th><th>[String]</th><td>Type of analysis ('t' for TF identification 
-| 'p' for PK identification | 'b' for both) (default = b)</td></tr>
+<tr valign=top><th width=15>-f</th><th>[String]</th><td >Frame usage of nucleotie translation, could be: <br>
+	6:  6 frame translation (default) <br>
+	3F: 3 frame translation with forward strand <br>
+	3R: 3 frame translation with reverse strand
+	</td></tr>
 <tr valign=top><th>-a</th><th>[Integer]</th><td >number of CPUs used for hmmscan (default = 1)</td></tr>
 <tr valign=top><th>-o</th><th>[String]</th><td >Name of the output directory (default = "input file name" + "_output")</td></tr>
+
 </table>
+
+obsoleting parameters <br>
+<table border=0 cellspacing=0 cellpadding=5>
+<tr valign=top><th width=15>-i</th><th>[String]</th><td >Name of the input sequence file in
+FASTA format  (<i>required</i>)</td></tr>
+<tr valign=top><th>-s</th><th>[String]</th><td >Type of input sequence. 'p' for protein
+sequences | 'n' for nucleotide sequences. (default = p)
+</td></tr>
+<tr valign=top><th>-m</th><th>[String]</th><td>Type of analysis ('t' for TF identification
+| 'p' for PK identification | 'b' for both) (default = b) </td></tr>
+</table>
+
+
 <br><br>
 <a name=output></a>
 <h3>iTAK output</h3><br>
@@ -228,7 +254,7 @@ the protein domain database (from hmmscan analysis).</li>
 <h3>Performance</h3><br>
 We run iTAK on a single CPU on a 32-bit laptop with Intel Core2 Duo P9400 @ 2.40GHz and 4GB memory. It took aout 3.5 hours to 
 identify both transcription factors and protein kinases from 33,410 Arabidopsis protein sequences (<a 
-href=ftp://ftp.arabidopsis.org/home/tair/Sequences/blast_datasets/TAIR9_blastsets/ target=_blank>TAIR10 release</a>).  
+href=ftp://ftp.arabidopsis.org/home/tair/Sequences/blast_datasets/TAIR10_blastsets/ target=_blank>TAIR10 release</a>).  
 
 </p>
 </div>
