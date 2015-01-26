@@ -130,20 +130,27 @@ with your browser, please feel free to <a href=contsci.cgi>contact us</a>.</p>
 <a name=release></a>
 <h3>Release notes</h3><br>
 <ul>
-  <li>iTAK v1.5 - Jan-26-2015<br>
-   The version 1.5 is a, which including new rule classifion system for  <br>
-
-   Only 64-bit version will be provide from iTAK v1.5. If you want use iTAK on 32-bit machine, please check installation for details. <br>
+  <li>iTAK v1.5 - Feb-x-2015<br>
+   The version 1.5 is a important update with the main script almost rewirte, and it has many advantages compare to previous versions. <br> 
+	
+	update a comperehensive set of rules for identification of transcription factor <br>
+	shrink the database and significantly improve the speed <br>
+	automaticially detect the alphabet of input sequences <br>
+	
+	only 64-bit version will be provide from iTAK v1.5. If you want use iTAK on 32-bit machine, please check installation for details. <br>
+  </li>
 
   <li>iTAK v1.4 - Jan-19-2014<br>
    update the hmmscan to version 3.1, wich is 2x faster than hmm 3.0. <br> 
    add new classification system for plant protein kinase, which build by Shiu et al. 2012 (PMDID) <br>
+  </li>
 
   <li>iTAK v1.3 - Jun-22-2013 <br>
    update Pfam database to version 27, and fix some small bugs <br>
+  </li>
 
   <li>iTAK v1.2 - Aug-26-2011<br>
-   report unusual sequences<br><br>
+   report unusual sequences<br>
   </li>
 
   <li>iTAK v1.1 - Jun-03-2011<br>
@@ -163,9 +170,9 @@ this folder "iTAK home folder". iTAK home folder includes three subfolders, a "b
 the HMMER3 executable, a "database" folder containing the domain database files and a "doc" folder 
 containing the program documentation files. The home folder also contains a perl script, iTAK.pl, 
 which is the core script to run the whole iTAK pipeline. <br>
-
-After download and unpack the iTAK, please using below commands to init databases and run test sequences<br>
-<table border=1 style="border-collapse: collapse" cellpadding=5 bordercolor=#555555 width=610>
+<br>
+After download and unpack the iTAK, please using below commands to initialize databases and run test sequences<br>
+<table border=1 style="border-collapse: collapse" cellpadding=5 bordercolor=#555555 width=480>
 <tr><td bgcolor=#EEEEEE><font face=courier><b>
 	$ tar -xzvf iTAK-1.5.tar.gz <br>
 	$ cd iTAK-1.5 <br>
@@ -174,8 +181,10 @@ After download and unpack the iTAK, please using below commands to init database
 </tr></table>
 
 <br>
-From iTAK v1.5, The only difference between 64-bit and 32-bit iTAK is recruitment different versions of HMMER. To 
-run iTAK on 32-bit machine, please replace the HMMER with ia32 version.
+<b>>>For 32-bit user<b><br>
+Only 64-bit version will be provide from iTAK v1.5. The only difference between 64-bit and 32-bit 
+iTAK is recruitment of different versions of HMMER. To run iTAK on 32-bit machine, please replace 
+the HMMER with ia32 version.
 </p>
 <br>
 
@@ -252,7 +261,7 @@ the protein domain database (from hmmscan analysis).</li>
 <br>
 <a name=performance></a>
 <h3>Performance</h3><br>
-We run iTAK on a single CPU on a 32-bit laptop with Intel Core2 Duo P9400 @ 2.40GHz and 4GB memory. It took aout 3.5 hours to 
+We run iTAK on a single CPU on a 64-bit laptop with i5-3320M CPU @ 2.60GHz. It took aout 3.5 hours to 
 identify both transcription factors and protein kinases from 33,410 Arabidopsis protein sequences (<a 
 href=ftp://ftp.arabidopsis.org/home/tair/Sequences/blast_datasets/TAIR10_blastsets/ target=_blank>TAIR10 release</a>).  
 
