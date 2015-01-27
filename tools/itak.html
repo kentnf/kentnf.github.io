@@ -116,10 +116,10 @@ with your browser, please feel free to <a href=contsci.cgi>contact us</a>.</p>
 
 <h4>>>iTAK standalone program</h4><br>
 <ul>
-  <li >Linux (required)</li>
-  <li >Perl version 5.10.0 or higher (required). <a href=http://www.perl.org 
+  <li>64-bit Linux system</li>
+  <li>Perl version 5.10.0 or higher (required). <a href=http://www.perl.org 
   target=_blank>Perl</a> was installed by default on most Linux systems</li>
-  <li >BioPerl version 1.006 or higher (required). Please check <a 
+  <li>BioPerl version 1.006 or higher (required). Please check <a 
   href=http://www.bioperl.org target=_blank>http://www.bioperl.org</a> and <a 
   href=http://www.bioperl.org/wiki/Installing_BioPerl target=_blank>
   wiki/Installing_BioPerl</a> for more details on installation of BioPerl.</li>
@@ -133,14 +133,14 @@ with your browser, please feel free to <a href=contsci.cgi>contact us</a>.</p>
   <li>iTAK v1.5 - Feb-x-2015<br>
    The version 1.5 is a important update, and it has many advantages compare to previous versions. <br> 
 &nbsp;&nbsp;&nbsp;&nbsp;update a comperehensive set of rules for identification of transcription factor <br>
-&nbsp;&nbsp;&nbsp;&nbsp;shrink the database and significantly improve the speed <br>
+&nbsp;&nbsp;&nbsp;&nbsp;shrink the database and significantly accelerate the speed <br>
 &nbsp;&nbsp;&nbsp;&nbsp;automaticially detect the alphabet of input sequences <br>
 &nbsp;&nbsp;&nbsp;&nbsp;only 64-bit version will be provide from iTAK v1.5. If you want use iTAK on 32-bit machine, please check <a href=#install>installation</a> for details. <br><br>
   </li>
 
   <li>iTAK v1.4 - Jan-19-2014<br>
    update the hmmscan to version 3.1, wich is 2x faster than hmm 3.0. <br> 
-   add new classification system for plant protein kinase, which build by <a href="ttp://www.ncbi.nlm.nih.gov/pubmed/22889912">Shiu et al. 2012</a><br><br>
+   add new classification system for plant protein kinase, which was built by <a href="ttp://www.ncbi.nlm.nih.gov/pubmed/22889912">Shiu et al. 2012</a><br><br>
   </li>
 
   <li>iTAK v1.3 - Jun-22-2013 <br>
@@ -162,23 +162,34 @@ with your browser, please feel free to <a href=contsci.cgi>contact us</a>.</p>
 <a name=install></a>
 <h3>Installation</h3><br>
 <h4>>>iTAK standalone program</h4><br>
-<p>Installation of iTAK is more straightforward than beforeContact
-For questions and suggestions, please contact us at bioinfo@cornell.edu. Everything you need is to download 
-the lastest version of iTAK and unzip it. It will generate a folder named "iTAK-1.x" and we call 
-this folder "iTAK home folder". iTAK home folder includes three subfolders, a "bin" folder containing 
-the HMMER3 executable, a "database" folder containing the domain database files and a "doc" folder 
-containing the program documentation files. The home folder also contains a perl script, iTAK.pl, 
-which is the core script to run the whole iTAK pipeline. <br>
-<br>
-After download and unpack the iTAK, please using below commands to initialize databases and run test sequences<br>
+<p>Installation of iTAK is more straightforward than previous. Everything you need is to download 
+the lastest version of iTAK and uncompress it. <br>
+
 <table border=1 style="border-collapse: collapse" cellpadding=5 bordercolor=#555555 width=480>
 <tr><td bgcolor=#EEEEEE><font face=courier><b>
-	shell$ tar -xzvf iTAK-1.5.tar.gz <br>
-	shell$ cd iTAK-1.5 <br>
-	shell$ perl iTAK.pl test_seq 
+        shell$ tar -xzvf iTAK-1.5.tar.gz <br>
 <br></b></font></td>
 </tr></table>
 
+<br>
+It will generate a folder named "iTAK-1.x" and we call this folder "iTAK home folder". iTAK home 
+folder includes three subfolders, a "bin" folder containing the HMMER3 executable, a "database" 
+folder containing the domain database files and a "doc" folder containing the program documentation 
+files. The home folder also contains a perl script, iTAK.pl, which is the core script to run 
+the whole iTAK pipeline. 
+<br>
+
+After that, please run test sequences to initialize databases.
+<br>
+
+<table border=1 style="border-collapse: collapse" cellpadding=5 bordercolor=#555555 width=480>
+<tr><td bgcolor=#EEEEEE><font face=courier><b>
+        shell$ cd iTAK-1.5 <br>
+        shell$ perl iTAK.pl test_seq 
+<br></b></font></td>
+</tr></table>
+
+<br>
 <br>
 <b>For 32-bit user</b><br>
 Only 64-bit version will be provide from iTAK v1.5. The only difference between 64-bit and 32-bit 
@@ -219,7 +230,7 @@ output files. See below for the description of the output files.</li>
 <br>
 <br>
 
-<b>obsoleting parameters<b> <br>
+<b>obsoleting parameters</b> <br>
 <table border=0 cellspacing=0 cellpadding=5>
 <tr valign=top><th width=15>-i</th><th>[String]</th><td >Name of the input sequence file in
 FASTA format  (<i>required</i>)</td></tr>
