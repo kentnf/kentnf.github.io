@@ -164,7 +164,8 @@ with your browser, please feel free to <a href=contsci.cgi>contact us</a>.</p>
 <a name=install></a>
 <h3>Installation</h3><br>
 <h4>>>iTAK standalone program</h4><br>
-<p>Installation of iTAK is more straightforward then before. Everything you need is to download 
+<p>Installation of iTAK is more straightforward than beforeContact
+For questions and suggestions, please contact us at bioinfo@cornell.edu. Everything you need is to download 
 the lastest version of iTAK and unzip it. It will generate a folder named "iTAK-1.x" and we call 
 this folder "iTAK home folder". iTAK home folder includes three subfolders, a "bin" folder containing 
 the HMMER3 executable, a "database" folder containing the domain database files and a "doc" folder 
@@ -174,14 +175,14 @@ which is the core script to run the whole iTAK pipeline. <br>
 After download and unpack the iTAK, please using below commands to initialize databases and run test sequences<br>
 <table border=1 style="border-collapse: collapse" cellpadding=5 bordercolor=#555555 width=480>
 <tr><td bgcolor=#EEEEEE><font face=courier><b>
-	$ tar -xzvf iTAK-1.5.tar.gz <br>
-	$ cd iTAK-1.5 <br>
-	$ perl iTAK.pl test_seq 
+	shell$ tar -xzvf iTAK-1.5.tar.gz <br>
+	shell$ cd iTAK-1.5 <br>
+	shell$ perl iTAK.pl test_seq 
 <br></b></font></td>
 </tr></table>
 
 <br>
-<b>>>For 32-bit user<b><br>
+<b>>>For 32-bit user</b><br>
 Only 64-bit version will be provide from iTAK v1.5. The only difference between 64-bit and 32-bit 
 iTAK is recruitment of different versions of HMMER. To run iTAK on 32-bit machine, please replace 
 the HMMER with ia32 version.
@@ -206,6 +207,7 @@ output files. See below for the description of the output files.</li>
 </ol><br>
 
 <b><font color=#A208A0>Parameters</font></b><br><br>
+
 <table border=0 cellspacing=0 cellpadding=5>
 <tr valign=top><th width=15>-f</th><th>[String]</th><td >Frame usage of nucleotie translation, could be: <br>
 	6:  6 frame translation (default) <br>
@@ -214,7 +216,6 @@ output files. See below for the description of the output files.</li>
 	</td></tr>
 <tr valign=top><th>-a</th><th>[Integer]</th><td >number of CPUs used for hmmscan (default = 1)</td></tr>
 <tr valign=top><th>-o</th><th>[String]</th><td >Name of the output directory (default = "input file name" + "_output")</td></tr>
-
 </table>
 
 obsoleting parameters <br>
@@ -227,9 +228,8 @@ sequences | 'n' for nucleotide sequences. (default = p)
 <tr valign=top><th>-m</th><th>[String]</th><td>Type of analysis ('t' for TF identification
 | 'p' for PK identification | 'b' for both) (default = b) </td></tr>
 </table>
-
-
 <br><br>
+
 <a name=output></a>
 <h3>iTAK output</h3><br>
 <h4>>>iTAK server</h4><br>
@@ -251,21 +251,25 @@ to the protein domain database (from hmmscan analysis).</li>
 	<li><b>pk_sequence.fasta:</b> sequences of all identified protein kinases (FASTA format).</li>
 	<li><b>PPC_classification.txt:</b> classification of all identified protein kinases. A tab-delimited txt file containing sequence 
 IDs and their corresponding protein kinase families.</li>
-	<li><b>PPC_alignment.txt:</b> A tab-delimited txt file containing alignments of all identified transcription factors to 
+	<li><b>PPC_alignment.txt:</b> A tab-delimited txt file containing alignments of all identified protein kinases to 
 the protein domain database (from hmmscan analysis).</li>
 	<li><b>Shiu_classification.txt:</b> classification of all identified protein kinases. A tab-delimited txt file containing sequence     
 IDs and their corresponding protein kinase families.</li>
-	<li><b>Shiu_alignment.txt:</b> A tab-delimited txt file containing alignments of all identified transcription factors to
+	<li><b>Shiu_alignment.txt:</b> A tab-delimited txt file containing alignments of all identified protein kinases to
 the protein domain database (from hmmscan analysis).</li>
 </ol>
+</p>
 <br>
 <a name=performance></a>
 <h3>Performance</h3><br>
-We run iTAK on a single CPU on a 64-bit laptop with i5-3320M CPU @ 2.60GHz. It took aout 3.5 hours to 
+We run iTAK on a single CPU on a 64-bit laptop with i5-3320M CPU @ 2.60GHz. It took aout 28 minitess to 
 identify both transcription factors and protein kinases from 33,410 Arabidopsis protein sequences (<a 
-href=ftp://ftp.arabidopsis.org/home/tair/Sequences/blast_datasets/TAIR10_blastsets/ target=_blank>TAIR10 release</a>).  
+href=ftp://ftp.arabidopsis.org/home/tair/Sequences/blast_datasets/TAIR10_blastsets/ target=_blank>TAIR10 release</a>). <br>
 
-</p>
+<a name=contact></a>
+<h3>Contact</h3><br>
+For questions and suggestions, please contact us at <a href=mailto:bioinfo@cornell.edu>bioinfo@cornell.edu</a> <br>
+
 </div>
  
   <div style="clear: both;">&nbsp;</div>
