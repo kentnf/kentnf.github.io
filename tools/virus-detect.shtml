@@ -1,0 +1,154 @@
+<!--#include virtual="header.html" -->
+
+<br><h3 align=center>VirusDetect (current version: v1.0 - 04/15/15)</h3>
+<table width=670 align=center><tr><td class="content">
+<b><ul>
+<li><a href=#introduction>Introduction</a></li>
+<li><a href=#requirement>System requirement and dependencies</a></li>
+<li><a href=#install>Installation</a></li>
+<li><a href=#run>Run VirusDetect</a></li>
+<li><a href=#input>Input files</a></li>
+<li><a href=#parameter>Parameters</a></li>
+<li><a href=#output>Output files</a></li>
+<li><a href=#download>Download VirusDetect</a></li>
+<li><a href=#contact>Contact</a></li>
+</ul></b>
+<a name=introduction></a>
+<h3>Introduction</h3>
+Accurate detection and identification of virus infection in plants and animals is critical for agriculture production and human health. Conventional methods such as PCR or microarrays are useful but they require the prior knowledge and sequence information of the potential pathogens, thus they are highly inefficient in detecting novel or emerging viruses. RNA silencing constitutes a fundamental antiviral defense mechanism in both plants and animals in which host enzymes cut and amplify viral RNA into pieces of 20-24 nt. Deeply sequencing these virus-derived small RNAs (sRNAs) and properly assembling or aligning these sRNA sequences can reconstitute genomic sequence information of the viruses being targeted in the plants and animals. This approach is independent of the ability to culture or purify the virus and does not require any specific amplification or enrichment of viral nucleic acids as it automatically enriches for small RNAs of viral origin by tapping into a natural antiviral defense mechanism. <br><br>
+
+ViruDetect is a software package that can efficiently and exhaustively analyze large-scale sRNA datasets for virus identification. The program aligns the sRNA reads to the known virus reference sequence database (<a href=ftp://ftp.ncbi.nih.gov/genbank/ target=_blank>GenBank gbvrl</a>) as well as assembles the sRNA sequences de novo using <a href=https://www.ebi.ac.uk/~zerbino/velvet/ target=_blank>Velvet</a> with automatic parameter optimization. The alignment derived contigs and de novo assembly derived contigs are concatenated to remove redundancy and the resulted unique contigs are compared to the reference virus sequences for virus identification.
+<br><br>
+
+<b><i>Reference:</i></b><br>
+Li R, Gao S, Hernandez AG, Wechter WP, Fei Z, Ling K-S (2012) <a href=http://www.plosone.org/article/info%3Adoi%2F10.1371%2Fjournal.pone.0037127 target=_blank>Deep sequencing of small RNAs in tomato for virus and viroid identification and strain differentiation.</a> <b><i>PLoS ONE</i></b> 7:e37127<br><br>
+
+<a name=requirement></a>
+<h3>System requirement and dependencies</h3>
+<ul><li class="content">64-bit Linux system - <font color=red>Mac OS X is not supported</font></li>
+<li class="content">Perl version 5.10.0 or higher. <a href=http://www.perl.org target=_blank>Perl</a> is installed by default on most Linux systems</li>
+<li class="content">BioPerl version 1.006 or higher. Please check <a href=http://www.bioperl.org target=_blank>http://www.bioperl.org</a> and <a href=http://www.bioperl.org/wiki/Installing_BioPerl target=_blank>wiki/Installing_BioPerl</a> for more details on installation of BioPerl.</li>
+<li class="content"><a href=http://bio-bwa.sourceforge.net/ target=_blank>BWA</a>. Provided in VirusDetect.</li>
+<li class="content"><a href=http://samtools.sourceforge.net/ target=_blank>SAMtools</a>. Provided in VirusDetect.</li>
+<li class="content"><a href=https://www.ebi.ac.uk/~zerbino/velvet/ target=_blank>Velvet</a>. Provided in VirusDetect.</li>
+<li class="content"><a href=http://blast.ncbi.nlm.nih.gov/Blast.cgi?CMD=Web&PAGE_TYPE=BlastDocs&DOC_TYPE=Download target=_blank>NCBI BLAST package</a>. Provided in VirusDetect.</li>
+</ul>
+
+<a name=install></a>
+<h3>Installation</h3>
+Installation of VirusDetect is straightforward. Just download VirusDetect and uncompress the downloaded file.<br><br>
+<table border=1 style="border-collapse: collapse" cellpadding=5 bordercolor=#555555 width=660>
+<tr><td class="content" bgcolor=#EEEEEE>
+<font face=courier>shell$ tar -xzvf VirusDetect-1.0.tar.gz</font>
+</td></tr></table><br>
+This will generate a folder named "VirusDetect-1.0" (we call this folder "VirusDetect home folder"). VirusDetect home folder includes two subfolders, a "bin" folder which contains all executables and a "databases" folder which contains the reference virus sequence database. The home folder also contains a perl script, VirusDetect.pl, which is the core script to run the whole VirusDetect pipeline.
+
+<a name=run></a>
+<h3>Run VirusDetect</h3>
+<b><font color=#A208A0>Quick Start</font></b>
+<ol><li class="content">Put the small RNA sequence file in fasta or fastq format (assuming the file name is <b>sRNA_seq</b>) into VirusDetect home folder</li>
+<li class="content">Go to VirusDetect home folder and run VirusDetect with the following command</li><br>
+<table border=1 style="border-collapse: collapse" cellpadding=5 bordercolor=#555555 width=610>
+<tr><td class=VirusDetect bgcolor=#EEEEEE><font face=courier>shell$ perl VirusDetect.pl --file_type fasta sRNA_seq</font></td>
+</tr></table><br>
+
+<li class="content">The program will generate an output folder named <b>result_sRNA_seq</b> which contains all the output files. See <a href=#output>below</a> for the description of the output files.</li></ol>
+
+<a name=input></a>
+<h3>Input files</h3>
+VirusDetect takes a sRNA sequence file in fasta or fastq format as its input.<br><br>
+It's highly recommended to remove ribsomal RNA (rRNA) sequecnces from the sRNA sequences. Users can align the sRNA reads to <a href=http://www.arb-silva.de/no_cache/download/archive/current/Exports/ target=_blank>the Silva rRNA database</a> using bowtie. Here is the command we recommend (assuming the sRNA sequence file is in fasta format):<br><br>
+<table border=1 style="border-collapse: collapse" cellpadding=5 bordercolor=#555555 width=650>
+<tr><td class=VirusDetect bgcolor=#EEEEEE><font face=courier>shell$ bowtie -v 1 -k 1 --un cleaned_sRNA -f -p 15 Silva_rRNA_database sRNA_sequences sRNA_rRNA_match</font></td>
+</tr></table><br>
+
+
+<a name=parameter></a>
+<h3>Parameters</h3>
+<table border=1 style="border-collapse: collapse" cellpadding=5 bordercolor=#555555 width=650>
+<tr><td class=VirusDetect bgcolor=#EEEEEE><font face=courier>shell$ perl virus_detect.pl --file_type [String] --reference [FILE] [options] input_file</font></td>
+</tr></table><br>
+
+<b><font color=#A208A0>Section 1: Basic parameters</font></b><br><br>
+<table border=0 cellspacing=0 cellpadding=5>
+<tr valign=top><td><b>--reference</b></td><th>[String]</th><td class="content">Name of the reference virus sequence database. (default: vrl_plant)</td></tr>
+<tr valign=top><td><b>--host_reference</b></td><th>[String]</th><td class="content">Name of the host reference database used to subtract sRNA sequences of host origin (default: none)</td></tr>
+<tr valign=top><td><b>--thread_num</b></td><th>[Integer]</th><td class="content">Number of CPUs used for alignments (default: 8)</td></tr>
+<tr><td colspan=3><font color=red><b>*The virus reference database and the host sequence database must be put in the "databases" folder under the "VirusDetect home folder". The databases must be indexed using "bwa index". A curated non-redundant plant virus sequence database (vrl_plant) is provided with the VirusDetect package</b></font>
+</table><br>
+
+<b><font color=#A208A0>Section 2: <a href=http://bio-bwa.sourceforge.net/bwa.shtml target=_blank>BWA</a> alignment parameters (alignments of sRNAs to reference virus or host sequences)</font></b><br><br>
+<table border=0 cellspacing=0 cellpadding=5>
+<tr valign=top><td><b>--max_dist</b></td><th>[Integer]</th><td class="content">Maximum edit distance (default: 1)</td></tr>
+<tr valign=top><td><b>--max_open</b></td><th>[Integer]</th><td class="content">Maximum number of gap opens (default: 1)</td></tr>
+<tr valign=top><td><b>--max_extension</b></td><th>[Integer]</th><td class="content">Maximum number of gap extensions (default: 1)</td></tr>
+<tr valign=top><td><b>--len_seed</b></td><th>[Integer]</th><td class="content">Take the first INT subsequence as seed (default: 15)</td></tr>
+<tr valign=top><td><b>--dist_seed</b></td><th>[Integer]</th><td class="content">Maximum edit distance in the seed (default: 1)</td></tr>
+</table><br>
+
+<b><font color=#A208A0>Section 3: blast alignment options (to remove redundancy within virus contigs)</font></b><br><br>
+<table border=0 cellspacing=0 cellpadding=5>
+<tr valign=top><td><b>--strand_specific</b></td><th>[Boolean]</th><td class="content">Only for sequences assembled from strand-specific RNA-seq (default: false)</td></tr>
+<tr valign=top><td><b>--min_overlap</b></td><th>[Integer]</th><td class="content">Minimum overlap length between two contigs to be combined (default: 30)</td></tr>
+<tr valign=top><td><b>--max_end_clip</b></td><th>[Integer]</th><td class="content">Maximum length of end clips (defalut: 6)</td></tr>
+<tr valign=top><td><b>--min_identify</b></td><th>[Float]</th><td class="content">The minimum percent identity between two contigs to be combined [97]</td></tr>
+<tr valign=top><td><b>--mis_penalty</b></td><th>[Integer]</th><td class="content">Penalty score for a nucleotide mismatch (default: -1)</td></tr>
+<tr valign=top><td><b>--gap_cost</b></td><th>[Integer]</th><td class="content">Cost to open a gap (default: 2)</td></tr>
+<tr valign=top><td><b>--gap_extension</b></td><th>[Integer]</th><td class="content">Cost to extend a gap (default: 1)</td></tr>
+</table><br>
+
+<b><font color=#A208A0>Section 4: blast alignment options (to align virus contigs to reference virus database for virus identification)</font></b><br><br>
+<table border=0 cellspacing=0 cellpadding=5>
+<tr valign=top><td><b>--word_size</b></td><th>[Integer]</th><td class="content">Minimum word size - length of best perfect match (default: 11)</td></tr>
+<tr valign=top><td><b>--exp_value</b></td><th>[Float]</th><td class="content">Maximum Expectation value (defalut: 1e-5)</td></tr>
+<tr valign=top><td><b>--identity_percen</b></td><th>[Float]</th><td class="content">Minimum identity percentage for the alignment (defalut: 25) <br>
+<tr valign=top><td><b>--mis_penalty_b</b></td><th>[Integer]</th><td class="content">Penalty score for a nucleotide mismatch (default: -1)</td></tr>
+<tr valign=top><td><b>--gap_cost_b</b></td><th>[Integer]</th><td class="content">Cost to open a gap (default: 2)</td></tr>
+<tr valign=top><td><b>--gap_extension_b</b></td><th>[Integer]</th><td class="content"> Cost to extend a gap (default: 1)</td></tr>
+</table><br>
+
+<b><font color=#A208A0>Section 5: result filter options</font></b><br><br>
+<table border=0 cellspacing=0 cellpadding=5>
+<tr valign=top><td><b>--hsp_cover</b></td><th>[Float]</th><td class="content">Coverage cutoff of a reported virus contig by reference virus sequences (default: 0.75)</td></tr>
+<tr valign=top><td><b>--coverage_cutoff</b></td><th>[Float]</th><td class="content">Coverage cutoff of a reported virus reference sequences by assembled virus contigs (defalut: 0.1)</td></tr>
+<tr valign=top><td><b>--depth_cutoff</b></td><th>[Float]</th><td class="content">Depth cutoff of a reported virus reference (defalut: 5)</td></tr>
+<tr valign=top><td><b>--novel_len_cutoff</b></td><th>[Integer]</th><td class="content">Length cutoff of a contig categorized as novelwhen it is not reported as known, but it may shows similarity with the reference virus sequences (defalut: 100)</td></tr>
+</table><br>
+
+
+<a name=output></a><h3>Output files</h3>
+VirusDetect generates the following files in the output directory.
+<ol>
+
+<li class="content"><b>contig_sequences.fa</b></li>
+The sequences of non-redundant contigs derived through alignments to the virus reference database and de novo assemblies.<br><br>
+
+<li class="content"><b>known.references.fa</b></li>
+The reference virus sequences that have corresponding aligned non-redundant contigs.<br><br>
+
+
+<li class="content"><b>known.html and novel.html</b> (if known or novel viruses are identified)</li>
+The html file listing reference viruses that have corresponding virus contigs identified from the sRNA sequences<br><br>
+<a href=known.png><img width= 600 src=known.png></a><br><br>
+The link of the accession number of each reference virus provides detailed alignments of virus contigs to the reference virus.<br><br>
+<a href=align.png><img width= 600 src=align.png border=1></a><br><br>
+
+<li class="content"><b>known.sam</b></li>
+A <a href=http://www.ncbi.nlm.nih.gov/pubmed/19505943 target=_blank>SAM format</a> file containing the alignment information of each contig to its corresponding virus reference sequences. The file can be viewed by <a href=http://bioinf.scri.ac.uk/tablet/ target=_blank>Tablet</a>, <a href=http://www.broadinstitute.org/igv/ target=_blank>IGV</a>, and many others...<br><br>
+
+<li class="content"><b>known.xls and novel.xls</b></li>
+A excel file containing the detailed alignment informaiton between virus contigs to their corresponding virus reference sequences.<br><br>
+<a href=known_excel.png><img width= 600 src=known_excel.png border=1></a>
+<br><br></ol>
+
+<a name=download></a>
+<h3>Download</h3>
+Current version of VirusDetect is v1.0. It's available for 64-bit linux systems.<br>
+<a href=ftp://bioinfo.bti.cornell.edu/pub/program/VirusDetect/>Download VirusDetect from the ftp server</a><br><br>
+<a name=contact></a>
+<h3>Contact</h3>
+For questions and suggestions, please contact us at <a href=mailto:bioinfo@cornell.edu>bioinfo@cornell.edu</a>
+</td></tr></table>
+
+<!--#include virtual="footer.html" -->
+
