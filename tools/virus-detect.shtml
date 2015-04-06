@@ -5,12 +5,13 @@
 <b><ul>
 <li><a href=#introduction>Introduction</a></li>
 <li><a href=#requirement>System requirement and dependencies</a></li>
+<li><a href=#download>Download VirusDetect</a></li>
 <li><a href=#install>Installation</a></li>
 <li><a href=#run>Run VirusDetect</a></li>
 <li><a href=#input>Input files</a></li>
+<li><a href=#build>Build reference</a></li>
 <li><a href=#parameter>Parameters</a></li>
 <li><a href=#output>Output files</a></li>
-<li><a href=#download>Download VirusDetect</a></li>
 <li><a href=#contact>Contact</a></li>
 </ul></b>
 <a name=introduction></a>
@@ -33,6 +34,11 @@ Li R, Gao S, Hernandez AG, Wechter WP, Fei Z, Ling K-S (2012) <a href=http://www
 <li class="content"><a href=https://www.ebi.ac.uk/~zerbino/velvet/ target=_blank>Velvet</a>. Provided in VirusDetect.</li>
 <li class="content"><a href=http://blast.ncbi.nlm.nih.gov/Blast.cgi?CMD=Web&PAGE_TYPE=BlastDocs&DOC_TYPE=Download target=_blank>NCBI BLAST package</a>. Provided in VirusDetect.</li>
 </ul>
+
+<a name=download></a>
+<h3>Download</h3>
+Current version of VirusDetect is v1.0. It's available for 64-bit linux systems.<br>
+<a href=ftp://bioinfo.bti.cornell.edu/pub/program/VirusDetect/>Download VirusDetect from the ftp server</a><br><br>
 
 <a name=install></a>
 <h3>Installation</h3>
@@ -61,6 +67,26 @@ It's highly recommended to remove ribsomal RNA (rRNA) sequecnces from the sRNA s
 <table border=1 style="border-collapse: collapse" cellpadding=5 bordercolor=#555555 width=650>
 <tr><td class=VirusDetect bgcolor=#EEEEEE><font face=courier>shell$ bowtie -v 1 -k 1 --un cleaned_sRNA -f -p 15 Silva_rRNA_database sRNA_sequences sRNA_rRNA_match</font></td>
 </tr></table><br>
+
+<a name=build></a>
+<h3>Build reference</h3>
+
+The virus reference database is downloaded from GenBank (gbvrl), and the download sequences were classified using <a href=https://github.com/kentnf/virus-detect-new/tree/master/tools target=_blank>Virus Classification Pipeline</a>. We also provide the classified sequences in our <a href=ftp://bioinfo.bti.cornell.edu/pub/program/VirusDetect/>ftp</a>. The classified virus were built as known reference database using following command <br><br>
+<table border=1 style="border-collapse: collapse" cellpadding=5 bordercolor=#555555 width=650>
+<tr><td class=VirusDetect bgcolor=#EEEEEE><font face=courier>
+        shell$ ./bin/bwa index ./database/known_virus_reference <br />
+        shell$ ./bin/formatdb -i ./database/known_virus_reference -p F
+</font></td>
+</tr></table>
+<br>
+
+The host reference database is the genome sequences of the host. Please using below commands to build host reference database <br><br>
+<table border=1 style="border-collapse: collapse" cellpadding=5 bordercolor=#555555 width=650>
+<tr><td class=VirusDetect bgcolor=#EEEEEE><font face=courier>
+	shell$ ./bin/bwa index ./database/name_of_host_reference <br />
+</font></td>
+</tr></table>
+<br>
 
 
 <a name=parameter></a>
@@ -141,10 +167,6 @@ A excel file containing the detailed alignment informaiton between virus contigs
 <a href=known_excel.png><img width= 600 src=known_excel.png border=1></a>
 <br><br></ol>
 
-<a name=download></a>
-<h3>Download</h3>
-Current version of VirusDetect is v1.0. It's available for 64-bit linux systems.<br>
-<a href=ftp://bioinfo.bti.cornell.edu/pub/program/VirusDetect/>Download VirusDetect from the ftp server</a><br><br>
 <a name=contact></a>
 <h3>Contact</h3>
 For questions and suggestions, please contact us at <a href=mailto:bioinfo@cornell.edu>bioinfo@cornell.edu</a>
