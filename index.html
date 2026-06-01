@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yi Zheng — Plant Genomics & Bioinformatics</title>
+  <meta name="description" content="Yi Zheng (郑轶) — Researcher at Yazhouwan National Laboratory. Plant genomics, multi-omics integration, gene regulatory networks, and bioinformatics tools for horticultural crops.">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .timeline {
+      position: relative;
+      padding-left: 32px;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 8px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--border);
+    }
+    .timeline-item {
+      position: relative;
+      margin-bottom: 28px;
+    }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -28px;
+      top: 6px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 2px solid #fff;
+      box-shadow: 0 0 0 2px var(--accent);
+    }
+    .timeline-year {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .timeline-title {
+      font-size: 0.95rem;
+      margin-bottom: 2px;
+    }
+    .timeline-place {
+      font-size: 0.85rem;
+      color: var(--text-light);
+    }
+    .highlight-item {
+      display: flex;
+      gap: 16px;
+      align-items: baseline;
+      padding: 8px 0;
+    }
+    .highlight-num {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--text);
+      opacity: 0.3;
+      min-width: 36px;
+    }
+    .highlight-text {
+      font-size: 0.95rem;
+    }
+    .highlight-text .journal {
+      font-size: 0.82rem;
+      color: var(--text-light);
+    }
+    .links-row {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      margin-top: 48px;
+    }
+    .links-row a {
+      display: inline-block;
+      padding: 12px 28px;
+      border: 2px solid var(--text);
+      border-radius: 4px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.2s;
+    }
+    .links-row a:hover {
+      background: var(--text);
+      color: #fff;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="brand">Yi Zheng</a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="publications.html">Publications</a></li>
+      <li><a href="moilab.html">MOILab</a></li>
+      <li><a href="databases.html">Databases &amp; Tools</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <h1>Yi Zheng</h1>
+  <p>Plant Genomics · Bioinformatics · Horticultural Crops</p>
+  <p style="margin-top: 12px; font-size: 1rem; color: var(--text);">
+    Yazhouwan National Laboratory<br>
+    <span style="color: var(--text-light);">崖州湾国家实验室</span>
+  </p>
+  <p style="margin-top: 8px; font-size: 0.9rem; color: var(--text-light);">
+    Professor, Beijing University of Agriculture (2020–2024)
+  </p>
+</header>
+
+<!-- Career Timeline -->
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">Positions</h2>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <span class="timeline-year">2025 – present</span>
+        <p class="timeline-title"><strong>Researcher / Professor</strong></p>
+        <p class="timeline-place">Yazhouwan National Laboratory, Sanya, China</p>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-year">2020 – 2024</span>
+        <p class="timeline-title"><strong>Professor</strong></p>
+        <p class="timeline-place">College of Plant Science and Technology, Beijing University of Agriculture</p>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-year">2013 – 2020</span>
+        <p class="timeline-title"><strong>Postdoctoral Researcher &amp; Consultant</strong></p>
+        <p class="timeline-place">Boyce Thompson Institute, Cornell University, USA</p>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-year">2005 – 2012</span>
+        <p class="timeline-title"><strong>Ph.D., Ornamental Horticulture</strong></p>
+        <p class="timeline-place">China Agricultural University</p>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-year">2001 – 2005</span>
+        <p class="timeline-title"><strong>B.S., Landscape Architecture</strong></p>
+        <p class="timeline-place">College of Landscape Architecture, Beijing University of Agriculture</p>
+      </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Research Areas -->
+<section class="section" style="background: var(--bg-light);">
+  <div class="container">
+    <h2 class="section-title">Research Areas</h2>
+    <div class="cards">
+      <div class="card">
+        <div class="card-body">
+          <h3>Horticultural Crop Genomics</h3>
+          <p>Genome assembly, annotation, and comparative genomics of horticultural crops including tomato, watermelon, melon, cucumber, spinach, rose, kiwifruit, apple, and chestnut.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <h3>Multi-omics Data Integration</h3>
+          <p>Integration of genomics, transcriptomics, epigenomics, and metabolomics data to understand gene regulatory networks in horticultural crops and to power genome-based breeding.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <h3>Bioinformatics Tools &amp; Databases</h3>
+          <p>Development of widely-used bioinformatics tools (iTAK, VirusDetect, iAssembler) and crop-specific genomics databases (CuGenDB, SpinachBase, KGD, HSE, and more).</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Selected Highlights -->
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">Selected Contributions</h2>
+    <p class="section-subtitle">89 publications, 6,300+ citations, h-index 36</p>
+
+    <div class="highlight-item">
+      <span class="highlight-num">01</span>
+      <div class="highlight-text">
+        <strong>iTAK</strong> — genome-wide prediction of plant transcription factors, transcriptional regulators, and protein kinases.
+        <span class="journal">Molecular Plant, 2016 · 1,114 citations</span>
+      </div>
+    </div>
+    <div class="highlight-item">
+      <span class="highlight-num">02</span>
+      <div class="highlight-text">
+        <strong>Tomato genome</strong> — the genome sequence of tomato provides insights into fleshy fruit evolution.
+        <span class="journal">Nature, 2012 · 3,677 citations</span>
+      </div>
+    </div>
+    <div class="highlight-item">
+      <span class="highlight-num">03</span>
+      <div class="highlight-text">
+        <strong>Watermelon genome</strong> — draft genome and resequencing of 20 diverse accessions.
+        <span class="journal">Nature Genetics, 2013 · 971 citations</span>
+      </div>
+    </div>
+    <div class="highlight-item">
+      <span class="highlight-num">04</span>
+      <div class="highlight-text">
+        <strong>CuGenDB</strong> — the cucurbit genomics database and its updated version CuGenDBv2.
+        <span class="journal">Nucleic Acids Research, 2019 · 220 citations</span>
+      </div>
+    </div>
+    <div class="highlight-item">
+      <span class="highlight-num">05</span>
+      <div class="highlight-text">
+        <strong>Spinach genome</strong> — draft genome and transcriptome diversity of 120 accessions.
+        <span class="journal">Nature Communications, 2017 · 234 citations</span>
+      </div>
+    </div>
+    <div class="highlight-item">
+      <span class="highlight-num">06</span>
+      <div class="highlight-text">
+        <strong>VirusDetect</strong> — automated pipeline for virus discovery using deep sequencing of small RNAs.
+        <span class="journal">Virology, 2017 · 265 citations</span>
+      </div>
+    </div>
+    <div class="highlight-item">
+      <span class="highlight-num">07</span>
+      <div class="highlight-text">
+        <strong>Modern rose genome</strong> — haplotype-resolved assembly reveals origin and domestication.
+        <span class="journal">Nature Plants, 2024</span>
+      </div>
+    </div>
+    <div class="highlight-item">
+      <span class="highlight-num">08</span>
+      <div class="highlight-text">
+        <strong>HortGenome Search Engine</strong> — universal genomic search covering 500+ horticultural crops.
+        <span class="journal">Horticulture Research, 2024</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Links -->
+<section class="section" style="background: var(--bg-light);">
+  <div class="container" style="text-align: center;">
+    <div class="links-row">
+      <a href="publications.html">All Publications</a>
+      <a href="databases.html">Databases &amp; Tools</a>
+      <a href="moilab.html">MOILab</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>Contact: yz@moilab.net</p>
+    <p style="margin-top: 8px; font-size: 0.8rem;">&copy; 2025 Yi Zheng. All rights reserved.</p>
+  </div>
+</footer>
+
+</body>
+</html>

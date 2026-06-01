@@ -1,0 +1,1107 @@
+<html><head>
+<meta http-equiv="Pragma" content="no-cache">
+<title>Fei Bioinformatics Lab</title></head>
+<style type="text/css">
+  html {min-height: 100%;}
+  body
+  {
+    margin: 0 auto;
+    padding: 0; 
+  }
+  a {text-decoration: none;}
+  a.header {color: #0C48C0;}
+  a.header:visited {color: #0C48C0;}
+  a:hover {color: #FF0000;}
+  th,td 
+  {
+    line-height: 130%;
+    font-family : Arial, Helvetica, Verdana, Sans-Serif, Helv;
+    font-size: 12px;
+  }
+  td.header
+  {
+    font-family : Arial, Helvetica, Verdana, Sans-Serif, Helv;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  td.iAssembler, li.iAssembler
+  {
+    line-height: 140%;
+    font-family : Arial, Helvetica, Verdana, Sans-Serif, Helv;
+    font-size: 13px;
+    text-align: justify;
+  }
+
+  h1 
+  {
+    font-family : Arial, Helvetica, Verdana, Sans-Serif, Helv;
+    font-weight : bold;
+    font-size: 17px;
+    color: brown;
+  }
+  h2 
+  {
+    font-family : Arial, Helvetica, Verdana, Sans-Serif, Helv;
+    font-size: 17px;
+    color: blue;
+  }
+  h3 
+  {
+    font-family : Arial, Helvetica, Verdana, Sans-Serif, Helv;
+    font-size: 16px;
+  }
+  ul
+  {
+    margin-left:0.8em;
+    padding-left:0.8em;
+  }
+  p, li 
+  {
+    line-height: 130%;
+    font-family : Arial, Helvetica, Verdana, Sans-Serif, Helv;
+    font-size: 12px;
+  }  
+  #dropmenudiv
+  {
+    position:absolute;
+    border:1px solid black;
+    border-bottom-width: 0;
+    font:normal 14px Arial;
+    line-height:22px;
+    z-index:100;
+  }
+  #dropmenudiv a
+  {
+    width: 100%;
+    display: block;
+    text-indent: 3px;
+    border-bottom: 1px solid black;
+    padding: 1px 0;
+    text-decoration: none;
+  }
+  #dropmenudiv a:hover
+  {
+    background-color: #FEC3D7;
+  }
+</style>
+
+<script type="text/javascript">
+  /***********************************************
+  * AnyLink Drop Down Menu- ? Dynamic Drive (www.dynamicdrive.com)
+  * This notice MUST stay intact for legal use
+  * Visit http://www.dynamicdrive.com/ for full source code
+  ***********************************************/
+
+  var menu1=new Array()
+  menu1[0]='<a href="http://ted.bti.cornell.edu" target=_blank>Tomato Functional Genomics Database</a>'
+  menu1[1]='<a href="http://ted.bti.cornell.edu/epigenome" target=_blank>Tomato Epigenome Database</a>'
+  menu1[2]='<a href="http://www.icugi.org" target=_blank>Cucurbit Genomics Database</a>'
+  menu1[3]='<a href="http://bioinfo.bti.cornell.edu/tool/MetGenMAP" target=_blank>Plant MetGenMAP</a>'
+  menu1[4]='<a href="http://bioinfo.bti.cornell.edu/tool/iAssembler">iAssembler</a>'
+  menu1[5]='<a href="http://bioinfo.bti.cornell.edu/tool/itak" target=_blank>iTAK</a>'
+  menu1[6]='<a href="http://bioinfo.bti.cornell.edu/virome" target=_blank>Sweet potato virome</a>'
+  menu1[7]='<a href="http://bioinfo.bti.cornell.edu/radish" target=_blank>RadishBase</a>'
+  menu1[8]='<a href="http://bioinfo.bti.cornell.edu/SA2010" target=_blank>Salicylic acid signaling network</a>'
+  menu1[8]='<a href="http://bioinfo.bti.cornell.edu/kiwi" target=_blank>Kiwifruit Genome Database</a>' 
+ /*menu1[5]='<a href="http://bioinfo.bti.cornell.edu/tool/GO" target=_blank>GO term analysis</a>'
+  menu1[9]='<a href="http://132.236.156.152/chlre/" target=_blank>Chlamy sequence analysis server</a>'*/
+
+  var menu2=new Array()
+  menu2[0]='<a href="/lab/homepage/research_link.shtml">Research links</a>'
+  menu2[1]='<a href="/lab/homepage/journal.shtml">Journal Links</a>'
+ 
+  var menuwidth='165px' //default menu width
+  var menubgcolor='#E2E8EC'  //menu bgcolor
+  var disappeardelay=50  //menu disappear speed onMouseout (in miliseconds)
+  var hidemenu_onclick="yes" //hide menu when user clicks within menu?
+
+  var ie4=document.all
+  var ns6=document.getElementById&&!document.all
+  if (ie4||ns6)
+  document.write('<div id="dropmenudiv" style="visibility:hidden;width:'+menuwidth+';background-color:'+menubgcolor+'" onMouseover="clearhidemenu()" onMouseout="dynamichide(event)"></div>')
+
+  function getposOffset(what, offsettype) 
+  {
+    var totaloffset=(offsettype=="left")? what.offsetLeft : what.offsetTop;
+    var parentEl=what.offsetParent;
+    while (parentEl!=null)
+    {
+      totaloffset=(offsettype=="left")? totaloffset+parentEl.offsetLeft : totaloffset+parentEl.offsetTop;
+      parentEl=parentEl.offsetParent;
+    }
+    return totaloffset;
+  }
+
+  function showhide(obj, e, visible, hidden, menuwidth)
+  {
+    if (ie4||ns6)
+      dropmenuobj.style.left=dropmenuobj.style.top="-500px"
+    if (menuwidth!="")
+    {
+      dropmenuobj.widthobj=dropmenuobj.style
+      dropmenuobj.widthobj.width=menuwidth
+    }
+    if (e.type=="click" && obj.visibility==hidden || e.type=="mouseover")
+      obj.visibility=visible
+    else if (e.type=="click")
+      obj.visibility=hidden
+  }
+
+  function iecompattest()
+  {
+    return (document.compatMode && document.compatMode!="BackCompat")? document.documentElement : document.body
+  }
+
+  function clearbrowseredge(obj, whichedge)
+  {
+    var edgeoffset=0
+    if (whichedge=="rightedge")
+    {
+      var windowedge=ie4 && !window.opera? iecompattest().scrollLeft+iecompattest().clientWidth-15 : window.pageXOffset+window.innerWidth-15
+      dropmenuobj.contentmeasure=dropmenuobj.offsetWidth
+      if (windowedge-dropmenuobj.x < dropmenuobj.contentmeasure)
+        edgeoffset=dropmenuobj.contentmeasure-obj.offsetWidth
+    }
+    else
+    {
+      var topedge=ie4 && !window.opera? iecompattest().scrollTop : window.pageYOffset
+      var windowedge=ie4 && !window.opera? iecompattest().scrollTop+iecompattest().clientHeight-15 : window.pageYOffset+window.innerHeight-18
+      dropmenuobj.contentmeasure=dropmenuobj.offsetHeight
+      if (windowedge-dropmenuobj.y < dropmenuobj.contentmeasure) //move up?
+      {
+        edgeoffset=dropmenuobj.contentmeasure+obj.offsetHeight
+        if ((dropmenuobj.y-topedge)<dropmenuobj.contentmeasure) //up no good either?
+          edgeoffset=dropmenuobj.y+obj.offsetHeight-topedge
+      }
+    }
+    return edgeoffset
+  }
+
+  function populatemenu(what)
+  {
+    if (ie4||ns6)
+      dropmenuobj.innerHTML=what.join("")
+  }
+
+  function dropdownmenu(obj, e, menucontents, menuwidth)
+  {
+    if (window.event) event.cancelBubble=true
+    else if (e.stopPropagation) e.stopPropagation()
+    clearhidemenu()
+    dropmenuobj=document.getElementById? document.getElementById("dropmenudiv") : dropmenudiv
+    populatemenu(menucontents)
+    if (ie4||ns6)
+    {
+      showhide(dropmenuobj.style, e, "visible", "hidden", menuwidth)
+      dropmenuobj.x=getposOffset(obj, "left")
+      dropmenuobj.y=getposOffset(obj, "top")
+      dropmenuobj.style.left=dropmenuobj.x-clearbrowseredge(obj, "rightedge")+"px"
+      dropmenuobj.style.top=dropmenuobj.y-clearbrowseredge(obj, "bottomedge")+obj.offsetHeight+"px"
+    }
+    return clickreturnvalue()
+  }
+
+  function clickreturnvalue()
+  {
+    if (ie4||ns6) return false
+    else return true
+  }
+
+  function contains_ns6(a, b) 
+  {
+    while (b.parentNode)
+    if ((b = b.parentNode) == a)
+      return true;
+    return false;
+  }
+
+  function dynamichide(e)
+  {
+    if (ie4&&!dropmenuobj.contains(e.toElement))
+      delayhidemenu()
+    else if (ns6&&e.currentTarget!= e.relatedTarget&& !contains_ns6(e.currentTarget, e.relatedTarget))
+      delayhidemenu()
+  }
+
+  function hidemenu(e)
+  {
+    if (typeof dropmenuobj!="undefined")
+    {
+      if (ie4||ns6)
+        dropmenuobj.style.visibility="hidden"
+    }
+  }
+
+  function delayhidemenu() 
+  {
+    if (ie4||ns6)
+      delayhide=setTimeout("hidemenu()",disappeardelay)
+  }
+
+  function clearhidemenu()
+  {
+    if (typeof delayhide!="undefined")
+      clearTimeout(delayhide)
+  }
+
+  if (hidemenu_onclick=="yes")
+    document.onclick=hidemenu
+
+</script>
+
+<body bgcolor=#EBEFF9>
+<table border=1 cellpadding=0 cellspacing=0 align=center bordercolor=#966D34 style=border-collapse:collapse><tr><td bgcolor=#FFFFFF>
+<table width=750 align=center bgcolor=#FFFFFF cellpadding=0 cellspacing=0><tr height=90>
+<td align=center background=/lab/homepage/image/bg.png><img src=/lab/homepage/image/Lab_logo.gif border=0></td>
+</tr></table>
+
+<table align=center width=750 border=0 cellspacing=0 cellpadding=5 background=/lab/homepage/image/bar_bg.png><tr>
+<td width=90>&nbsp;</td>
+<td class=header width=105><a class=header href=/index.html>Research</a></td>
+<td class=header width=90><a class=header href=/lab/homepage/member.shtml>People</a></td>
+<td class=header width=115><a class=header href=/lab/homepage/publication.shtml>Publication</a></td>
+<td class=header width=70><a class=header href=/lab/homepage/tool.shtml>Tool</a></td>
+<td class=header width=75><a class=header href=/lab/homepage/news.shtml>News</a></td>
+<td class=header width=65><a class=header href=/ onClick="return clickreturnvalue()" onMouseover="dropdownmenu(this, event, menu2, '150px')" onMouseout="delayhidemenu()">Link</a></td>
+<!--<td class=header width=90><a class=header href=/lab/homepage/position.shtml>Position</a></td>-->
+<td class=header>&nbsp;</td>
+</tr></table>
+
+
+<br><h3 align=center><font color=brown>Publications</font> (<a href=https://scholar.google.com/citations?user=QPD9ztMAAAAJ&hl=en target=_blank>Google Scholar</a>)</h3>
+<table width=650 align=center><tr><td align=justify>
+<b>2026</b>
+<ul>
+<!--<li><b>Sun H<sup>#</sup></b>, Zhang J<sup>#</sup>, Liao S<sup>#</sup>, Guo S<sup>#</sup>, <b>Zhou Z<sup>#</sup>, Zhao X, Wu S, Zhao J</b>, Gong G, Wang J, Li M, Yu Y, Ren Y, Tian S, Li S, Zhang H, Hammar SA, McGregor C, Jarret R, Wechter P, Branham SE, Kousik C, Levi A, Grumet R, <b>Fei Z*</b>, Xu Y* (2026) <a href= target=_blank>Population-level super-pangenome reveals genome evolution and empowers precision breeding in watermelon.</a> <b><i>Nature Genetics</i></b></li><br>-->
+
+<li><b>Zhao X</b>, <b>Yu J</b>, Zhang J, <b>Sun H</b>, <b>Wu S</b>, <b>Zhao J</b>, Zhou Y, Hammar SA, Lin Y-C, Zhang Z, Huang S, Dymerski RT, Chen F, Weng Y, Grumet R, Xu Y*, <b>Fei Z</b>* (2026) <a href=https://doi.org/10.1038/s41588-026-02506-0 target=_blank>Graph-based pangenome reveals structural variation dynamics during cucumber breeding.</a> <b><i>Nature Genetics</i></b> 58:643-654</li><br>
+
+<li>Grumet R, <b>Fei Z</b>, Levi A, Mazourek M, McCreight J, Quesada-Ocampo L, Weng Y, Branham S, Hausbeck M, Keinath A, Kousik S, Knuth M, Linares Ramirez A, Ling K, McGregor C, Meru G, Palma M, Reddy U, Ribera L, Schultheis J, Smart C, Tregeagle D, Wechter P, Wehner T, Wessel-Beaver L, Wintermantel W, <b>Wu S</b> (2026) <a href=https://doi.org/10.21273/JASHS05562-25 target=_blank>The USDA-SCRI CucCAP Projects: Building genomic, breeding and disease management tools for cucurbit crops.</a> <b><i>J Amer Soc Hort Sci</i></b> 151:126-146</li><br>
+
+<li>Yu F, Zhang W, Ni M, Wang S, <b>Fei Z</b>, Li J (2026) <a href=https://doi.org/10.1186/s42483-025-00401-w target=_blank>Clubroot disease revisited: Molecular insights into pathogenesis and host resistance.</a> <b><i>Phytopathology Research</i></b> 8:14</li><br>
+
+<li>Padmanabhan C, <b>Ma Q</b>, Shamimuzzaman M, Stewart KS, Wilson JR,  Hasegawa DK,  Shekaste-band R, Hutton SF, Scott JW, Simmons A, <b>Fei Z</b>, Ling K-S (2026) <a href=https://www.frontiersin.org/journals/plant-science/articles/10.3389/fpls.2026.1788099/ target=_blank>Elucidation of the ty-5 resistance network in tomato against tomato yellow leaf curl virus reveals the involvement of AP2/ERF gene.</a> <b><i>Frontier in Plant Science</i></b></li><br>
+
+<li>Chen J, Quan C, Zhao Y, De Silva KIL, <b>Fei Z</b>, Kochian LV, Lucas WJ, Ham B-K (2026) <a href=https://doi.org/10.1111/pbi.70496 target=_blank>PPSR1 protein functions as an important regulator to enhance plant growth performance under N, P, and K deficient stress conditions.</a> <b><i>Plant Biotechnology J</i></b> 24:2385-2404</li><br>
+
+<li>Miao M, Tang X, Lin Y, Gao J, Wang H, Wang S, Zhu Y, Niu X, Li Y, Fan Y, Chen Y, Wang A, Cao S, <b>Fei Z</b>, Giovannoni J, Xiao F, Liu Y (2026) <a href=https://doi.org/10.1111/nph.70745 target=_blank>Cullin4-Ring ligase (CRL4)-mediated degradation of an H3K9 methyltransferase compromises cell proliferation and fruit size in tomato.</a> <b><i>New Phytologist</i></b> 249:1303-1324</li><br>
+</ul>
+
+<b>2025</b>
+<ul>
+<li><b>Wu S<sup>#</sup>, Sun H<sup>#</sup>, Zhao X<sup>#</sup></b>, Hamilton JP, Mollinari M, Gesteira GS, Kitavi M, Yan M, Wang H, Yang J, Yencho GC, Buell CR, <b>Fei Z*</b> (2025) <a href=https://doi.org/10.1038/s41477-025-02079-6 target=_blank>Phased chromosome-level assembly provides insight into the genome architecture of hexaploid sweetpotato.</a> <b><i>Nature Plants</i></b> 11:1951-1959
+<br><b><font color=#0070C0>Research Briefing</font></b> <a href=https://www.nature.com/articles/s41477-025-02090-x target=_blank>Decoding the complexity of the hexaploid sweet potato genome</a> <b><i>Nature Plants</i></b> 11:1712-1713</li><br>
+
+<li>Zhang X, Tang C, Jiang B, Zhang R, Li M, Wu Y, Yao Z, Huang L, Luo Z, Zou H, Yang Y, Wu M, Chen A, <b>Wu S</b>, Hou X, Xu Liu X*, <b>Fei Z*</b>, Fu J*, Wang Z* (2025) <a href=https://doi.org/10.1038/s41477-024-01873-y target=_blank>Refining polyploid breeding in sweetpotato through allele dosage enhancement.</a> <b><i>Nature Plants</b></i> 11:36-48
+<br><b><font color=#0070C0>Research Briefing</font></b> <a href=https://doi.org/10.1038/s41477-024-01884-9 target=_blank>Understanding the genomic basis to empower sweet potato breeding</a> <b><i>Nature Plants</i></b> 11:14-15</li><br>
+
+<li><b>Wu S</b>, Kitavi M, Hamilton JP, Buell CR, <b>Fei Z*</b> (2025) <a href=https://link.springer.com/chapter/10.1007/978-3-031-65003-1_2 target=_blank>US efforts in sweetpotato genome sequencing: Advances in the development of reference genomes to facilitate research and breeding of a key food security crop.</a> In <a href=https://link.springer.com/book/10.1007/978-3-031-65003-1 target=_blank>The sweetpotato genome</a> (eds. Yencho GC, Olukolu BA, Isobe S), pp 11-17</li><br>
+
+<li>Chen W, Xie Q, Fu J, Li S, Shi Y, Lu J, Zhang Y, Zhao Y, Ma R, Li B, Zhang B, Grierson D, Yu M*, <b>Fei Z*</b>, Chen K* (2025) <a href=https://doi.org/10.1186/s13059-024-03470-w target=_blank>Graph pangenome reveals the regulation of malate accumulation in blood-fleshed peach by NAC transcription factors.</a> <b><i>Genome Biology</i></b> 26:7</li><br>
+
+<li>Hu X, Xu C, Li X, Li L, Bao Y, Gu M, Li X, Huo L, Gong J, Li X, Wang M, Xu K, Yin X, <b>Fei Z*</b>, Sun X* (2025) <a href=https://doi.org/10.1002/advs.202503974 target=_blank>Subgenome dominance in allotetraploid <i>Actinidia valvata</i> regulates RNA m<sup>6</sup>A modification for waterlogging tolerance.</a> <b><i>Advanced Science</i></b> 12:e03974</li><br>
+
+<li>Lai E, Guo S, Wu P, Qu M, Yu X, Hao C, Li S, Peng H, Yi Y, Zhou M, Fu G, Li X, Liu H, Zheng Y*, Wang X*, <b>Fei Z*</b>, Gao L* (2025) <a href=https://doi.org/10.1111/pbi.14551 target=_blank>Genome of root celery and population genomic analysis reveal the complex breeding history of celery.</a> <b><i>Plant Biotechnology Journal</i></b> 23:946-959</li><br>
+
+<li>Chen Y, <b>Wang X</b>, Colantoniod V, Gao Z, Pei Y, Fish T, Ye J, Courtney L, Thannhauser TW, Ye Z, Liu Y, <b>Fei Z</b>, Liu M, Giovannoni JJ (2025) <a href=https://doi.org/10.1073/pnas.2405894122 target=_blank>Ethylene response factor SlERF.D6 promotes ripening in part through transcription factors SlDEAR2 and SlTCP12</a>. <b><i> Proc Natl Acad Sci USA</i></b> 122:e2405894122</li><br>
+
+<li>Adero J, Ssali R, Segundo F, Maria D, Kitavi M, Yada B, Byarugaba DK, Dube F, Aber PP, Opiyo SO, <b>Fei Z</b>, Kreuze JF (2025) <a href=https://doi.org/10.3390/biology14111541 target=_blank>Virus-specific defense responses in sweetpotato: Transcriptomic insights into resistance and susceptibility to SPFMV, SPCSV, and SPVD.</a> <b><i>Biology</i></b> 14:1541</li><br>
+
+<li>Krishna Kumar S, Tyagi K, Brown M, Cheng L, <b>Fei Z</b>, Peck G (2025) <a href=https://doi.org/10.3389/fpls.2025.1591292 target=_blank>Reduced apple crop density enhances total polyphenol accumulation via upregulation of anthocyanidin reductase and other phenylpropanoid pathway genes.</a> <b><i>Frontier in Plant Science</i></b> 16:1591292</li><br>
+
+<li>Li B, Li X, Wang Y, Liu X, Li K, Li R, Faiz MU, Darlington UT, Rao Z, Wu Q, Yue Y, Wang S, <b>Fei Z</b>, Liu Y, Zheng Y, Yue J (2025) <a href=https://doi.org/10.1016/j.xplc.2025.101373  target=_blank>KPGD: A kiwifruit pangenome database for comprehensive mining of genetic diversity in the genus <i>Actinidia</i>.</a> <b><i>Plant Communications</i></b> 6:101373</li><br>
+
+<li>Sun T, Hazra A, Lui A, Zeng S, <b>Wang X</b>, Rao S, Owens LA, <b>Fei Z</b>, Zhao Y, Mazourek M, Giovannoni JG, Li L (2025) <a href=https://doi.org/10.1111/nph.20457 target=_blank>GLKs directly regulate carotenoid biosynthesis via interacting with GBFs in plants.</a> <b><i>New Phytologist</b></i> 246:645-665</li><br>
+
+<li>Hu D, Zhang M, Li C, Zhao T, Du L, Sun Q, Wang C, Meng D, Sun C, <b>Fei Z</b>, Dandekar AM, Cheng L (2025) <a href=https://doi.org/10.1093/plcell/koae328 target=_blank>A linker histone acts as a transcription factor to orchestrate malic acid accumulation in apple in response to sorbitol. </a> <b><i>Plant Cell</i></b> 37:koae332</li><br>
+
+<li>Lin Y-C, Weng Y, <b>Fei Z</b>, Grumet R (2025) <a href=https://doi.org/10.1093/hr/uhae340 target=_blank>Mining the cucumber core collection: Phenotypic and genetic characterization of morphological diversity for fruit quality characteristics.</a> <b><i>Horticulture Research</i></b> 12:uhae340</li><br>
+
+</ul>
+
+<b>2024</b>
+<ul>
+<li>Cai Y, Gao X, Mao J, Liu Y, Tong L, Chen C, Liu Y, Kou W, Chang C, Foster T, Yao J, Cornille A, Tahirm MM, Liu Z, Yan Z, Lin S, Ma F, Ma J, Xing L, An N, Zuo X, Lv Y, Zhao Z, Li W, Li Q, Zhao C, Hu Y, Liu H, Wang C, Shi X, Ma D, <b>Fei Z*</b>, Jiang Y*, Zhang D* (2024) <a href=https://doi.org/10.1038/s41467-024-54428-2 target=_blank>Genome sequencing of 'Fuji' apple clonal varieties reveals genetic mechanism of the spur-type morphology.</a> <b><i>Nature Communications</i></b> 15:10082</li><br>
+
+<li>Zhang Z<sup>#</sup></b>, Yang T<sup>#</sup></b>, Liu Y<sup>#</sup></b>, <b>Wu S</b><sup>#</sup></b>, <b>Sun H</b><sup>#</sup></b>, Wu J<sup>#</sup></b>, Li Y<sup>#</sup></b>, Zheng Y, Ren H, Yang Y, Shi S, Wang W, Pan Q, Lian L, Duan S, Zhu Y, Cai Y, Zhou H, Zhang H, Tang K, Cui J, Gao D, Chen L, Jiang Y, Sun X, Zhou X, <b>Fei Z*</b>, Ma N*, Gao J* (2024) <a href=https://doi.org/10.1038/s41477-024-01820-x target=_blank>Haplotype-resolved genome assembly and resequencing provide insights into the origin and domestication of modern rose.</a> <b><i>Nature Plants</i></b> 10:1659-1671</li><br>
+
+<li>Zhang J, Lyu H, Chen J, Cao X, Du R, Ma L, Wan N, Zhu Z, Rao J, Wang J, Zhong K, Lyu Y, Wang Y, Lin T, Zhou Y, Zhou Y, Zhu G, <b>Fei Z</b>, Klee H, Huang S (2024) <a href=https://doi.org/10.1038/s41586-024-08186-2 target=_blank>Releasing a sugar brake generates sweeter tomato without yield penalty.</a> <b><i>Nature</i></b> 635:647-656</li><br>
+
+<li>Svara A, <b>Sun H, Fei Z</b>, Khan A (2024) <a href=https://doi.org/10.1093/dnares/dsae026 target=_blank>Advancing apple genetics research: <i>Malus coronaria</i> and <i>Malus ioensis</i> genomes and a gene family-based pangenome of native North American apples.</a> <b><i>DNA Research</i></b> 31:dsae026</li><br>
+
+<li>Garcia J, Moravek M, Fish T, Thannhauser T, <b>Fei Z</b>, Sparks JP, Giovannoni J, Kao-Kniffin J (2024) <a href=https://doi.org/10.1038/s41598-024-71792-7 target=_blank>Rhizosphere microbiomes derived from vermicompost alter gene expression and regulatory pathways in tomato (<i>Solanum lycopersicum</i>, L.).</a> <b><i>Scientific Reports</i></b> 14:21362</li><br>
+
+<li>Yu X, Qin Q, Zribi I, <b>Yu J</b>, Yang S, Dinkins RD, <b>Fei Z</b>, Kereszt A, Zhu H (2024) <a href=https://doi.org/10.1126/sciadv.adp6436 target=_blank> Species-specific microsymbiont discrimination mediated by a <i>Medicago</i> receptor kinase.</a> <b><i>Science Advance</i></b> 10:eadp6436</li><br>
+
+<li>Chen Y, <b>Tang X</b>, <b>Fei Z</b>, Giovannoni JJ (2024) <a href=https://doi.org/10.1093/hr/uhae199 target=_blank>Fruit ripening and postharvest changes in very-early-harvested tomatoes.</a> <b><i>Horticulture Research</i></b> 11:uhae199</li><br>
+
+<li>Xia F, Zhang N, Smith RE, Chakraborty J, Sobol G, <b>Tang X</b>, <b>Fei Z</b>, Sessa G, Martin GB (2024) <a href=https://doi.org/10.1093/plphys/kiae401 target=_blank>Related type 2C protein phosphatases Pic3 and Pic12 negatively regulate immunity in tomato to Pseudomonas syringae.</a> <b><i>Plant Physiology</i></b> 196:1997-2013</li><br>
+
+<li>Rett-Cadman S, Weng Y, Fei Z, Thompson A, Grumet R (2024) <a href=https://doi.org/10.3390/ijms25179306 target=_blank>Genome-wide association study of cuticle and lipid droplet properties of cucumber (<i>Cucumis sativus</i> L.) fruit.</a> <b><i>International Journal of Molecular Sciences</i></b> 25:9306</li><br>
+
+<li>Fallon MA, Tadfie H, Watson AP, Dyke MM, Flores C, Cook N, <b>Fei Z</b>, Holland CK (2024) <a href=https://doi.org/10.1111/tpj.16922 target=_blank>Molecular basis of one-step methyl anthranilate biosynthesis in grapes, sweet orange, and maize.</a> <b><i>Plant J</i></b> 119:2363-2374</li><br>
+
+<li>Feiz L, Shyu C, <b>Wu S</b>, Ahern KR, Gull I, Rong Y, Artymowicz CJ, Pineros MA, <b>Fei Z</b>, Brutnell TP, Jander G (2024) <a href=https://doi.org/10.1093/plcell/koae161 target=_blank>COI1 F-box proteins regulate DELLA protein levels, growth, and photosynthetic efficiency in maize.</a> <b><i>Plant Cell</i></b> 36:3237-3259</li><br>
+
+<li>Liu Z, <b>Duan N</b>, Yang Z, Yue L, <b>Fei Z</b>, Kong S (2024) <a href=https://doi.org/10.3389/fpls.2024.1419260 target=_blank>Identification of male-fertility gene <i>AsaNRF1</i> and molecular marker development in cultivated garlic (<i>Allium sativum L.</i>).</a> <b><i>Frontiers in Plant Science</i></b> 15:1419260</li><br>
+
+<li>Wang S, Wei S, Deng Y, Wu S, Peng H, Qing Y, Zhai X, Zhou S, Li J, Li H, Feng Y, Yi Y, Li R, Zhang H, Wang Y, Zhang R, Ning L, Yao Y*, <b>Fei Z</b>*, Zheng Y* (2024) <a href=https://doi.org/10.1093/hr/uhae100 target=_blank>HortGenome Search Engine, a universal genomic search engine for horticultural crops</a> <b><i>Horticulture Research</i></b> 11:uhae100</li><br>
+
+<li><b>Zhao X<sup>#</sup></b>, <b>Yu J<sup>#</sup></b>, Chanda B, <b>Zhao J</b>, <b>Wu S</b>, <b>Zheng Y</b>, <b>Sun H</b>, Levi A, Ling K-S*, <b>Fei Z*</b> (2024) <a href=https://nph.onlinelibrary.wiley.com/doi/10.1111/nph.19673 target=_blank>Genomic and pangenomic analyses provide insights into the population history and genomic diversification of bottle gourd.</a> <b><i>New Phytologists</i></b> 242:2285-2300</li><br>
+
+<li>Mo C, Wang H, Wei M, Zeng Q, Zhang X, <b>Fei Z</b>, Zhang Y, Kong Q (2024) <a href=https://doi.org/10.1111/tpj.16705 target=_blank>Complete genome assembly provides a high-quality skeleton for pan-NLRome construction in melon.</a> <b><i>Plant Journal</i></b> 118:2249-2268</li><br>
+
+<li>Shao W, Wang J, Zhang Y, Zhang C, Chen J, Chen Y, <i>Fei Z</i>, Ma Z, Sun X, Jiao C (2024) <a href=https://doi.org/10.1093/nar/gkae131 target=_blank>The jet-like chromatin structure defines active secondary metabolism in fungi.</a> <b><i>Nucleic Acids Research</i></b> 52:4906-4921</li><br>
+
+<li>Zhang Y, Wang Y, Liu R, <b>Fei Z</b>, Fan X, Jiang J, Sun L, Meng X, Liu C (2024) <a href=https://doi.org/10.1093/plphys/kiad682 target=_blank>Antibody array-based proteome approach reveals proteins involved in grape seed development.</a> <b><i>Plant Physiology</i></b> 195:462-478</li><br>
+
+<li>Guo N, Wang S, Wang T, Duan M, Zong M, Miao L, Han S, Wang G, Liu X, Zhang D, Jiao C, Xu H, Chen L, <b>Fei Z*</b>, Li J*, Liu F* (2024) <a href=https://doi.org/10.1016/j.xplc.2023.100791 target=_blank>A graph-based pan-genome of <i>Brassica oleracea</i> provides new insights into its domestication and morphotype diversification.</a> <b><i>Plant Communications</i></b> 5:100791</li><br>
+
+<li>Silva VM, Lui ACW, de Carvalho MR, Namorato FA, <b>Fei Z</b>, dos Reis AR, Liu J, Vatamaniuk OK, Li L (2024) <a href=https://doi.org/10.1016/j.envexpbot.2023.105591 target=_blank>The selenium-promoted daidzein production contributes to its induced nodulation in soybean plants.</a> <i><b>Environmental and Experimental Botany</b></i> 218:105591</li><br>
+
+<li>Svara A, <b>Sun H</b>, <b>Fei Z</b>, Khan A (2024) <a href=https://doi.org/10.1093/g3journal/jkad253 target=_blank>Chromosome-level phased genome assembly of 'Antonovka' identified candidate apple scab resistance genes highly homologous to HcrVf2 and HcrVf1 on linkage group 1.</a> <b><i>G3: Genes, Genomes, Genetics</i></b> 14:jkad253</li><br>
+</ul>
+
+
+<b>2023<!-- (12)--></b>
+<ul>
+<li>Liu F<sup>#</sup>, <b>Zhao J<sup>#</sup>, Sun H</b>, Xiong C, <b>Sun X, Wang X</b>, Wang Z, Jarret R, Wang J, Tang B, Xu H, Hu B, Suo H, Yang B, Ou L, Li X, Zhou S, Yang S, Liu Z, Yuan F, Pei Z, Ma Y, Dai X, <b>Wu S*, Fei Z*</b>, Zou X* (2023) <a href=https://doi.org/10.1038/s41467-023-41251-4 target=_blank>Genomes of cultivated and wild <i>Capsicum</i> species provide insights into pepper domestication and population differentiation.</a> <b><i>Nature Communications</i></b> 14:5487</li><br>
+
+<li><b>Wu S<sup>#</sup>, Sun H<sup>#</sup>, Gao L</b>, Branham S, McGregor C, Renner SS, Xu Y, Kousik C, Wechter WP, Levi A, <B>Fei Z*</b> (2023) <a href=https://doi.org/10.1111/pbi.14120 target=_blank>A <i>Citrullus</i> genus super-pangenome reveals extensive variations in wild and cultivated watermelons and sheds light on watermelon evolution and domestication.</a> <b><i>Plant Biotechnology Journal</i> 21:1926-1928</b>  <a href=https://www.biorxiv.org/content/10.1101/2023.06.08.544282v2><br>Full version at bioRxiv</a></li><br>
+
+<li>Li N, He Q, Wang J, Wang B, Zhao J, Huang S, Yang T, Tang Y, Yang S, Aisimutuola P, Xu R, Hu J, Jia C, Ma K, Li Z, Jiang F, Gao J, Lan H, Zhou Y, Zhang X, Huang S, <b>Fei Z</b>, Huan Wang H, Li H, Yu Q (2023) <a href=https://doi.org/10.1038/s41588-023-01340-y target=_blank>Super-pangenome analyses highlight genomic diversity and structural variation across wild and cultivated tomato species.</a> <b><i>Nature Genetics</i></b> 55:852-860</li><br>
+
+<li>Lou H, Song L, Li X, Zi H, Chen W, Gao Y, Zheng S, <b>Fei Z</b>*, Sun X*, Wu J* (2023) <a href=https://doi.org/10.1038/s41467-023-37038-2 target=_blank>The <i>Torreya grandis</i> genome illuminates the origin and evolution of gymnosperm-specific sciadonic acid biosynthesis.</a> <b><i>Nature Communications</i></b> 14:1315</li><br>
+
+<li>Romero-Rodriguez B<sup>#</sup>, Petek M<sup>#</sup>, <b>Jiao C</b><sup>#</sup>, Kriznik M, Zagorscak, <b>Fei Z</b>, Bejarano ER, Gruden K, Castillo AG (2023) <a href=https://doi.org/10.1186/s12870-023-04534-y target=_blank>Transcriptional and epigenetic changes during tomato yellow leaf curl virus infection in tomato.</a> <i><b>BMC Plant Biology</b></i> 23:651</li><br>
+
+<li>Lin Y-C, Mansfeld BN, <b>Tang X</b>, Colle M, Chen F, Weng Y, <b>Fei Z</b>, Grumet R (2023) <a href= https://doi.org/10.3389/fpls.2023.1281755 target=_blank>Identification of QTL associated with resistance to Phytophthora fruit rot in cucumber (<i>Cucumis sativus</i> L.). </a> <b><i>Frontiers in Plant Science</i></b> 14:1281755</li><br>
+
+<li>Kitavi M, Gemenet DC, Wood JC, Hamilton JP, <b>Wu S</b>, <b>Fei Z</b>, Khan A, Buell CR (2023) <a href=https://doi.org/10.1002/pld3.532 target=_blank>Identification of genes associated with abiotic stress tolerance in sweetpotato using weighted gene co-expression network analysis.</a> <b><i>Plant Direct</i></b> 7:e532</li><br>
+
+<li>Doron-Faigenboim A, Moy-Komemi M, Petreikov M, Eselson Y, Sonawane P, Cardenas P, <b>Fei Z</b>, Aharoni A,  Schaffer AA (2023) <a href=https://doi.org/10.1186/s43897-023-00060-5 target=_blank>Transcriptomes of developing fruit of cultivated and wild tomato species.</a> <b><i>Molecular Horticulture</i></b> 3:12</li><br>
+
+<li>Nicolas P, Pattison RJ, <b>Zheng Y</b>, Lapidot-Cohen T, Brotman Y, Osorio S, Fernie AR, <b>Fei Z</b>, Catala C (2023) <a href=https://doi.org/10.1093/jxb/erad212 target=_blank>Starch deficiency in tomato causes transcriptional reprogramming that modulates fruit development, metabolism and stress responses.</a> <b><i>Journal Experimental Botany</i></b> 74:6331-6348</li><br> 
+
+<li>Yu X, Qin M, Qu M, Jiang Q, Guo S, Chen Z, Shen Y, Fu G, <b>Fei Z</b>, Huang H, Gao L, Yao X (2023) <a href=https://doi.org/10.1111/tpj.16336 target=_blank>Genomic analyses reveal dead-end hybridization between two deeply divergent kiwifruit species rather than homoploid hybrid speciation.</a> <b><i>Plant Journal</i></b> 115:1528-1543</li><br>
+
+<li>Liu M, Kang B, Wu H, Aranda MA, Peng B, Liu L, <b>Fei Z</b>, Hong N, Gu Q (2023) <a href=https://doi.org/10.1093/jxb/erad197 target=_blank>Transcriptomic and metabolic profiling of watermelon uncovers the role of salicylic acid and flavonoids in the resistance to cucumber green mottle mosaic virus.</a> <b><i>Journal Experimental Botany</i></b> 74:5218-5235</li><br>
+
+<li>Meng D, Cao H, Yang Q, Zhang M, Borejsza-Wysocka E, Wang H, Dandekar AM, <b>Fei Z</b>, Cheng L (2023) <a href=https://doi.org/10.1093/plphys/kiad226 target=_blank>SnRK1 kinase-mediated phosphorylation of transcription factor bZIP39 regulates sorbitol metabolism in apple.</a> <b><i>Plant Physiology</i></b> 192:2123-2142</li><br>
+
+<li>Hernandez CO, Labate J, Reitsma K, Fabrizio J, <b>Bao K</b>, <b>Fei Z</b>, Grumet R, Mazourek M (2023) <a href=https://doi.org/10.3389/fpls.2023.1130814 target=_blank>Characterization of the USDA <i>Cucurbita pepo</i>, <i>C. moschata</i>, and <i>C. maxima</i> germplasm collections.</a> <b><i> Frontiers in Plant Science</i></b> 14:1130814</li><br>
+
+<li>Yu F, Zhang W, Wang S, Yu L, Fei Z, Li J (2023) <a href=https://doi.org/10.1094/PHYTOFR-02-23-0018-A target=_blank> Genome sequences of four isolates of Xanthomonas campestris pv. campestris, the causal agent of black rot.</a> <b><i>PhytoFrontiers</i></b> 3:744-746</li><br>
+
+<li>Chia JC, Yan J, Rahmati Ishka M, Faulkner MM, Simons E, Huang R, Smieska L, Woll A, Tappero R, Kiss A, <b>Jiao C</b>, <b>Fei Z</b>, Kochian LV, Walker E, Pineros M, Vatamaniuk OK (2023) <a href=https://doi.org/10.1093/plcell/koad053 target=_blank>Loss of OPT3 function decreases phloem copper levels and impairs crosstalk between copper and iron homeostasis and shoot-to-root signaling in <i>Arabidopsis thaliana</i>.</a> <b><i>Plant Cell</i></b> 35:2157-2185</li><br>
+
+<li>Feng H, <b>Chen W</b>, Hussain S, Shakir S, Tzin V, Adegbayi F, Ugine T, <b>Fei Z</b>, Jander G (2023) <a href=https://doi.org/10.1111/pbi.13992 target=_blank>Horizontally transferred genes as RNA interference targets for aphid and whitefly control.</a> <b><i>Plant Biotechnology Journal</i></b> 21:754-768</li><br>
+
+<li><b>Yu J, Wu S, Sun H, Wang X, Tang X</b>, Guo S, Zhang Z, Huang S, Xu Y, Weng Y, Mazourek M, McGregor C, Renner SS, Branham S, Kousik C, Wechter WP, Levi A, Grumet R, Zheng Y, <b>Fei Z*</b> (2023) <a href=https://doi.org/10.1093/nar/gkac921 target=_blank>CuGenDBv2: an updated database for cucurbit genomics.</a> <b><i>Nucleic Acids Research</i></b> 51:D1457-D1464</li><br>
+</ul>
+<b>2022<!-- (21)--></b>
+<ul>
+<li>Tu X, Ren S, Shen W, Li J, Li Y, Li C, Li Y, Zong Z, Xie W, Grierson D, <b>Fei Z</b>, Giovannoni J, Li P, Zhong S (2022) <a href=https://doi.org/10.1038/s41467-022-35438-4 target=_blank>Limited conservation in cross-species comparison of GLK transcription factor binding suggested wide-spread cistrome divergence.</a> <b><i>Nature Communications</i></b> 13:7632</li><br>
+
+<li>Luo X, Zhou H, Cao D, Yan F, Chen P, Wang J, Woeste K, Chen X, <b>Fei Z</b>, An H, Malvolti M, Ma K, Liu C, Ebrahimi A, Qiao C, Ye H, Li M, Lu Z, Xu J, Cao S, Zhao P (2022) <a href=https://doi.org/10.1371/journal.pgen.1010513 target=_blank>Domestication and selection footprints in Persian walnuts (<i>Juglans regia</i>).</a> <b><i>PLoS Genetics</i></b> 18:e1010513</li><br>
+
+<li>Nicolas P, Shinozaki Y, Powell A, Philippe G, Snyder SI, <b>Bao K</b>, <b>Zheng Y</b>, Xu Y, Courtney L, Vrebalov J, Casteel CL, Mueller LA, <b>Fei Z</b>, Giovannoni JJ, Rose JKC, Catala C (2022) <a href=https://doi.org/10.1093/plphys/kiac445>Spatiotemporal dynamics of the tomato fruit transcriptome under prolonged water stress.</a> <b><i>Plant Physiology</i></b> 190:2557-2578</li><br>
+
+<li>Perez-Escobar OA, Tusso S, Przelomska NAS, <b>Wu S</b>, Ryan P, Nesbitt M, Silber MV, Preick M, <b>Fei Z</b>, Hofreiter M, Chomicki G, Renner SS (2022) <a href=https://doi.org/10.1093/molbev/msac168 target=_blank>Genome sequencing of up to 6,000-yr-old <i>Citrullus</i> seeds reveals use of a bitter-fleshed species prior to watermelon domestication.</a> <b><i>Molecular Biology Evolution</i></b> 8:msac168</li><br>
+
+<li>Ban S, El-Sharkawy I, <b>Zhao J, Fei Z</b>, Xu K (2022) <a href=https://doi.org/10.1111/tpj.15911 target=_blank>An apple somatic mutation of delayed fruit maturation date is primarily caused by a retrotransposon insertion-associated large deletion. </a> <b><i>Plant J</i></b> 111:1609-1625</li><br>
+
+<li>Davachi SM, Dogan B, Khazdooz L, Zhang S, Khojastegi A, <b>Fei Z, Sun H</b>, Meletharayil G, Kapoor R, Simpson KW, Abbaspourrad A (2022) <a href= https://doi.org/10.1021/acs.jafc.2c02953 target=_blank>Long-term <i>Lacticaseibacillus rhamnosus GG</i> storage at ambient temperature in vegetable oil: viability and functional assessments.</a> <b><i>J Agric Food Chem</i></b> 70:9399-9411</li><br>
+
+<li>Cao K, Wang B, Fang W, Zhu G, Chen C, Wang X, Li Y, Wu J, Tang T, <b>Fei Z</b>, Luo J, Wang L (2022) <a href=https://doi.org/10.1186/s13059-022-02719-6 target=_blank>Combined nature and human selections reshaped peach fruit metabolome.</a> <b><i>Genome Biology</i></b> 23:146</li><br>
+
+<li>Chen M, Guo L, Ramakrishnan M, <b>Fei Z</b>, Vinod KK, Ding Y, <b>Jiao C</b>, Gao Z, Zha R, Wang C, Gao Z, Yu F, Ren G, Wei Q (2022) <a href=https://doi.org/10.1093/plcell/koac193 target=_blank>Rapid growth of Moso bamboo (<i>Phyllostachys edulis</i>): Cellular roadmaps, transcriptome dynamics, and environmental factors.</a> <b><i>Plant Cell</i></b> 34:3577-3610</li><br>
+
+<li>Guo L, Wang C, Chen J, Ju Y, Yu F, <a>Jiao C, Fei Z</a>, Ding Y, Wei Q (2022) <a href=https://doi.org/10.1111/ppl.13774 target=_blank>Cellular differentiation, hormonal gradient, and molecular alternation between the division zone and the elongation zone of bamboo internodes.</a> <b><i>Physiologia Plantarum</i></b> 174:e13774</li><br> 
+
+<li>Yu X, Qu M, Shi Y, Hao C, Guo S*, <b>Fei Z*</b>, Gao L* (2022) <a href=https://doi.org/10.1093/hr/uhac139 target=_blank>Chromosome-scale genome assemblies of wild tomato relatives <i>Solanum habrochaites</i> and <i>S. galapagense</i> reveal structural variants associated with stress tolerance and terpene biosynthesis. </a> <b><i>Horticulture Research</i></b> 9:uhac139</li><br>
+
+<li>Zhang N, Hecht C, <b>Sun X</b>, <b>Fei Z</b>, Martin GB (2022) <a href=https://doi.org/10.1093/plphys/kiac312 target=_blank>Loss of function of the bHLH transcription factor Nrd1 in tomato enhances resistance to <i>Pseudomonas syringae</i>.</a> <b><i>Plant Physiology</i></b> 190:1334-1348</li><br>
+
+<li>Zhou Y, Zhang Z, Bao Z, Li H, Lyu Y, Zan Y, Wu Y, Cheng L, Fang Y, Wu K, Zhang J, Lyu H, Lin T, Gao Q, Saha S, Mueller L, <b>Fei Z</b>, Stadler T, Xu S, Zhang Z, Speed D, Huang S (2022) <a href=https://doi.org/10.1038/s41586-022-04808-9 target=_blank>Graph pangenome captures missing heritability and empowers tomato breeding.</a> <b><i>Nature</i></b> 606:527-534</li><br>
+
+<li>Wang L<sup>#</sup>, <b>Sun X<sup>#</sup></b>, Peng Y<sup>#</sup>, Chen K<sup>#</sup>, <b>Wu S<sup>#</sup></b>, Guo Y, Zhang J, Yang H, Jin T, Wu L, Zhou X, Liang B, Zhao Z, Liu D*, <b>Fei Z*</b>, Bai L* (2022) <a href= https://doi.org/10.1016/j.molp.2022.05.001 target=_blank>Genomic insights into the origin, adaptive evolution and herbicide resistance of <i>Leptochloa chinensis</i>, a devastating tetraploid weedy grass in rice fields.</a> <b><i>Molecular Plant</i></b> 15:1045-1058</li><br>
+
+<li>Qing Y, <b>Zheng Y*</b>, Mlotshwa S, Smith HN, Wang X, Zhai X, van der Knaap E, Wang Y*, <b>Fei Z*</b> (2022) <a href=https://doi.org/10.1111/tpj.15798 target=_blank>Dynamically expressed small RNAs, substantially driven by genomic structural variants, contribute to transcriptomic changes during tomato domestication.</a> <b><i>Plant J</i></b> 110:1536-1550</li><br>
+
+<li>Cao K, Peng Z, Zhao X, Li Y, Liu K, Arus P, Fang W, Chen C, Wang X, Wu J, <b>Fei Z</b>, Wang L (2022) <a href=https://doi.org/10.1186/s12915-022-01342-y target=_blank>Chromosome-level genome assemblies of four wild peach species provide insights into genome evolution and genetic basis of stress resistance.</a> <b><i>BMC Biology</i></b> 20:139</li><br>
+
+<li>Powell AF, Feder A, Li J, Schmidt MH, Courtney L, Alseekh S, Jobson EM, Vogel A, Xu Y, Lyon D, Dumschott K, McHale M, Sulpice R, <b>Bao K</b>, Lal R, Duhan A, Hallab A, Denton AK, Bolger ME, Fernie AR, Hind SR, Mueller LA, Martin GB, <b>Fei Z</b>, Martin C, Giovannoni JJ, Strickler SR, Usadel B (2022) <a href=https://doi.org/10.1111/tpj.15770 target=_blank>A <i>Solanum lycopersicoides</i> reference genome facilitates insights into tomato specialized metabolism and immunity.</a> <b><i>Plant J </i></b> 110:1791-1810</li><br>
+
+<li>Li H, Wang S, Chai S, Yang Z, Zhang Q, Xin H, Xu Y, Lin S, Chen X, Yao Z, Yang Q, <b>Fei Z</b>, Huang S, Zhang Z (2022) <a href=https://doi.org/10.1038/s41467-022-28362-0 target=_blank>Graph-based pan-genome reveals structural and sequence variations related to agronomic traits and domestication in cucumber.</a> <b><i>Nature Communications</i></b> 13:682</li><br>
+
+<li>Gao Z, Guo L, Ramakrishnan M, Xiang Y, <b>Jiao C</b>, Jiang J, Vinod KK, <b>Fei Z</b>, Que F, Ding Y, Yu F, Chen T, Wei Q (2022) <a href=https://doi.org/10.1093/treephys/tpab129 target=_blank>Cellular and molecular characterizations of the irregular internode division zone formation of a slow growing bamboo variant.</a> <b><i>Tree Physiol</i></b> 42: 570-584</li><br>
+
+<li>Padmanabhan C, <b>Zheng Y</b>, Shamimuzzaman M, Wilson JR, Gilliard A, <b>Fei Z</b>, Ling KS (2022) <a href=https://doi.org/10.1371/journal.pone.0257936 target=_blank>The tomato yellow leaf curl virus C4 protein alters the expression of plant developmental genes correlating to leaf upward cupping phenotype in tomato.</a> <b><i>PLoS One</i></b> 17:e0257936.</li><br>
+
+<li>Chanda B, <b>Wu S, Fei Z</b>, Ling KS, Levi A (2022) <a href=https://doi.org/10.1080/07060661.2021.2021450 target=_blank>Elevated expression of ribosome-inactivating protein (RIP) genes in potyvirus-resistant watermelon in response to viral infection.</a> <b><i>Canadian J Plant Pathology</i></b> 44:615-625</li><br>
+
+<li>Ma X, Shao E, <b>Chen W</b>, Cotto-Rivera RO, Yang X, Kain W, <b>Fei Z</b>, Wang P (2022) <a href= https://doi.org/10.1016/j.ibmb.2021.103678 target=_blank>Bt Cry1Ac resistance in Trichoplusia ni is conferred by multi-gene mutations.</a> <b><i>Insect Biochemistry and Molecular Biology</i></b> 140:103678</li><br>
+</ul>
+
+<b>2021<!-- (24)--></b>
+<ul>
+<li>Cai X<sup>#</sup>, <b>Sun X<sup>#</sup></b>, Xu C<sup>#</sup>, <b>Sun H</b>, Wang X, Ge C, Zhang Z, Wang Q*, <b>Fei Z*, Jiao C<sup>#,</sup>*</b>, Wang Q* (2021) <a href=https://doi.org/10.1038/s41467-021-27432-z target=_blank>Genomic analyses provide insights into spinach domestication and the genetic basis of agronomic traits.</a> <b><i>Nature Communications</i></b> 12:7246</li><br>
+
+<li>Wang R, Xue Y, Fan J, Yao JL, Qin M, Lin T, Lian Q, Zhang M, Li X, Li J, Sun M, Song B, Zhang J, Zhao K, Chen X, Hu H, <b>Fei Z*</b>, Xue C*, Wu J* (2021) <a href= https://doi.org/10.1186/s13059-021-02531-8 target=_blank>A systems genetics approach reveals PbrNSC as a regulator of lignin and cellulose biosynthesis in stone cells of pear fruit.</a> <b><i>Genome Biology</i></b> 22:313</li><br>
+
+<li><b>Wang X<sup>#</sup></b>, Ando K<sup>#</sup>, <b>Wu S</b>, Reddy UK, Tamang P, <b>Bao K</b>, Hammar SA, Grumet R, McCreight JD*, <b>Fei Z*</b> (2021) <a href=https://doi.org/10.1186/s43897-021-00014-9 target=_blank>Genetic characterization of melon accessions in the U.S. National Plant Germplasm System and construction of a melon core collection.</a> <b><i>Molecular Horticulture</i></b> 1:11</li><br>
+
+<li>Shi Y, Vrebalov J, Zheng H, Xu Y, Yin X, Liu W, Liu Z, Sorensen I, Su G, <b>Ma Q</b>, Evanich D, Rose JKC, <b>Fei Z</b>, Van Eck J, Thannhauser T, Chen K, Giovannoni JJ (2021) <a href=https://doi.org/10.1073/pnas.2102486118 target=_blank>A tomato LATERAL ORGAN BOUNDARIES transcription factor, <i>SlLOB1</i>, predominantly regulates cell wall and softening components of ripening.</a> <b><i>Proc Natl Acad Sci USA</i></b>. 118:e2102486118</li><br>
+
+<li>Peng B, Liu L, Wu H, Kang B, <b>Fei Z</b>, Gu Q (2021) <a href=https://doi.org/10.3389/fmicb.2021.773992 target=_blank>Interspecific recombination between Zucchini tigre mosaic virus and Papaya ringspot virus infecting cucurbits in China.</a> <b><i>Frontiers in Microbiology</i></b> 12:773992</li><br>
+
+<li>Grumet R, McCreight JD, McGregor C, Weng Y, Mazourek M, Reitsma K, Labate J, Davis A, <b>Fei Z</b> (2021) <a href=https://doi.org/10.3390/genes12081222 target=_blank>Genetic resources and vulnerabilities of major cucurbit crops.</a> <b><i>Genes</i></b> 12:1222</li><br>
+
+<li>Orcheski B, Meng D, Bai Y, <b>Fei Z</b>, and Cheng L (2021) <a href=https://doi.org/10.1007/s11295-021-01518-7 target=_blank>The transcriptomes of healthy and bitter pit-affected 'Honeycrisp' fruit reveal genes associated with disorder development and progression.</a> <b><i>Tree Genetics Genomes</i></b> 17:37.</li><br>
+
+<li>Ye J<sup>#</sup>, <b>Wang X</b><sup>#</sup>, Wang W<sup>#</sup>, Yu H, Ai G, Li C, Sun P, Wang X, Li H, Ouyang B, Zhang J, Zhang Y, Han H, Giovannoni JJ, <b>Fei Z*</b>, Ye Z* (2021) <a href=https://doi.org/10.1093/plphys/kiab230 target=_blank>Genome-wide association study reveals the genetic architecture of 27 agronomic traits in tomato.</a> <b><i>Plant Physiology</i></b> 186:078-2092</li><br> 
+
+<li>Renner SS<sup>#</sup>, <b>Wu S</b><sup>#</sup>, Perez-Escobar OA, Silber MV, <b>Fei Z</b>, Chomickie G (2021) <a href=https://doi.org/10.1073/pnas.2101486118 target=_blank>A chromosome-level genome of a Kordofan melon illuminates the origin of domesticated watermelons.</a> <b><i>Proc Natl Acad Sci USA</i></b> 118:e2101486118</li><br>
+
+<li>Liao L, Zhang W, Zhang B, Fang T, Wang XF, Cai Y, Ogutu C, <b>Gao L</b>, Chen G, Nie X, Xu J, Zhang Q, Ren Y, Yu J, Wang C, Deng CH, Ma B, Zheng B, You CX, Hu DG, Espley R, Lin-Wang K, Yao JL, Allan AC, Khan A, Korban SS, <b>Fei Z</b>, Ming R, Hao YJ, Li L, Han Y (2021) <a href=https://doi.org/10.1016/j.molp.2021.05.018 target=_blank>Unraveling a genetic roadmap for improved taste in the domesticated apple.</a> <b><i>Molecular Plant</i></b> 14:1454-1471</li><br>
+
+<li>Guo N<sup>#</sup>, Wang S<sup>#</sup>, <b>Gao L</b><sup>#</sup>, Liu Y<sup>#</sup>, <b>Wang X</b>, Lai E, Duan M, Wang G, Li J, Yang M, Zong M, Han S, Pei Y, Borm T, Sun H, Miao L, Liu D, Yu F, Zhang W, Ji H, Zhu C, Xu Y, Bonnema G*, Li J*, <b>Fei Z*</b>, Liu F* (2021) <a href=https://bmcbiol.biomedcentral.com/articles/10.1186/s12915-021-01031-2 target=_blank>Genome sequencing sheds light on the contribution of structural variants to <i>Brassica oleracea</i> diversification.</a> <b><i>BMC Biology</i></b> 19:93</li><br>
+
+<li>Pan C, Yang D, Zhao X, Liu Y, Li M, Ye L, Ali M, Yu F, Lamin-Samu AT, <b>Fei Z*</b>, Lu G* (2021) <a href=https://doi.org/10.1093/plcell/koab120 target=_blank>PIF4 negatively modulates anther cold tolerance through temperature-dependent regulation of tapetal cell death in tomato.</a> <b><i>Plant Cell</i></b> 33:2320-2339</li><br>
+
+<li>Li Y, Cao K, Li N, Zhu G, Fang W, Chen C, Wang X, Guo J, Wang Q, Ding T, Wang J, Guan L, Wang J, Liu K, Guo W, Arus P, Huang S, <b>Fei Z*</b>, Wang L* (2021) <a href=https://doi.org/10.1101/gr.261032.120 target=_blank>Genomic analyses provide insights into peach local adaptation and responses to climate change.</a> <b><i>Genome Research</i></b> 31:592-606</li><br>
+
+<li>Zhang M, Xue C, Hu H, Li J, Xue Y, Wang R, Fan J, Zou C, Tao S, Qin M, Bai B, Li X, Gu C, <b>Wu S</b>, Chen X, Yang G, Liu Y, Sun M, <b>Fei Z*</b>, Zhang S*, Wu J* (2021) <a href=https://www.nature.com/articles/s41467-021-21378-y target=_blank>Genome-wide association studies provide insights into the genetic determination of fruit traits of pear.</a> <b><i>Nature Communications</i></b> 12:1144</li><br>
+
+<li>Chayut N, Yuan H, Saar Y, <b>Zheng Y</b>, Sun T, Zhou X, Hermanns A, Oren E, Faigenboim A, Hui M, <b>Fei Z</b>, Mazourek M, Burger J, Tadmor Y, Li L (2021) <a href=https://www.nature.com/articles/s41438-021-00547-6 target=_blank>Comparative transcriptome analyses shed light on carotenoid production and plastid development in melon fruit.</a> <b><i>Hortic Research</i></b> 8:112</li><br>
+
+<li><b>Jiao C<sup>#</sup>, Sun X<sup>#</sup>,</b> Yan X, Xu X, Yan Q, Gao M, <b>Fei Z</b>*, Wang X* (2021) <a href=https://doi.org/10.1094/PHYTO-01-21-0006-R target=_blank>Comparative transcriptome profiling of Chinese wild grapes provides insights into powdery mildew resistance.</a> <b><i>Phytopathology</i></b> 111:2041-2051</li><br>
+
+<li>Pereira L, Sapkota M, Alonge M, <b>Zheng Y</b>, Zhang Y, Razifard H, Taitano NK, Schatz M, Fernie A, Wang Y, <b>Fei Z</b>, Caicedo AL, Tieman D, Van Der Knaap E (2021) <a href=https://www.frontiersin.org/articles/10.3389/fpls.2021.642828 target=_blank>Natural genetic diversity in tomato flavor genes.</a> <b><i>Front Plant Sci</i></b> 12:642828</li><br>
+
+<li>Wang L, Kaya HB, Zhang N, Rai R, Willmann MR, Carpenter SC, Read AC, Martin F, <b>Fei Z</b>, Leach JE, Martin GB, Bogdanove1 A (2021) <a href=https://www.frontiersin.org/articles/10.3389/fgeed.2021.617553 target=_blank>Spelling changes and fluorescent tagging with prime editing vectors for plants.</a> <b><i>Frontiers in Genome Editing</i></b> 3:617553</li><br>
+
+<li>Cheng C, Yu Q, Wang Y, Wang H, Dong Y, Ji Y, Zhou X, Li Y, Jiang C, Gan S, Zhao L, <b>Fei Z</b>, Gao J, Ma N (2021) <a href=https://doi.org/10.1093/plcell/koab031 target=_blank>Ethylene-regulated asymmetric growth of the petal base promotes flower opening in rose (<i>Rosa hybrida</i>).</a> <b><i>Plant Cell</i></b> 33:1229-1251</li><br>
+
+<li><b>Bednarek R</b>, David M, Fuentes S, Kreuze J, <b>Fei Z*</b> (2021) <a href=https://doi.org/10.1016/j.virusres.2020.198293 target=_blank>Transcriptome analysis provides insights into the responses of sweet potato to sweet potato virus disease (SPVD).</a> <b><i>Virus Research</i></b> 295:198293</li><br>
+
+<li>Feiz L, Asakura Y, <b>Mao L</b>, Strickler SR, <b>Fei Z</b>, Rojas M, Barkan A, Stern DB (2021) <a href=https://onlinelibrary.wiley.com/doi/10.1111/tpj.15060 target=_blank>CFM1, a member of the CRM-domain protein family, functions in chloroplast group II intron splicing in <i>Setaria viridis</i>.</a> <b><i>Plant J</i></b> 105:639-648</li><br>
+
+<li>Montrose DC, Nishiguchi R, Basu S, Staab HA, Zhou XK, Wang H, Meng L, Johncilla M, Cubillos-Ruiz JR, Morales DK, Wells MT, Simpson KW, Zhang S, Dogan B, <b>Jiao C, Fei Z</b>, Oka A, Herzog JW, Sartor RB, Dannenberg AJ (2021) <a href=https://www.sciencedirect.com/science/article/pii/S2352345X20301454 target=_blank>Dietary fructose alters the composition, localization and metabolism of gut microbiota in association with worsening colitis.</a> <b><i>Cell Mol Gastroenterol Hepatol</i></b> 11:525-550</li><br>
+
+<li>Gimode W, <b>Bao K, Fei Z</b>, McGregor C (2021) <a href=https://link.springer.com/article/10.1007/s00122-020-03715-9 target=_blank>QTL associated with gummy stem blight resistance in watermelon.</a> <b><i>Theor Appl Genet</i></b> 134:573-584</li><br>
+
+<li>Zhang L, <b>Chen W</b>, Jiang Q, <b>Fei Z</b>, Xiao M (2020) <a href=https://doi.org/10.1016/j.micres.2020.126483 a href=_blank>Genome analysis of plant growth-promoting rhizobacterium <i>Pseudomonas chlororaphis</i> subsp. <i>aurantiaca</i> JD37 and insights from comparison of genomics with three <i>Pseudomonas</i> strains.</a> <b><i>Microbiol Res</i></b> 237:126483.</li><br>
+
+<li>Yu F, Zhang W, Wang S, Wang H, Yu L, Zeng X, <b>Fei Z*</b>, Li J* (2021) <a href=https://apsjournals.apsnet.org/doi/10.1094/MPMI-08-20-0245-A target=_blank>Genome sequence of <i>Fusarium oxysporum</i> f. sp. <i>conglutinans</i>,the etiological agent of cabbage Fusarium wilt.</a> <i><b>Mol Plant Microbe Interact</b></i> 34:210-213</li><br>
+</ul>
+
+<b>2020<!-- (26)--></b>
+<ul>
+<li><b>Wang X<sup>#</sup>, Gao L<sup>#</sup>, Jiao C, Stravoravdis S</b>, Hosmani PS, Saha S, Zhang J, Mainiero S, Strickler SR, Catala C, Martin GB, Mueller LA, Vrebalov J, Giovannoni JJ, <b>Wu S*, Fei Z*</b> (2020) <a href=https://www.nature.com/articles/s41467-020-19682-0 target=_blank>Genome of <i>Solanum pimpinellifolium</i> provides insights into structural variants during tomato breeding.</a> <b><i>Nature Communications</i></b> 11:5817.</li><br>
+
+<li><b>Sun X<sup>#</sup>, Jiao C<sup>#</sup></b>, Schwaninger H<sup>#</sup>, Chao CT, Ma Y, Duan N, Khan A, Ban S, Xu K, Cheng L, Zhong GY*, <b>Fei Z*</b> (2020) <a href=https://www.nature.com/articles/s41588-020-00723-9 target=_blank>Phased diploid genome assemblies and pan-genomes provide insights into the genetic history of apple domestication.</a> <i><b>Nature Genetics</b></i> 52:1423-1432</li><br>
+
+<li><b>Jiao C<sup>#</sup></b>, Sorensen I<sup>#</sup>, <b>Sun X<sup>#</sup></b>, <b>Sun H</b>, Behar H, Alseekh S, Philippe G, Lopez KP, Sun L, Reed R, Jeon S, Kiyonami R, Zhang S, Fernie AR, Brumer H, Domozych DS*, <b>Fei Z*</b>, Rose JKC* (2020) <a href=https://doi.org/10.1016/j.cell.2020.04.019 target=_blank>The <i>Penium margaritaceum</i> genome: Hallmarks of the origins of land plants.</a> <b><i>Cell</i></b> 181:1097-1111.E12</li><br>
+
+<li>Guo J, Cao K, Deng C, Li Y, Zhu G, Fang W, Chen C, Wang X, Wu J, Guan L, <b>Wu S</b>, Guo W, Yao JL*, <b>Fei Z*</b>, Wang L* (2020) <a href=https://genomebiology.biomedcentral.com/articles/10.1186/s13059-020-02169-y target=_blank>An integrated peach genome structural variation map uncovers genes associated with fruit traits.</a> <b><i>Genome Biology</i></b> 21:258</li><br>
+
+<li>Zhou C, Olukolu B, Gemenet DC, <b>Wu S</b>, Gruneberg W, Cao MD, <b>Fei Z</b>, Zeng ZB, George AW, Khan A, Yencho GC, Coin LJM (2020) <a href=https://www.nature.com/articles/s41588-020-00717-7 target=_blank>Assembly of whole-chromosome pseudomolecules for polyploid plant genomes using outbred mapping populations.</a> <b><i>Nature Genetics</i></b> 52:1256-1264</li><br>
+
+<li>Ma L, Wang Q, Mu J, Fu A, Wen C, Zhao X, Gao L, Li J, Shi K, Wang Y, Zhang X, Zhang X, <b>Fei Z*</b>, Grierson D*, Zuo J* (2020) <a href=https://www.nature.com/articles/s41438-020-00423-9 target=_blank>The genome and transcriptome analysis of snake gourd provide insights into its evolution and fruit development and ripening.</a> <b><i>Horticulture Research</i></b> 7:199</li><br>
+ 
+<li>Rodriguez M, Scintu A, Posadinu CM, Xu Y, Nguyen CV, <b>Sun H</b>, Bitocchi E, Bellucci E, Papa R, <b>Fei Z</b>, Giovannoni JJ, Rau D, Attene G (2020) <a href=https://www.mdpi.com/2073-4425/11/11/1387 target=_blank>GWAS based on RNA-Seq SNPs and high-throughput phenotyping combined with climatic data highlights the reservoir of valuable genetic diversity in regional tomato landraces.</a> <b><i>Genes</i></b> 11:1387.</li><br>
+
+<li>Yu F, Wang S, Zhang W, Wang H, Yu L, <b>Fei Z</b>, Li J (2020) <a href=https://fppn.biomedcentral.com/articles/10.1186/s43014-020-00038-6 target=_blank>An R2R3-type myeloblastosis transcription factor MYB103 is involved in phosphorus remobilization.</a> <b><i>Food Production Processing Nutrition</i></b> 2:24</li><br>
+
+<li>Liang Y, Jiang C, Liu Y, Gao Y, Lu J, Aiwaili P, <b>Fei Z</b>, Jiang CZ, Hong B, Ma C, Gao J (2020) <a href=https://pubmed.ncbi.nlm.nih.gov/32843436/ target=_blank>Auxin regulates sucrose transport to repress petal abscission in rose (<i>Rosa hybrida</i>).</a> <b><i>Plant Cell</i></b> 32:3485-3499</li><br>
+
+<li>Hasegawa DK, Shamimuzzaman M, <b>Chen W</b>, Simmons AM, <b>Fei Z</b>, Ling K-S (2020) <a href=https://www.mdpi.com/2075-4450/11/9/562 target=_blank>Deep sequencing of small RNAs in the whitefly <i>Bemisia tabaci</i> reveals novel microRNAs potentially associated with begomovirus acquisition and transmission.</a> <b><i>Insects</i></b> 11:562.</li><br>
+
+<li>Grumet R, <b>Fei Z</b>, Levi A, Mazourek M, McCreight JD, Schultheis J, Weng Y, Hausbeck M, Kousik S, Ling KS, Linares-Ramirez A, McGregor C, Quesada-Ocampo L, Reddy U, Smart C, Wechter P, Wehner T, Wessel-Beaver L, Wintermantel WM (2020) <a href=https://doi.org/10.17660/ActaHortic.2020.1294.12 target=_blank> The CucCAP project: leveraging applied genomics to improve disease resistance in cucurbit crops</a>. <b><i>Acta Horticulture</i></b> 1294:91-104</li><br>
+
+<li>Feiz L, Strickler SR, van Eck J, <b>Mao L</b>, Movahed N, Taylor C, Gourabathini P, <b>Fei Z</b>, Stern DB (2020) <a href=https://pubmed.ncbi.nlm.nih.gov/32812296/ target=_blank><i>Setaria viridis</i> chlorotic and seedling-lethal mutants define critical functions for chloroplast gene expression.</a> <b><i>Plant J</i></b> 104:917-931</li><br>
+
+<li>Yue J<sup>#</sup>, <b>Liu J</b><sup>#</sup>, Tang W, <b>Wu YQ</b>, Tang X, Li W, Yang Y, Wang L, Huang S, Fang C, <b>Zhao K, Fei Z*</b>, Liu Y*, <b>Zheng Y*</b> (2020) <a href= https://www.nature.com/articles/s41438-020-0338-9 target=_blank>Kiwifruit Genome Database (KGD): a comprehensive resource for kiwifruit genomics.</a> <b><i>Horticulture Research</i></b> 7:117</li><br>
+
+<li>Hoang NV<sup>#</sup>, Choe G<sup>#</sup>, <b>Zheng Y<sup>#</sup></b>, Aliaga Fandino AC, Sung I, Hur J, Kamran M, Park C, Kim H, Ahn H, Kim S, <b>Fei Z</b>, Lee JY (2020) <a href=https://doi.org/10.1016/j.cub.2020.05.046 target=_blank>Identification of conserved gene-regulatory networks that integrate environmental sensing and growth in the root cambium.</a> <b><i>Current Biology</i></b> 30:2887-2900.E7</li><br>
+
+<li>Xia C, <b>Zheng Y</b>, Huang J, <b>Fei Z</b>, Zhang C (2019) <a href=https://doi.org/10.1007/978-1-4939-9562-2_32 target=_blank>Identification of phloem mobile mRNAs using the Solanaceae heterograft system.</a> <b><i>Methods Mol Biol</i></b> 2014:421-431</li><br>
+
+<li>Ren Y, Sun H, Zong M, Guo S, Ren Z, Zhao J, Li M, Zhang J, Tian S, Wang J, Yu Y, Gong G, Zhang H, He H, Li L, Zhang X, Liu F, <b>Fei Z</b>, Xu Y (2020) <a href=https://nph.onlinelibrary.wiley.com/doi/abs/10.1111/nph.16659 target=_blank>Localization shift of a sugar transporter contributes to phloem unloading in sweet watermelons.</a> <b><i>New Phytologist</i></b> 227:1858-1871</li><br>
+
+<li>Wosula EN, <b>Chen W</b>, Amour M, <b>Fei Z</b>, Legg JP (2020) <a href=https://www.mdpi.com/2075-4450/11/5/305 target=_blank>KASP genotyping as a molecular tool for diagnosis of cassava-colonizing <i>Bemisia tabaci</i>.</a> <b><i>Insects</i></b> 11:305.</li><br>
+
+<li>Yang Y, Cuenca J, Wang N, Liang Z, <b>Sun H</b>, Gutierrez B, Xi X, Arro J, Wang Y, Fan P, Londo J, Cousins P, Li S, <b>Fei Z</b>, Zhong G-Y (2020) <a href= https://www.nature.com/articles/s41438-020-0304-6 target=_blank>A key 'foxy' aroma gene is regulated by homology-induced promoter indels in the iconic juice grape 'Concord'.</a> <b><i>Horticulture Research</i></b> 7:67</li><br>
+
+<li><b>Xie W</b>, He C, <b>Fei Z</b>*, Zhang Y* (2020) <a href=https://onlinelibrary.wiley.com/doi/abs/10.1111/1755-0998.13159 target=_blank>Chromosome-level genome assembly of the greenhouse whitefly (<i>Trialeurodes vaporariorum</i> Westwood).</a> <b><i>Molecular Ecology Resources</i></b> 20:995-1006</li><br>
+
+<li>McQuinn RP, Gapper NE, Gray AG, Zhong S, Takayuki T, <b>Fei Z</b>, Fernie AR, Giovannoni JJ (2020) <a href=https://onlinelibrary.wiley.com/doi/abs/10.1111/pbi.13377 target=_blank>Manipulation of ZDS in tomato exposes carotenoid- and ABA-specific effects on fruit development and ripening.</a> <b><i>Plant Biotechnology J</i></b> 18:2210-2224</li><br>
+
+<li>Philippe G, Sorensen I, <b>Jiao C, Sun X, Fei Z,</b> Domozych DS, Rose JKC (2020) <a href=https://doi.org/10.1016/j.pbi.2020.01.008 href=_blank>Cutin and suberin: assembly and origins of specialized lipidic cell wall scaffolds.</a> <b><i>Current Opinion Plant Biology</i></b> 55:11-20</li><br>
+
+<li>Guo S, Sun H,  Xu Y*, <b>Fei Z*</b> (2020) <a href=https://www.cell.com/trends/genetics/fulltext/S0168-9525(20)30026-3 target=_blank><i>Citrullus lanatus</i>.</a> <b><i>Trends Genetics</i></b> 36:456-457</li><br>
+
+<li>Domozych DS, Sun L, Palacio-Lopez K, Reed R, Jeon S, Li M, <b>Jiao C</b>, Sorensen I, <b>Fei Z</b>, Rose JKC (2020) <a href=https://doi.org/10.1093/jxb/eraa039 target=_blank>Endomembrane architecture and dynamics during secretion of the extracellular matrix of the unicellular charophyte, <i>Penium margaritaceum</i>.</a> <b><i>Journal Experimental Botany</i></b> 71:3323-3339</li><br>
+
+<li>Jiang S, Wang N, Chen M, Zhang R, Sun Q, Xu H, Zhang Z, Wang Y, Sui X, Wang S, Fang H, Zuo W, Su M, Zhang J, <b>Fei Z</b>, Chen X (2020) <a href=https://onlinelibrary.wiley.com/doi/abs/10.1111/pbi.13337 target=_blank>Methylation of MdMYB1 locus mediated by RdDM pathway regulates anthocyanin biosynthesis in apple.</a> <b><i>Plant Biotechnol J</i></b> 18:1736-1748</li><br>
+
+<li>Branham SE, Wechter P, Ling KS, Chanda B, Massey L, Zhao G, Guner N, Bello M, Kabelka E, <b>Fei Z</b>, Levi A (2020) <a href=https://link.springer.com/article/10.1007/s00122-019-03500-3 target=_blank>QTL mapping of resistance to <i>Fusarium oxysporum</i> f. sp. <i>niveum</i> race 2 and <i>Papaya ringspot virus</i> in <i>Citrullus amarus</i>.</a> <b><i>Theor Appl Genet</i></b> 133:677-687</li><br>
+
+<li>Tan H, <b>Wang X, Fei Z</b>, Li H, Tadmor Y, Mazourek M, Li L (2020) <a href=https://link.springer.com/article/10.1007/s00122-019-03466-2 target=_blank>Genetic mapping of green curd gene Gr in cauliflower.</a> <b><i>Theor Appl Genet</i></b> 133:353-364</li><br>
+
+<li>Gemenet DC, da Silva Pereira G, De Boeck B, Wood JC, Mollinari M, Olukolu BA, Diaz F, Mosquera V, Ssali RT, David M, Kitavi MN, Burgos G, Felde TZ, Ghislain M, Carey E, Swanckaert J, Coin LJM, <b>Fei Z</b>, Hamilton JP, Yada B, Yencho GC, Zeng ZB, Mwanga ROM, Khan A, Gruneberg WJ, Buell CR (2020) <a href=https://link.springer.com/article/10.1007/s00122-019-03437-7 target=_blank>Quantitative trait loci and differential gene expression analyses reveal the genetic basis for negatively associated &beta;-carotene and starch content in hexaploid sweetpotato [<i>Ipomoea batatas</i> (L.) Lam.]</a>. <b><i>Theor Appl Genet</i></b> 133:23-36</li><br>
+</ul>
+
+<b>2019<!-- (43)--></b>
+<ul>
+<li><b>Guo S</b><sup>#</sup>, Zhao S, <b>Sun H</b><sup>#</sup>, <b>Wang X</b><sup>#</sup>, <b>Wu S</b><sup>#</sup>, Lin T, Ren Y, <b>Gao L</b>, Deng Y, Zhang J, Lu X, Zhang H, Shang J, Gong G, Wen C, He N, Tian S, Li M, Liu J, Wang Y, Zhu Y, Jarret R, Levi A, Zhang X, Huang S*, <b>Fei Z*</b>, Liu W*, Xu Y* (2019) <a href=https://www.nature.com/articles/s41588-019-0518-4 target=_blank>Resequencing of 414 cultivated and wild watermelon accessions identifies selection for fruit quality traits.</a> <b><i>Nature Genetics</b></i> 51:1616-1623</li><br>
+
+<li>Zhao G, Lian Q, Zhang Z, Fu Q, He Y, Ma S, Ruggieri V, Monforte AJ, Wang P, Julca I, Wang H, Liu J, Xu Y, Wang R, Ji J, Xu Z, Kong W, Zhong Y, Shang J, Pereira L, Argyris J, Zhang J, Mayobre C, Pujol M, Oren E, Ou D, Wang J, Sun D, Zhao S, Zhu Y, Li N, Katzir N, Gur A, Dogimont C, Schaefer H, Fan W, Bendahmane A, <b>Fei Z</b>, Pitrat M, Gabaldon T, Lin T, Garcia-Mas J, Xu Y, Huang S (2019) <a href=https://www.nature.com/articles/s41588-019-0522-8 target=_blank>A comprehensive genome variation map of melon identifies multiple domestication events and loci influencing agronomic traits.</a> <b><i>Nature Genetics</b></i> 51:1607-1615</li><br>
+
+<li><b>Gao L</b><sup>#</sup>, Gonda I<sup>#</sup>, <b>Sun H</b>, <b>Ma Q</b>, <b>Bao K</b>, Tieman DM, Burzynski-Chang EA, Fish TL, Stromberg KA, Sacks GL, Thannhauser TW, Foolad MR, Diez MJ, Blanca J, Canizares J, Xu Y, van der Knaap E, Huang S, Klee HJ, Giovannoni JJ*, <b>Fei Z*</b> (2019) <a href=https://www.nature.com/articles/s41588-019-0410-2 target=_blank>The tomato pan-genome uncovers new genes and a rare allele regulating fruit flavor.</a> <b><i>Nature Genetics</i></b> 51:1044-1051</li><br>
+
+<li>Rett-Cadman S, Colle M, Mansfeld BN, Barry C, Wang Y, Weng Y, <b>Gao L, Fei Z,</b> Grumet R (2019) <a href=https://www.frontiersin.org/articles/10.3389/fpls.2019.01536/full target=_blank>QTL and transcriptomic analyses implicate cuticle transcription factor SHINE as a source of natural variation for epidermal traits in cucumber fruit.</a> <b><i>Front Plant Sci</i></b> 10:1536</li><br>
+
+<li>Muller LM, Flokova K, Schnabel E, <b>Sun X, Fei Z</b>, Frugoli J, Bouwmeester HJ, Harrison MJ (2019) <a href=https://www.nature.com/articles/s41477-019-0501-1 target=_blank>A CLE-SUNN module regulates strigolactone content and fungal colonization in arbuscular mycorrhiza.</a> <b><i>Nature Plants</i></b> 5:933-939</li><br>
+
+<li>Kaur N, <b>Chen W</b>, <b>Fei Z</b>, Wintermantel WM (2019) <a href=https://bmcgenomics.biomedcentral.com/articles/10.1186/s12864-019-5999-0 target=_blank>Differences in gene expression in whitefly associated with CYSDV-infected and virus-free melon, and comparison with expression in whiteflies fed on ToCV- and TYLCV-infected tomato.</a> <b><i>BMC Genomics</i></b> 20:654</li><br>
+ 
+<li>Yang X, <b>Chen W</b>, Song X, Ma X, Cotto-Rivera RO, Kain W, Chua H, Chen Y-R, <b>Fei Z</b>, Wang P (2019) <a href=https://www.sciencedirect.com/science/article/pii/S0965174819303236 target=_blank>Mutation of ABC transporter ABCA2 confers resistance to Bt toxin Cry2Ab in <i>Trichoplusia ni</i>.</a> <b><i>Insect Biochem Mol Biol</i></b> 112:103209</li><br>
+
+<li><b>Collins K, Zhao K, Jiao C</b>, Xu C, Cai X, Wang X, Ge C, Dai S, Wang Q, Wang Q, <b>Fei Z*, Zheng Y*</b> (2019) <a href=https://doi.org/10.1093/database/baz072 target=_blank>SpinachBase: a central portal for spinach genomics.</a> <b><i>Database</i></b> 2019:baz072</li><br>
+
+<li>Ye J, Li W, Ai G, Li C, Liu G, Chen W, Wang B, Wang W, Lu Y, Zhang J, Li H, Ouyang B, Zhang H, <b>Fei Z</b>, Giovannoni JJ, Ye Z, Zhang Y (2019) <a href=https://journals.plos.org/plosgenetics/article?id=10.1371/journal.pgen.1008149 target=_blank>Genome-wide association analysis identifies a natural variation in basic helix-loop-helix transcription factor regulating ascorbate biosynthesis via D-mannose/L-galactose pathway in tomato.</a> <b><i>PLoS Genet</i></b> 15:e1008149</li></br>
+
+<li><b>Wu S</b><sup>#</sup>, <b>Wang X</b><sup>#</sup>, Reddy U<sup>#</sup>, <b>Sun H</b>, <b>Bao K</b>, <b>Gao L</b>, <b>Mao L</b>, Patel T, Ortiz C, Abburi VL, Nimmakayala P, Branham S, Wechter P, Massey L, Ling KS, Kousik C, Hammar SA, Tadmor Y, Portnoy V, Gur A, Katzir N, Guner N, Davis A, Hernandez AG, Wright CL, McGregor C, Jarret R, Zhang X, Xu Y, Wehner TC, Grumet R, Levi A*, <b>Fei Z*</b> (2019) <a href=https://onlinelibrary.wiley.com/doi/10.1111/pbi.13136 target=_blank>Genome of 'Charleston Gray', the principal American watermelon cultivar, and genetic characterization of 1,365 accessions in the U.S. National Plant Germplasm System watermelon collection.</a> <b><i>Plant Biotechnol J</i></b> 17:2246-2258</li><br>
+
+<li><b>Chen W</b><sup>#</sup>, Wosula EN<sup>#</sup>, Hasegawa DK, Casinga C, Shirima RR, Fiaboe KKM, Hanna R, Fosto A, Goergen G, Tamo M, Mahuku G, Murithi HM, Tripathi L, Mware B, Kumar LP, Ntawuruhunga P, Moyo C, Yomeni M, Boahen S, Edet M, Awoyale W, Wintermantel WM, Ling KS, Legg JP*, <b>Fei Z</b>* (2019) <a href=https://www.sciencedirect.com/science/article/pii/S096517481930150X target=_blank>Genome of the African cassava whitefly <i>Bemisia tabaci</i> and distribution and genetic diversity of cassava-colonizing whiteflies in Africa.</a> <b><i>Insect Biochem Mol Biol</i></b> 110:112-120</li><br>
+
+<li>Wei Q<sup>#</sup>, Guo L<sup>#</sup>, <b>Jiao C<sup>#</sup></b>, <b>Fei Z</b>, Chen M, Cao J, Ding Y, Yuan Q (2019) <a href=https://www.ncbi.nlm.nih.gov/pubmed/31135922 target=_blank>Characterization of the developmental dynamics of the elongation of a bamboo internode during the fast growth stage.</a> <b><i>Tree Physiol</i></b> 39:1201-1214</li><br>
+
+<li>Peng B, Kang B, Wu H, Liu L, Liu L, <b>Fei Z</b>, Hong N, Gu Q (2019) <a href=https://www.ncbi.nlm.nih.gov/pubmed/31123960 target=_blank>Detection and genome characterization of a novel member of the genus Polerovirus from zucchini (Cucurbita pepo) in China.</a> <b><i>Arch Virol</i></b> 164:2187-2191</li><br>
+
+<li>Padmanabhan C, <b>Ma Q</b>, Shekasteband R, Stewart KS, Hutton SF, Scott JW, <b>Fei Z</b>*, Ling K-S* (2019) <a href=https://www.nature.com/articles/s41598-019-44100-x target=_blank>Comprehensive transcriptome analysis and functional characterization of PR-5 for its involvement in tomato Sw-7 resistance to tomato spotted wilt tospovirus.</a> <b><i>Scientific Reports</i></b> 9:7673</li><br>
+
+<li>Gao Y, Liu Y, Liang Y, Lu J, Jiang C, <b>Fei Z</b>, Jiang C-Z, Ma C, Gao J (2019) <a href=https://onlinelibrary.wiley.com/doi/10.1111/tpj.14412 target=_blank><i>Rosa hybrida</i> RhERF1 and RhERF4 mediate ethylene and auxin-regulated petal abscission by influencing pectin degradation.</a> <i><b>Plant J</b></i> 99:1159-1171</li><br>
+
+<li>Yu F, Wang S, Zhang W, Tang J, Wang H1, Yu L, Zhang X, <b>Fei Z</b>*, Li J* (2019) <a href=https://link.springer.com/article/10.1007%2Fs00294-019-00989-5 target=_blank>Genome-wide identification of genes encoding putative secreted E3 ubiquitin ligases and functional characterization of PbRING1 in the biotrophic protist <i>Plasmodiophora brassicae</i>.</a> <b><i>Curr Genet</i></b> 65:1355-1365</li><br>
+
+<li>Wang Y<sup>#</sup>, <b>Sun X</b><sup>#</sup>, Ding Y, <b>Fei Z</b>, <b>Jiao C</b>, Fan M, Yao B, Xin P, Chu J, Wei Q (2019) <a href=https://doi.org/10.1093/jxb/erz201 target=_blank>Cellular and molecular characterization of a thick wall variant reveal a pivotal role of shoot apical meristem in bamboo culm transversal evolution.</a> <b><i>Journal Experimental Botany</i></b> 70:3911-3926</li><br>
+
+<li>Shrestha A, <b>Bao K</b>, <b>Chen W</b>, Wang P, <b>Fei Z</b>, Blissard GW (2019) <a href=https://jvi.asm.org/content/early/2019/04/25/JVI.00353-19 target=_blank>Transcriptional responses of the <i>Trichoplusia ni</i> midgut to oral infection by the baculovirus Autographa californica Multiple Nucleopolyhedrovirus.</a> <b><i>J Virology</i></b> 93:e00353-1</li><br>
+
+<li>Gao M, Zhu Y, Yang J, Zhang H, Cheng C, Zhang Y, Wan R, <b>Fei Z</b>, Wang X (2019) <a href=https://link.springer.com/article/10.1007/s10725-019-00485-3 target=_blank>Identification of the grape basic helix-loop-helix transcription factor family and characterization of expression patterns in response to different stresses.</a> <b><i>Plant Growth Regulation</i></b> 88:19-39</li><br>
+
+<li>Tang W<sup>#</sup>, <b>Sun X</b><sup>#</sup>, Yue J<sup>#</sup>,  Tang X, <b>Jiao C</b>, Yang Y, Niu X, Miao M, Zhang D, Huang S, Shi W, Li M, Fang C, <b>Fei Z</b>*, Liu Y* (2019) <a href=https://doi.org/10.1093/gigascience/giz027 target=_blank>Chromosome-scale genome assembly of kiwifruit <i>Actinidia eriantha</i> with single-molecule sequencing and chromatin interaction mapping.</a> <b><i>GigaScience</i></b> 8:giz027</li><br>
+
+<li><b>Chen W</b>, Shakir S, Bigham M, Richter A, <b>Fei Z</b>, Jander G (2019) <a href=https://academic.oup.com/gigascience/article/8/4/giz033/5429686 target=_blank>Genome sequence of the corn leaf aphid (<i>Rhopalosiphum maidis</i> Fitch).</a> <b><i>Gigascience</i></b> 8:giz033</li><br>
+
+<li>Wang L, Tang W, Hu Y, Zhang Y, Sun J, Guo X, Lu H, Yang Y, Fang C, Niu X, Yue J, <b>Fei Z</b>, Liu Y (2019) <a href=https://onlinelibrary.wiley.com/doi/10.1111/tpj.14330 target=_blank>A MYB/bHLH complex regulates tissue-specific anthocyanin biosynthesis in the inner pericarp of red-centered kiwifruit <i>Actinidia chinensis</i> cv. Hongyang.</a> <b><i>Plant J</i></b> 99:359-378</li><br>
+
+<li><b>Liu W</b>, Zhang J, <b>Jiao C</b>, Yin X, <b>Fei Z</b>*, Wu Q*, Chen K (2019) <a href=https://www.nature.com/articles/s41438-019-0131-9 target=_blank>Transcriptome analysis provides insights into the regulation of metabolic processes during postharvest cold storage of loquat (<i>Eriobotrya japonica</i>) fruit.</a> <b><i>Horticulture Research</i></b> 6:49</li><br>
+
+<li>Silva KJP, Singh J, <b>Bednarek R, Fei Z</b>, Khan A (2019) <a href=https://www.nature.com/articles/s41438-019-0120-z target=_blank>Differential gene regulatory pathways and co-expression networks associated with fire blight infection in apple (<i>Malus x domestica</i>).</a> <b><i>Horticulture Research</i></b> 6:35</li><br>
+
+<li>Li Y, Cao K, Zhu G, Fang W, Chen C, Wang X, Zhao P, Guo J, Ding T, Guan L, Zhang Q, Guo W, <b>Fei Z</b>, Wang L (2019) <a href=https://genomebiology.biomedcentral.com/articles/10.1186/s13059-019-1648-9 target=_blank>Genomic analyses of an extensive collection of wild and cultivated accessions provide new insights into peach breeding history.</a> <b><i>Genome Biology</i></b> 20:36</li></br>
+
+<li><b>Zheng Y<sup>#</sup></b>, Zhang N<sup>#</sup>, Martin GB*, <b>Fei Z*</b> (2019) <a href=https://www.sciencedirect.com/science/article/pii/S1674205219300048 target=_blank>Plant Genome Editing Database (PGED): A call for submission of information about genome-edited plant mutants.</a> <b><i>Molecular Plant</i></b> 12:127-129</li><br>
+
+<li>Shamimuzzaman M, Hasegawa DK, <b>Chen W</b>, Simmons AM, <b>Fei Z</b>, Ling KS (2019) <a href= https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0213149 target=_blank>Genome-wide profiling of piRNAs in the whitefly <i>Bemisia tabaci</i> reveals cluster distribution and association with begomovirus transmission.</a> <b><i>PLoS One</i></b> 14:e0213149</li><br>
+
+<li>Piedra-Aguilera A<sup>#</sup>, <b>Jiao C<sup>#</sup></b>, Luna AP, Villanueva F, Dabad, Esteve-Codina A, Diaz-Pendon JA, <b>Fei Z</b>, Bejarano ER, Castillo AG (2019) <a href=https://www.nature.com/articles/s41598-019-39239-6 target=_blank>Integrated single-base resolution maps of transcriptome, sRNAome and methylome of Tomato yellow leaf curl virus (TYLCV) in tomato.</a> <b><i>Scientific Reports</i></b> 9:2863</li><br>
+
+<li>Ma X, Perna NT, Glasner JD, Hao J, Johnson S, Nasaruddin AS, Charkowski AO, <b>Wu S, Fei Z</b>, Perry KL, Stodghill P, Swingle B (2019) <a href=https://mra.asm.org/content/8/7/e01526-18 target=_blank>Complete genome sequence of Dickeya dianthicola ME23, a pathogen causing blackleg and soft rot diseases of potato.</a> <b><i>Microbiol Resour Announc</i></b> 8:e01526-18</li><br>
+
+<li>Pombo MA, Ramos RN, <b>Zheng Y</b>, <b>Fei Z</b>, Martin GB, Rosli HG (2019) <a href=https://www.nature.com/articles/s41598-018-38247-2 target=_blank>Transcriptome-based identification and validation of reference genes for plant-bacteria interaction studies using Nicotiana benthamiana.</a> <b><i>Scientific Reports</i></b> 9:1632</li><br>
+
+<li>Zhang W, Wang S, Yu F, Tang J, Shan X, <b>Bao K</b>, Yu L, Wang H, <b>Fei Z*</b>, Li J* (2019) <a href=https://bmcgenomics.biomedcentral.com/articles/10.1186/s12864-019-5454-2 target=_blank>Genome-wide characterization and expression profiling of SWEET genes in cabbage (<i>Brassica oleracea</i> var. <i>capitata</i> L.) reveal their roles in chilling and clubroot disease responses.</a> <b><i>BMC Genomics</i></b> 20:93</li><br>
+
+<li>Wang A, Chen D, <b>Ma Q</b>, Rose JKC, <b>Fei Z</b>, Liu Y, Giovannoni JJ (2019) <a href=https://www.nature.com/articles/s41438-018-0093-3 target=_blank>The tomato <i>HIGH PIGMENT1/DAMAGED DNA BINDING PROTEIN 1</i> gene contributes to regulation of fruit ripening.</a> <b><i>Horticulture Research</i></b> 6:15</li><br>
+
+<li>Pinheiro PV, Wilson JR, Xu Y, <b>Zheng Y</b>, Rebelo AR, Fattah-Hosseini S, Kruse A, Santos Dos Silva R, Xu Y, Kramer M, Giovannoni J, <b>Fei Z</b>, Gray S, Heck ML (2019) <a href=https://apsjournals.apsnet.org/doi/10.1094/PBIOMES-10-18-0045-R target=_blank>Plant viruses transmitted in two different modes produce differing effects on small RNA-mediated processes in their aphid vector.</a> <b><i>Phytobiomes J</i></b> 3:71-81</li><br>
+
+<li>Watts-Williams SJ, Emmett BD, Levesque-Tremblay V, MacLean AM, <b>Sun X</b>, Satterlee JW, <b>Fei Z</b>, Harrison MJ (2019) <a href=https://onlinelibrary.wiley.com/doi/abs/10.1111/pce.13509 target=_blank>Diverse <i>Sorghum bicolor</i> accessions show marked variation in growth and transcriptional responses to arbuscular mycorrhizal fungi.</a> <b><i>Plant Cell Environ</i></b> 42:1758-1774</li><br>
+
+<li><b>Chen W</b><sup>#</sup>, Yang X<sup>#</sup>, Tetreau G, Song X, Coutu C, Hegedus D, Blissard G, <b>Fei Z</b>*, Wang P* (2019) <a href=https://onlinelibrary.wiley.com/doi/10.1111/1755-0998.12966 target=_blank>A high-quality chromosome-level genome assembly of a generalist herbivore, <i>Trichoplusia ni</i>.</a> <b><i>Molecular Ecology Resources</i></b> 19:485-496</li><br>
+
+<li>Fry W, Patev SP, Meyers K, <b>Bao K</b>, <b>Fei Z</b> (2019) <a href= https://apsjournals.apsnet.org/doi/abs/10.1094/MPMI-09-18-0255-TA target=_blank><i>Phytophthora infestans</i> sporangia produced in culture and on tomato leaflet lesions show marked differences in indirect germination rates, aggressiveness, and global transcription profiles.</a> <b><i>Mol Plant Microbe Interact</i></b> 32:515-526</li><br>
+
+<li>Guo L<sup>#</sup>, <b>Sun X</b><sup>#</sup>, Li Z, Wang Y, <b>Fei Z</b>, <b>Jiao C</b>, Feng J, Cui D, Feng X, Ding Y, Zhang C, Wei Q (2019) <a href=https://onlinelibrary.wiley.com/doi/10.1111/pbi.13033 target=_blank>Morphological dissection and cellular and transcriptome characterizations of bamboo pith cavity formation reveal a pivotal role of genes related to programmed cell death.</a> <b><i>Plant Biotechnology J</i></b> 17:982-997</li><br>
+
+<li><b>Sun X, Chen W</b>, Ivanov S, MacLean AM, Wight H, Ramaraj T, Mudge J, Harrison MJ*, <b>Fei Z</b>* (2019) <a href=https://nph.onlinelibrary.wiley.com/doi/full/10.1111/nph.15472 target=_blank>Genome and evolution of the arbuscular mycorrhizal fungus <i>Diversispora epigaea</i> (formerly <i>Glomus versiforme</i>) and its bacterial endosymbionts.</a> <b><i>New Phytologist</i></b> 221:1556-1573</li><br>
+
+<li><b>Zheng Y, Wu S, Bai Y, Sun H, Jiao C, Guo S, Kun Zhao</b>, Blanca J, Zhang Z, Huang S, Xu Y, Weng Y, Mazourek M, Reddy U, Ando K, McCreight JD, Schaffer AA, Burger J, Tadmor Y, Katzir N, Tang X, Liu Y, Giovannoni JJ, Ling K-S, Wechter WP, Levi A, Garcia-Mas J, Grumet R, <b>Fei Z*</b> (2019) <a href=https://academic.oup.com/nar/article/47/D1/D1128/5128937 target=_blank>Cucurbit Genomics Database (CuGenDB): a central portal for comparative and functional genomics of cucurbit crops.</a> <b><i>Nucleic Acids Research</i></b> 47:D1128-D1136</li><br>
+
+<li>Gonda I, Ashrafi H, Lyon DA, Strickler SR, Hulse-Kemp AM, <b>Ma Q, Sun H</b>, Stoffel K, Powell AF, Futrell S, Thannhauser TW, <b>Fei Z</b>, Deynze AEV, Mueller LA, Giovannoni JJ, Foolad MR (2019) <a href= https://doi.org/10.3835/plantgenome2018.02.0010 target=_blank>Sequencing-based bin map construction of a tomato mapping population, facilitating high-resolution quantitative trait loci detection.</a> <b><i>Plant Genome</i></b> 12:180010</li><br>
+
+<li>Pan C, Yang D, Zhao X, <b>Jiao C</b>, Yan Y, Lamin-Samu AT, Wang Q, Xu X, <b>Fei Z</b>*, Lu G* (2019) <a href=https://onlinelibrary.wiley.com/doi/abs/10.1111/pce.13444 target=_blank>Tomato stigma exsertion induced by high temperature is associated with the jasmonate signaling pathway.</a> <b><i>Plant Cell Environ</i></b> 42:1205-1221</li><br>
+
+<li>Zhang Z<sup>#</sup>, <b>Zheng Y</b><sup>#</sup>, Ham BK, Zhang S, <b>Fei Z</b>, Lucas WJ (2019) <a href= https://www.ncbi.nlm.nih.gov/pubmed/30171742 target=_blank>Plant lncRNAs are enriched in and move systemically through the phloem in response to phosphate deficiency.</a> <b><i> J Integr Plant Biol</i></b> 61:492-508</li><br>
+
+<li>Yazdani M, Sun Z, Yuan H, Zeng S, Thannhauser TW, Vrebalov J, <b>Ma Q</b>, Xu Y, <b>Fei Z</b>, Van Eck J, Tian S, Tadmor Y, Giovannoni JJ, Li L (2019) <a href=https://www.ncbi.nlm.nih.gov/pubmed/29729208 target=_blank>Ectopic expression of ORANGE promotes carotenoid accumulation and fruit development in tomato.</a> <b><i>Plant Biotechnol J</i></b> 17:33-49</li><br>
+</ul>
+
+<b>2018<!-- (22)--></b>
+<ul>
+<li><b>Wu S</b><sup>#</sup>, Lau KH<sup>#</sup>, <b>Cao Q</b><sup>#</sup>, Hamilton JP<sup>#</sup>, <b>Sun H</b><sup>#</sup>, Zhou C, Eserman L, Gemenet DC, Olukolu BA, Wang H, Crisovan E, Godden GT, <b>Jiao C, Wang X</b>, Kitavi M, Manrique-Carpintero N, Vaillancourt B, Wiegert-Rininger K, Yang X, </b>Bao K</b>, Schaff J, Kreuze J, Gruneberg W, Khan A, Ghislain M, Ma D, Jiang J, Mwanga ROM, Leebens-Mack J, Coin LJM, Yencho GC, Buell CR*, <b>Fei Z</b>* (2018) <a href=https://www.nature.com/articles/s41467-018-06983-8 target=_blank>Genome sequences of two diploid wild relatives of cultivated sweetpotato reveal targets for genetic improvement.</a> <i><b>Nature Communications</b></i> 9:4580</li><br>
+
+<li>Cai X, Xu C, Wang X, Wang S, Zhang Z, <b>Fei Z</b>, Wang Q (2018) <a href= https://link.springer.com/article/10.1007/s10681-018-2312-2 target=_blank>Construction of genetic linkage map using genotyping-by-sequencing and identification of QTLs associated with leaf color in spinach.</a> <b><i>Euphytica</i></b> 214:229</li><br>
+
+<li>Yakir E, <b>Fei Z</b>, Sela N, Xu Y, Singh V, Dagar A, Joshi JR, Muller M, Munne-Bosch S, Giovannoni JJ, Vrebalov J, Friedman H (2018) <a href=https://bmcplantbiol.biomedcentral.com/articles/10.1186/s12870-018-1480-5 target=_blank>MaMADS2 repression in banana fruits modifies hormone synthesis and signalling pathways prior to climacteric stage.</a> <b><i>BMC Plant Biology</i></b> 18:267</li><br>
+
+<li>Lau KH, Herrera Mdel R, Crisovan E, <b>Wu S, Fei Z</b>, Khan MA, Buell CR, Gemenet DC (2018) <a href=https://onlinelibrary.wiley.com/doi/full/10.1002/pld3.92 target=_blank>Transcriptomic analysis of sweet potato under dehydration stress identifies candidate genes for drought tolerance.</a> <b><i>Plant Direct</i></b> 2:e00092</li><br>
+
+<li>Lu P, Yu S, Chen Y, Zhou B, Tzeng D, Grierson D, Xiang J, <b>Fei Z</b>, Giovannoni JJ, Zhong S (2018) <a href=https://www.nature.com/articles/s41477-018-0249-z target=_blank>Genome encode analyses reveal the basis of convergent evolution of fleshy fruit ripening.</a> <i><b>Nature Plants</i></b> 4:784-791</li><br>
+
+<li>Shrestha A, <b>Bao K</b>, Wang P, <b>Fei Z</b>, Blissard GW (2018) <a href=https://jvi.asm.org/content/92/23/e01277-18 target=_blank>Global analysis of baculovirus Autographa californica multiple nucleopolyhedrovirus gene expression in the midgut of the Lepidopteran host <i>Trichoplusia ni</i>.</a> <b><i>J Virology</i></b> 92:e01277-18</li><br>
+
+<li><b>Wang X, Bao K</b>, Reddy UK, <b>Bai Y</b>, Hammar SA, <b>Jiao C</b>, Wehner TC, Ramirez-Madera AO, Weng Y, Grumet R*, <b>Fei Z</b>* (2018) <a href=https://www.nature.com/articles/s41438-018-0080-8 target=_blank>The USDA cucumber (<i>Cucumis sativus</i> L.) collection: genetic diversity, population structure, genome-wide association studies and core collection development.</a> <b><i>Horticulture Research</i></b> 5:64</li><br>
+
+<li>Sui X<sup>#</sup>, Nie J<sup>#</sup>, Li  X<sup>#</sup>, Scanlon MJ,  Zhang C,  <b>Zheng Y</b>,  Ma S,  Shan N, <b>Fei Z</b>*, Turgeon R*, Zhang Z* (2018) <a href=https://onlinelibrary.wiley.com/doi/abs/10.1111/tpj.14084 target=_blank>Transcriptomic and functional analysis of cucumber (<i>Cucumis sativus</i> L.) fruit phloem during early development.</a> <b><i>Plant J</i></b> 96:982-996</li><br>
+
+<li>Rossel G, Mwanga ROM, Khan A, George AW, <b>Fei Z</b>, Yencho GC, Ellis D, Coin LJM (2018) <a href= https://gatesopenresearch.org/articles/2-41/v1  target=_blank>Insights into population structure of East African sweetpotato cultivars from hybrid assembly of chloroplast genomes.</a> <b><i>Gates Open Res</i></b> 2:41</li><br>
+
+<li>Wu J<sup>#</sup>, Wang Y<sup>#</sup>, Xu J<sup>#</sup>, Korban SS<sup>#</sup>, <b>Fei Z<sup>#</sup></b>, Tao S<sup>#</sup>, Ming R, Tai S, Khan AM, Postman JD, Gu C, Yin H, Zheng D, Qi K, Li Y, Wang R, Deng CH, Kumar S, Chagne D, Li X, Wu J, Huang X, Zhang H, Xie Z, Li X, Zhang M, Li Y, Yue Z, Fang X, Li J, Li L, Jin C, Qin M, Zhang J, Wu X, Ke Y, Wang J, Yang H, Zhang S (2018) <a href=https://genomebiology.biomedcentral.com/articles/10.1186/s13059-018-1452-y target=_blank>Diversification and independent domestication of Asian and European pears.</a> <b><i>Genome Biology</i></b> 19:77</li><br>
+
+<li>Kumar P, Garrido E, Zhao K, <b>Zheng Y</b>, Alseekh S, Vargas-Ortiz E, Fernie AR, <b>Fei Z</b>, Poveda K, Jander G (2018) <a href=https://onlinelibrary.wiley.com/doi/abs/10.1111/jipb.12675 target=_blank><i>Tecia solanivora</i> infestation increases tuber starch accumulation in Pastusa Suprema potatoes.</a> <b><i>J Integr Plant Biol</i></b> 60:1083-1096</li><br>
+
+<li>Xia C<sup>#</sup>, <b>Zheng Y<sup>#</sup></b>, Huang J, Zhou X, Li R, Zha M, Wang S, Huang Z, Lan H, Turgeon R, <b>Fei Z</b>*, Zhang C* (2018) <a href=https://www.ncbi.nlm.nih.gov/pubmed/29720554 target=_blank>Elucidation of the mechanisms of long-distance mRNA movement in a Nicotiana benthamiana/tomato heterograft system.</a> <b><i>Plant Physiol</i></b> 177:745-758</li><br>
+
+<li>Ruiz-May E, Sorensen I, <b>Fei Z</b>, Zhang S, Domozych DS, Rose JKC (2018) <a href=https://www.ncbi.nlm.nih.gov/pubmed/29561781 target=_blank>The secretome and N-glycosylation profiles of the charophycean green alga, <i>Penium margaritaceum</i>, resemble those of embryophytes.</a> <b><i>Proteomes</i></b> 6:14</li><br>
+
+<li>Gonda I, Davidovich-Rikanati R, Bar E, Lev S, Jhirad P, Meshulam Y, Wissotsky G, Portnoy V, Burger J, Schaffer AA, Tadmor Y, Giovannoni JJ, <b>Fei Z</b>, Fait A, Katzir N, Lewinsohn E (2018) <a href=https://www.ncbi.nlm.nih.gov/pubmed/29448137 target=_blank>Differential metabolism of L-phenylalanine in the formation of aromatic volatiles in melon (<i>Cucumis melo</i> L.) fruit.</a> <b><i>Phytochemistry</i></b> 148:122-131</li><br>
+
+<li>Branham SE, Levi A, Katawczik M, <b>Fei Z</b>, Wechter WP (2018) <a href=https://www.ncbi.nlm.nih.gov/pubmed/29372283 target=_blank>Construction of a genome-anchored, high-density genetic map for melon (<i>Cucumis melo</i> L.) and identification of <i>Fusarium oxysporum</i> f. sp. <i>melonis</i> race 1 resistance QTL.</a> <b><i>Theor Appl Genet</i></b> 131:829-837</li><br>
+
+<li>Luan J<sup>#</sup>, <b>Sun X<sup>#</sup></b>, <b>Fei Z</b>, Douglas AE (2018) <a href=http://www.cell.com/current-biology/abstract/S0960-9822(17)31674-3 target=_blank>Maternal inheritance of a single somatic animal cell displayed by the bacteriocyte in the whitefly <i>Bemisia tabaci</i>.</a> <b><i>Current Biology</i></b> 28:p459-465.e3</li><br>
+
+<li>Shinozaki Y<sup>#</sup>, Nicolas P<sup>#</sup>, Fernandez-Pozo N<sup>#</sup>, <b>Zheng Y</b>, Evanich D, Shi Y, Xu Y, <b>Ma Q</b>, Snyder S, Martin L, Ruiz-May E, Thannhauser T, Chen C, Domozych D, Catala C, <b>Fei Z</b>, Mueller L, Giovannoni J, Rose J (2018) <a href=https://www.nature.com/articles/s41467-017-02782-9 target=_blank>High-resolution spatiotemporal transcriptome mapping of tomato fruit development and ripening.</a> <b><i>Nature Communications</i></b> 9: 364</li><br>
+ 
+<li>Galpaz N, Gonda I, Shem-Tov D, Barad O, Tzuri G, Lev S, <b>Fei Z</b>, Xu Y, Lombardi N, <b>Mao L</b>, <b>Jiao C</b>, Harel-Beja R, Doron-Faigenboim A, Tzfadia O, Bar E, Meir A, Saar U, Fait A, Halperin E, Kenigswald M, Fallik E, Kol G, Ronen G, Burger J, Gur A, Tadmor Y, Portnoy V, Schaffer A, Lewinsohn E, Giovannoni J, Katzir N (2018) <a href=http://onlinelibrary.wiley.com/doi/10.1111/tpj.13838/full target=_blank>Deciphering genetic factors that determine melon fruit-quality traits using RNA-Seq-based high-resolution QTL and eQTL mapping.</a> <b><i>Plant J</i></b> 94:169-191</li><br>
+
+<li>Yuan Z<sup>#</sup>*, Fang Y<sup>#</sup>*, Zhang T<sup>#</sup>, <b>Fei Z<sup>#</sup></b>, Han F<sup>#</sup>, Liu C, Liu M, Xiao W, Zhang W, <b>Wu S</b>, Zhang M, Ju Y, Xu H, Dai H, Liu Y, Chen Y, Wang L, Zhou J, Guan D, Yan M, Xia Y, Huang X, Liu D, Wei H, Zheng H* (2018) <a href=https://www.ncbi.nlm.nih.gov/pubmed/29271050 target=_blank>The pomegranate (<i>Punica granatum</i> L.) genome provides insights into fruit quality and ovule developmental biology.</a> <b><i>Plant Biotechnol J</i></b> 16:1363-1374</li><br>
+
+<li>Wei Q<sup>#</sup>*, <b>Jiao C</b><sup>#</sup>, Ding Y, Gao S, Guo L, Chen M, Hu P, Xia S, Ren G, <b>Fei Z*</b> (2018) <a href=https://doi.org/10.1093/treephys/tpx129 target=_blank>Cellular and molecular characterizations of a slow-growth variant provide insights into the fast growth of bamboo.</a> <b><i>Tree Physiol</i></b> 38:641-654</li><br>
+
+<li>Meng D, He M, <b>Bai Y</b>, Xu H, Dandekar AM, <b>Fei Z</b>, Cheng L (2018) <a href=http://onlinelibrary.wiley.com/doi/10.1111/nph.14824/full target=_blank>Decreased sorbitol synthesis leads to abnormal stamen development and reduced pollen tube growth via an MYB transcription factor, MdMYB39L, in apple (<i>Malus domestica</i>).</a> <b><i>New Phytologist</i></b> 217:641-656</li><br>
+
+<li>Hasegawa DK, <b>Chen W, Zheng Y</b>, Kaur N, Wintermantel WM, Simmons AM, <b>Fei Z</b>, Ling K-S (2018) <a href=http://www.sciencedirect.com/science/article/pii/S0042682217303501 target=_blank>Comparative transcriptome analysis reveals networks of genes activated in the whitefly, <i>Bemisia tabaci</i> when fed on tomato plants infected with <i>Tomato yellow leaf curl virus</i>.</a> <b><i>Virology</i></b> 513:52-64</li><br>
+</ul>
+
+<b>2017<!-- (28)--></b>
+<ul>
+<li>Yan J, Chia J-C, Sheng H, Jung H, Zavodna T-O, Lu Z, Huang R, <b>Jiao C</b>, Craft E, <b>Fei Z</b>, Kochian LV, Vatamaniuk OK (2017) <a href=http://www.plantcell.org/content/29/12/3012 target=_blank>Arabidopsis pollen fertility requires the transcription factors CIT1 and SPL7 that regulate copper delivery to anthers and jasmonic acid synthesis.</a> <b><i>Plant Cell</i></b> 29: 3012-3029</li><br>
+
+<li>Arbelaez JD, Maron LG, Jobe TO, Pineros MA, Famoso AN, Rebelo AR, Singh N, <b>Ma Q, Fei Z</b>, Kochian L, McCouch SR (2017) <a href=http://onlinelibrary.wiley.com/doi/10.1002/pld3.14/abstract target=_blank><i>ALUMINUM RESISTANCE TRANSCRIPTION FACTOR 1</i> (<i>ART1</i>) contributes to natural variation in aluminum resistance in diverse genetic backgrounds of rice (<i>O. sativa</i>).</a> <b><i>Plant Direct</i></b> e00014</li><br>
+
+<li>Wosula EN<sup>#</sup>, <b>Chen W</b><sup>#</sup>, <b>Fei Z</b>, Legg JP (2017) <a href=https://www.ncbi.nlm.nih.gov/pubmed/29096025 target=_blank>Unravelling the genetic diversity among cassava <i>Bemisia tabaci</i> whiteflies using NextRAD sequencing.</a> <b><i>Genome Biol Evol</i></b> 9:2958-2973</li><br>
+
+<li>Pan C, Ye L, <b>Zheng Y</b>, Wang Y, Yang D, Liu X, Chen L, Zhang Y, <b>Fei Z</b>, Lu G (2017) <a href=https://www.ncbi.nlm.nih.gov/pubmed/29096602 target=_blank>Identification and expression profiling of microRNAs involved in the stigma exsertion under high-temperature stress in tomato.</a> <b><i>BMC Genomics</i></b> 18:843.</li><br>
+
+<li><b>Wu S<sup>#</sup></b>, Shamimuzzaman M<sup>#</sup>, <b>Sun H<sup>#</sup></b>, Salse J<sup>#</sup>, Sui X, Wilder A, Wu Z, Levi A, Xu Y, Ling KS*, <b>Fei Z*</b> (2017) <a href=https://www.ncbi.nlm.nih.gov/pubmed/28940759 target=_blank>The bottle gourd genome provides insights into Cucurbitaceae evolution and facilitates mapping of a <i>Papaya ringspot virus</i> resistance locus.</a> <b><i>Plant J</i></b> 92:963-975</li><br>
+
+<li><b>Sun H<sup>#</sup>, Wu S<sup>#</sup>*</b>, Zhang G, <b>Jiao C</b>, Guo S, Ren Y, Zhang J, Zhang H, Gong G, Jia Z, Zhang F, Tian J, Lucas WJ, Doyle JJ, Li H, <b>Fei Z*</b>, Xu Y* (2017) <a href=http://www.cell.com/molecular-plant/abstract/S1674-2052(17)30266-6 target=_blank>Karyotype stability and unbiased fractionation in the paleo-allotetraploid Cucurbita genomes.</a> <b><i>Molecular Plant</i></b> 10:1293-1306</li><br>
+
+<li>Duan N<sup>#</sup>, <b>Bai Y</b><sup>#</sup>*, <b>Sun H</b><sup>#</sup>, Wang N<sup>#</sup>, Ma Y, Li M, <b>Wang X, Jiao C, Legall N, Mao L,</b> Wan S, Wang K, He T, Feng S, Zhang Z, Mao Z, Shen X, Chen X, Jiang Y, Wu S, Yin C, Ge S, Yang L, Jiang S, Xu H, Liu J, Wang D, Qu C, Wang Y, Zuo W, Xiang L, Liu C, Zhang D, Gao Y, <b>Xu Y</b>, Xu K, Chao T, Fazio G, Shu H, Zhong GY, Cheng L, <b>Fei Z</b>*, Chen X* (2017) <a href=https://www.nature.com/articles/s41467-017-00336-7 target=_blank>Genome re-sequencing reveals the history of apple and supports a two-stage model for fruit enlargement.</a> <b><i>Nature Communications</i></b> 8:249.</li><br>
+
+<li><b>Zheng Y</b><sup>#</sup>, Ding B, <b>Fei Z</b>*, Wang Y<sup>#</sup>* (2017) <a href=https://www.nature.com/articles/s41598-017-10143-1 target=_blank>Comprehensive transcriptome analyses reveal tomato plant responses to tobacco rattle virus-based gene silencing vectors.</a> <b><i>Scientific Reports</i></b> 7:9771</li><br>
+
+<li>Wang Q, Yang S, Liu J, Terecskei K, Abraham E, Gombar A, Domonkos A, Szucs A, Kormoczi P, Wang T, Fodor L, <b>Mao L, Fei Z</b>, Kondorosi E, Kalo P, Kereszt A, Zhu H (2017) <a href=http://www.pnas.org/content/114/26/6854.abstract target=_blank>Host-secreted antimicrobial peptide enforces symbiotic selectivity in <i>Medicago truncatula</i>.</a> <b><i>Proc Natl Acad Sci USA</i></b> 114:6854-6859</li><br>
+
+<li>Niu X, Sun Y, Chen Z, Li R, Padmanabhan C, Ruan J, Kreuze JF, Ling K, <b>Fei Z</b>, Gao S (2017) <a href=https://www.ncbi.nlm.nih.gov/pubmed/28621718 target=_blank>Using small RNA-Seq data to detect siRNA duplexes induced by plant viruses.</a> <b><i>Genes</i></b> 8:163</li><br>
+
+<li>Xu C<sup>#</sup>, <b>Jiao C<sup>#</sup>*, Sun H<sup>#</sup></b>, Cai X, Wang X, Ge C, <b>Zheng Y, Liu W, Sun X</b>, Xu Y, Deng J, Zhang Z, Huang S, Dai S, Mou B, Wang Q, <b>Fei Z*</b>, Wang Q* (2017) <a href=https://www.nature.com/articles/ncomms15275 target=_blank>Draft genome of spinach and transcriptome diversity of 120 <i>Spinacia</i> accessions.</a> <b><i>Nature Communications</i></b> 8:15275</li><br>
+
+<li>Cai X, <b>Jiao C*, Sun H,</b> Wang X, Xu C, <b>Fei Z</b>, Wang Q* (2017) <a href=http://www.tandfonline.com/doi/abs/10.1080/23802359.2017.1334518 target=_blank>The complete mitochondrial genome sequence of spinach, <i>Spinacia oleracea</i> L.</a> <b><i>Mitochondrial DNA Part B</i></b> 2:339-340</li><br>
+
+<li>Cox K, Meng F, Wilkins KE, Li F, Wang P, Booher NJ, Carpenter SCD, Chen L-Q, Zhen H, Gao X, <b>Zheng Y, Fei Z</b>, Yu JZ, Isakeit T, Wheeler T, Frommer WB, He P, Bogdanove AJ, Shan L (2017) <a href=https://www.nature.com/articles/ncomms15588 target=_blank>TAL effector driven induction of a SWEET gene confers susceptibility to bacterial blight of cotton.</a> <b><i>Nature Communications</i></b>  8:15588</li><br>
+
+<li>Schwizer S, Kraus CM, Dunham DM, <b>Zheng Y</b>, Fernandez-Pozo N, Pombo MA, <b>Fei Z</b>, Chakravarthy S, Martin G (2017) <a href=http://apsjournals.apsnet.org/doi/abs/10.1094/MPMI-03-17-0056-R target=_blank>The tomato kinase Pti1 contributes to production of reactive oxygen species in response to two flagellin-derived peptides and promotes resistance to <i>Pseudomonas syringae</i> infection.</a> <i><b>Mol Plant Microbe Interact</b></i> 30:725-738</li><br>
+
+<li>Fernandez-Pozo N, <b>Zheng Y</b>, Snyder S, Nicolas P, Shinozaki Y, <b>Fei Z</b>, Catala C, Giovannoni JJ, Rose JK, Mueller LA (2017) <a href=https://www.ncbi.nlm.nih.gov/pubmed/28379331 target=_blank>The Tomato Expression Atlas.</a> <b><i>Bioinformatics</i></b> 33:2397-2398</li><br>
+
+<li>Kaur N, <b>Chen W, Zheng Y</b>, Hasegawa DK, Ling KS, <b>Fei Z</b>, Wintermantel WM (2017) <a href=https://bmcgenomics.biomedcentral.com/articles/10.1186/s12864-017-3751-1 target=_blank>Transcriptome analysis of the whitefly, <i>Bemisia tabaci</i> MEAM1 during feeding on tomato infected with the crinivirus, <i>Tomato chlorosis virus</i>, identifies a temporal shift in gene expression and differential regulation of novel orphan genes.</a> <b><i>BMC Genomics</i></b> 18:370.</li><br>
+
+<li><b>Zheng Y<sup>#</sup></b>, Wang Y<sup>#</sup>*, Ding B, <b>Fei Z*</b> (2017) <a href=http://jvi.asm.org/content/91/11/e00247-17.abstract target=_blank>Comprehensive transcriptome analyses reveal that potato spindle tuber viroid triggers genome-wide changes in alternative splicing, inducible trans-acting activity of phasiRNAs and immune responses.</a> <b><i>J Virology</i></b> 91:e00247-17</li><br>
+
+<li>Xu C<sup>#</sup>, <b>Sun X<sup>#</sup>*, Taylor A, Jiao C</b>, Xu Y, Cai X, Wang X, Ge C, Pan G, Wang Q, <b>Fei Z</b>, Wang Q* (2017) <a href=http://jvi.asm.org/content/91/11/e00173-17.abstract target=_blank>Diversity, distribution, and evolution of tomato viruses in China uncovered by small RNA sequencing.</a> <b><i>J Virology</i></b> 91:e00173-17</li><br>
+
+<li>Gapper NE, Hertog MLATM, Lee J, Buchanan DA, Leisso RS, <b>Fei Z</b>, Qu G, Giovannoni JJ, Johnston JW, Schaffer RJ, Nicolai BM, Mattheis JP, Watkins CB, Rudell DR (2017) <a href=https://bmcplantbiol.biomedcentral.com/articles/10.1186/s12870-017-1030-6 target=_blank>Delayed response to cold stress is characterized by successive metabolic shifts culminating in apple fruit peel necrosis.</a> <b><i>BMC Plant Biology</i></b> 17:77</li><br>
+
+<li>Tafolla-Arellano JC<sup>#</sup></b>, <b>Zheng Y<sup>#</sup>, Sun H, Jiao C</b>, Ruiz-May E, Hernandez-Onate M, Gonzalez-Leon A, Baez-Sanudo R, <b>Fei Z</b>, Rose JKC, Tiznado-Hernandez ME (2017) <a href=https://www.nature.com/articles/srep46163 target=_blank>Transcriptome analysis of mango (<i>Mangifera indica</i> L) fruit epidermal peel to identify putative cuticle-associated genes.</a> <b><i>Scientific Reports</i></b> 7:46163</li><br>
+
+<li>Pombo MA, <b>Zheng Y, Fei Z</b>, Martin GB, Rosli HG (2017) <a href=http://www.nature.com/articles/srep44905 target=_blank>Use of RNA-seq data to identify and validate RT-qPCR reference genes for studying the tomato-<i>Pseudomonas</i> pathosystem.</a> <b><i>Scientific Reports</i></b> 7:44905 </li><br> 
+
+<li>Giovannoni J, Nguyen C, Ampofo B, Zhong S, <b>Fei Z</b> (2017) <a href=http://www.annualreviews.org/doi/abs/10.1146/annurev-arplant-042916-040906 target=_blank>The epigenome and transcriptional dynamics of fruit ripening.</a> <b><i>Annu Rev Plant Biol</i></b> 68:61-84</li><br>
+
+<li>Ligaba-Osena A, <b>Fei Z</b>, Liu J, Xu Y, Shaff J, Lee SC, Luan S, Kudla J, Kochian L, Pineros M (2017) <a href=https://www.ncbi.nlm.nih.gov/pubmed/28150888 target=_blank>Loss-of-function mutation of the calcium sensor CBL1 increases aluminum sensitivity in Arabidopsis.</a> <b><i>New Phytol</i></b> 214:830-841</li><br>
+
+<li>Omidvar V, Mohorianu I, Dalmay T, <b>Zheng Y, Fei Z,</b> Pucci A, Mazzucato A, Vecerova V, Sedlarova M, Fellner M (2017) <a href=http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0170715 target=_blank>Transcriptional regulation of male-sterility in 7B-1 male-sterile tomato mutant.</a> <b><i>PLoS One</i></b> 12:e0170715</li><br>
+
+<li>Sui X, Zheng Y, Li R, Padmanabhan C, Tian T, Groth-Helms D, Keinath AP, Fei Z, Ling K-S (2017) <a href=http://apsjournals.apsnet.org/doi/10.1094/PDIS-10-16-1504-RE target=_blank>Molecular and biological characterization of <i>Tomato mottle mosaic virus</i> and development of RT-PCR detection.</a> <i><b>Plant Disease</b></i> 101:704-711</li><br>
+
+<li><b>Zheng Y<sup>#</sup></b>, <b>Gao S<sup>#</sup></b>, Padmanabhan C, Li R, Galvez M, Gutierrez D, Fuentes S, Ling K-S, Kreuze J, <b>Fei Z*</b> (2017) <a href=http://www.sciencedirect.com/science/article/pii/S0042682216303166 target=_blank>VirusDetect: An automated pipeline for efficient virus discovery using deep sequencing of small RNAs.</a> <b><i>Virology</i></b> 500:130-138</li><br>
+
+<li>Wei Q<sup>#</sup>*, <b>Jiao C</b><sup>#</sup>, Guo L, Ding Y, Cao J, Feng J, Dong X, <b>Mao L</b>, <b>Sun H</b>, Yu F, Yang G, Shi P, Ren G, <b>Fei Z*</b> (2017) <a href=http://onlinelibrary.wiley.com/doi/10.1111/nph.14284/full target=_blank>Exploring key cellular processes and candidate genes regulating the primary thickening growth of Moso underground shoots.</a> <b><i>New Phytologist</i></b> 214:81-96</li><br>
+
+<li>Chayut N, Yuan H, Ohali S, Meir A, Saar U, Tzuri G, <b>Zheng Y</b>, Mazourek M, Gepstein S, Zhou X, Portnoy V, Lewinsohn E, Schaffer AA, Katzir N, <b>Fei Z</b>, Welsch R, Li L, Burger J, Tadmor Y (2017) <a href=http://www.plantphysiol.org/content/173/1/376.abstract target=_blank>Distinct mechanisms of the ORANGE protein in controlling carotenoid flux.</a> <b><i>Plant Physiol</i></b> 173:376-389</li><br>
+</ul>
+
+<b>2016<!-- (21)--></b>
+<ul>
+
+<li>Huang J<sup>#</sup>, Zhang C<sup>#</sup>, Zhao X<sup>#</sup>, <b>Fei Z<sup>#</sup></b>, Wan K, Zhang Z, Pang X, Yin X, <b>Bai Y</b>, Sun X, Gao L, Li R, Zhang J, Li X (2016) <a href=http://journals.plos.org/plosgenetics/article?id=10.1371/journal.pgen.1006433 target=_blank>The jujube genome provides insights into genome evolution and the domestication of sweetness/acidity taste in fruit trees.</a> <b><i>PLoS Genetics</i></b> 12:e1006433</li><br>
+
+<li><b>Chen W<sup>#</sup></b>, Hasegawa DK<sup>#</sup>, Kaur N, Kliot A, Pinheiro PV, Luan J, Stensmyr MC, <b>Zheng Y, Liu W, Sun H</b>, Xu Y, Luo Y, Kruse A, Yang X, Kontsedalov S, Lebedev G, Fisher TW, Nelson DR, Hunter WB, Brown JK, Jander G, Cilia M, Douglas AE, Ghanim M, Simmons AM, Wintermantel WM*, Ling K-S*, <b>Fei Z*</b> (2016) <a href=https://doi.org/10.1186/s12915-016-0321-y target=_blank>The draft genome of whitefly <i>Bemisia tabaci</i> MEAM1, a global crop pest, provides novel insights into virus transmission, host adaptation, and insecticide resistance.</a> <b><i>BMC Biology</i></b> 14:110</li><br>
+
+<li>Wang L, Hu X, <b>Jiao C</b>, Li Z, <b>Fei Z</b>, Yan X, Liu C, Wang Y, Wang X (2016) <a href= https://bmcgenomics.biomedcentral.com/articles/10.1186/s12864-016-3193-1 target=_blank>Transcriptome analyses of seed development in grape hybrids reveals a possible mechanism influencing seed size.</a> <b><i>BMC Genomics</i></b> 17:898</li><br>
+
+<li>Zhang B, Tiemana DK, <b>Jiao C</b>, Xu Y, Chen K, <b>Fei Z</b>, Giovannoni JJ, Klee HJ (2016) <a href=http://www.pnas.org/content/113/44/12580.abstract target=_blank>Chilling-induced tomato flavor loss is associated with altered volatile synthesis and transient changes in DNA methylation.</a> <b><i>Proc Natl Acad Sci U S A</i></b> 113:12580-12585.</li><br>
+
+<li>Liu Z, Alseek S, Brotman Y, <b>Zheng Y</b>, <b>Fei Z</b>, Tieman D, Giovannoni J, Fernie A and Klee H (2016) <a href=http://journal.frontiersin.org/article/10.3389/fpls.2016.01671/abstract target=_blank>Identification of a <i>Solanum pennellii</i> chromosome 4 fruit flavor and nutritional quality-associated metabolite QTL.</a> <b><i>Front Plant Sci</i></b> 7:1671.</li><br>
+
+<li><b>Zheng Y, Jiao C, Sun H</b>, Rosli HG, Pombo MA, Zhang P, Banf M, Dai X, Martin GB, Giovannoni JJ, Zhao PX, Rhee SY, <b>Fei Z*</b> (2016) <a href=http://authors.elsevier.com/sd/article/S1674205216302234 target=_blank>iTAK: a program for genome-wide prediction and classification of plant transcription factors, transcriptional regulators, and protein kinases.</a> <i><b>Molecular Plant</i></b> 9:1667-1670.</li><br>
+
+<li>Bordiya Y<sup>#</sup>, <b>Zheng Y<sup>#</sup></b>, Nam JC, Bonnard AC, Choi HW, Lee BK, Kim JK, Klessig D, <b>Fei Z</b>*, Kang HG* (2016) <a href=http://www.ncbi.nlm.nih.gov/pubmed/27482822 target=_blank>Pathogen infection and MORC proteins affect chromatin accessibility of transposable elements and expression of their proximal genes in Arabidopsis.</a> <i><b>Mol Plant Microbe Interact</i></b> 29:674-687</li><br>
+
+<li>Gao Y, Liu C, Li X, Xu H, Liang Y, Ma N, <b>Fei Z</b>, Gao J, Jiang CZ, Ma C (2016) <a href=https://www.ncbi.nlm.nih.gov/pubmed/27695465 target=_blank>Transcriptome profiling of petal abscission zone and functional analysis of an Aux/IAA family gene RhIAA16 involved in petal shedding in rose</a>. <b><i>Front Plant Sci</i></b> 7:1375</li><br>
+
+<li>Pankratov I, McQuinn R, Schwartz J, Bar E, <b>Fei Z</b>, Lewinsohn E, Zamir D, Giovannoni JJ, Hirschberg J (2016) <a href=http://www.ncbi.nlm.nih.gov/pubmed/27288653 target=_blank>Fruit carotenoid deficient mutants in tomato reveal a function of the plastidial isopentenyl diphosphate isomerase (IDI1) in carotenoid biosynthesis.</a> <i><b>Plant J</b></i> 88:82-94</li><br>
+
+<li>Zhang Z, <b>Zheng Y</b>, Ham B-K, Chen J, Yoshida A, Kochian LV, <b>Fei Z</b>, Lucas WJ (2016) <a href=http://www.nature.com/articles/nplants201633 target=_blank>Vascular-mediated signalling involved in early phosphate stress response in plants</a>. <b><i>Nature Plants</i></b> 2:16033</li><br>
+
+<li>Chen J<sup>#</sup>, <b>Zheng Y<sup>#</sup></b>, Qin L, Wang Y, Chen L, He Y, <b>Fei Z</b>, Lu G (2016) <a href=http://www.ncbi.nlm.nih.gov/pubmed/27068118 target=_blank>Identification of miRNAs and their targets through high-throughput sequencing and degradome analysis in male and female </i>Asparagus officinalis</i>.</a> <b><i>BMC Plant Biol</i></b> 16:80</li><br>
+
+<li>Worley JN, Pombo MA, <b>Zheng Y</b>, Dunham DM, Myers CR, <b>Fei Z</b>, Martin GB (2016) <a href=http://www.ncbi.nlm.nih.gov/pubmed/26976140 target=_blank>A novel method of transcriptome interpretation reveals a quantitative suppressive effect on tomato immune signaling by two domains in a single pathogen effector protein.</a> <b><i>BMC Genomics</i></b> 17:229</li><br>
+
+<li>Elitzur T, Yakir E, Quansah L, <b>Fei Z</b>, Vrebalov JT, Khayat E, Giovannoni JJ, Friedman H (2016) <a href=http://www.ncbi.nlm.nih.gov/pubmed/26956665 target=_blank>Banana MaMADS transcription factors are necessary for fruit ripening and molecular tools to promote shelf-life and food security.</a> <b><i>Plant Physiol</i></b> 171:380-391</li><br>
+
+<li>Yin X, Singer SD, Qiao H, Liu Y, <b>Jiao C</b>, Wang H, Li Z, <b>Fei Z</b>, Wang Y, Fan C, Wang X (2016) <a href=http://journal.frontiersin.org/article/10.3389/fpls.2016.00503/full target=_blank>Insights into the mechanisms underlying ultraviolet-C induced resveratrol metabolism in grapevine (<i>V. amurensis</i> Rupr.) cv. 'Tonghua-3'.</a> <b><i>Front Plant Sci</i></b> 7:503</li><br>
+
+<li>Tang W<sup>#</sup>, <b>Zheng Y<sup>#</sup></b>, Dong J, Yu J, Yue J, Liu F, Guo X, Huang S, Wisniewski M, Sun J, Niu X, Ding J, Liu J, <b>Fei Z</b> and Liu Y (2016) <a href=http://journal.frontiersin.org/article/10.3389/fpls.2016.00335/full target=_blank>Comprehensive transcriptome profiling reveals long noncoding RNA expression and alternative splicing regulation during fruit development and ripening in kiwifruit (<i>Actinidia chinensis</i>).</a> <b><i>Front Plant Sci</i></b> 7:335</li><br>
+
+<li>Jing X, White TA, Luan J, <b>Jiao C</b>, <b>Fei Z</b>, Douglas AE (2016) <a href=http://www.ncbi.nlm.nih.gov/pubmed/26896054 target=_blank>Evolutionary conservation of candidate osmoregulation genes in plant phloem sap-feeding insects.</a> <b><i>Insect Mol Biol</i></b> 25:251-258</li><br>
+
+<li>Kim ES, Choe G, Sebastian J, Ryu KH, Mao L, <b>Fei Z</b>, Lee JY (2016) <a href=http://www.ncbi.nlm.nih.gov/pubmed/26968317 target=_blank>HAWAIIAN SKIRT regulates the quiescent center-independent meristem activity in Arabidopsis roots.</a> <b><i>Physiol Plant</i></b> 157:221-233</li></br>
+
+<li>Wang F, Sun Y, Ruan J, Chen R, Chen X, Chen C, Kreuze JF, <b>Fei Z</b>, Zhu X, Gao S (2016) <a href=http://www.hindawi.com/journals/bmri/2016/2596782/ target=_blank>Using small RNA deep sequencing data to detect human viruses.</a> <b><i>BioMed Research International</i></b> 2016:2596782</li><br>
+
+<li>Duan N, <b>Sun H</b>, Wang N, <b>Fei Z</b>, Chen X (2016) <a href=http://www.ncbi.nlm.nih.gov/pubmed/26539696 target=_blank>The complete mitochondrial genome sequence of <i>Malus hupehensis</i> var.</i> pinyiensis</i>.</a> <b><i>Mitochondrial DNA</i></b> 27:2905-2906</li><br>
+
+<li>Zuluaga AP, Vega-Arreguin JC, <b>Fei Z</b>, Ponnala L, Lee SJ, Matas AJ, Patev S, Fry WE, Rose JK (2016) <a href=http://onlinelibrary.wiley.com/doi/10.1111/mpp.12263/abstract target=_blank>Transcriptional dynamics of <i>Phytophthora infestans</i> during sequential stages of hemibiotrophic infection of tomato.</a> <b><i>Mol Plant Pathol</i></b> 17:29.41</li><br>
+
+<li>Zuluaga AP, Vega-Arreguin JC, <b>Fei Z</b>, Matas AJ, Patev S, Fry WE, Rose JKC (2016) <a href=http://onlinelibrary.wiley.com/doi/10.1111/mpp.12260/abstract target=_blank>Analysis of the tomato leaf transcriptome during successive hemibiotrophic stages of a compatible interaction with the oomycete pathogen <i>Phytophthora infestans</i></a>. <b><i>Molecular Plant Pathology</i></b> 17:42-54</li><br>
+</ul>
+
+<b>2015<!-- (36)--></b>
+<ul>
+
+<li>Zhang G, Ren Y, <b>Sun H</b>, Guo S, Zhang F, Zhang J, Zhang H, Jia Z, <b>Fei Z</b>, Xu Y, Li H (2015) <a href=http://bmcgenomics.biomedcentral.com/articles/10.1186/s12864-015-2312-8 target=_blank>A high-density genetic map for anchoring genome sequences and identifying QTLs associated with dwarf vine in pumpkin (<i>Cucurbita maxima</i> Duch.).</a> <b><i>BMC Genomics</i></b> 16:1101</li><br>
+
+<li>Yue J, Liu J, Ban R, Tang W, Deng L, <b>Fei Z</b>, Liu Y (2015) <a href=http://database.oxfordjournals.org/content/2015/bav113.abstract target=_blank>Kiwifruit Information Resource (KIR): a comparative platform for kiwifruit genomics.</a> <b><i>Database</i></b> 2015:bav113</li><br>
+
+<li>Zhang Z, Jiang S, Wang N, Li M, Ji X, Sun S, Liu J, Wang D, Xu H, Qi S, Wu S, <b>Fei Z</b>, Feng S, Chen X (2015) <a href=http://www.ncbi.nlm.nih.gov/pubmed/26719904 target=_blank>Identification of differentially expressed genes associated with apple fruit ripening and softening by suppression subtractive hybridization.</a> <b><i>PLoS One</i></b> 10:e0146061</li><br>
+
+<li>Padmanabhan C, <b>Zheng Y</b>, Li R, <b>Fei Z</b>, Ling KS (2015) <a href=http://www.ncbi.nlm.nih.gov/pubmed/26722014 target=_blank>Complete genome sequence of Southern tomato virus naturally infecting tomatoes in Bangladesh.</a> <b><i>Genome Announc</i></b> 3:e01522-15</li><br>
+
+<li>Padmanabhan C, <b>Zheng Y</b>, Li R, Martin GB, <b>Fei Z</b>, Ling KS (2015) <a href=http://www.ncbi.nlm.nih.gov/pubmed/26701086 target=_blank>Complete genome sequence of a tomato-infecting tomato mottle mosaic virus in New York.</a> <b><i>Genome Announc</i></b> 3:e01523-15</li><br>
+
+<li>Xu C<sup>#</sup>, <b>Jiao C</b><sup>#</sup>, <b>Zheng Y, Sun H, Liu W</b>, Cai X, Wang X, Liu S, Xu Y, Mou B, Dai S, <b>Fei Z</b>*, Wang Q* (2015) <a href=http://www.ncbi.nlm.nih.gov/pubmed/26635144 target=_blank>De novo and comparative transcriptome analysis of cultivated and wild spinach.</a> <b><i>Scientific Reports</i></b> 5:17706</li><br>
+
+<li>Yang Y<sup>#</sup>, <b>Mao L</b><sup>#</sup>, Jittayasothorn Y, Kang Y, <b>Jiao C, Fei Z</b>*, Zhong GY* (2015) <a href=http://www.ncbi.nlm.nih.gov/pubmed/26480945 target=_blank>Messenger RNA exchange between scions and rootstocks in grafted grapevines.</a> <b><i>BMC Plant Biology</i></b> 15:251.</li><br>
+
+<li>Chayut N, Yuan H, Ohali S, Meir A, Yeselson Y, Portnoy V, <b>Zheng Y, Fei Z</b>,  Lewinsohn E, Katzir N, Schaffer AA, Gepstein S, Burger J, Li L, Tadmor Y (2015) <a href=http://www.biomedcentral.com/1471-2229/15/274/abstract target=_blank>A bulk segregant transcriptome analysis reveals metabolic and cellular processes associated with <i>Orange</i> allelic variation and fruit &beta;-carotene accumulation in melon fruit.</a> <b><i>BMC Plant Biology</i></b> 15:274</li><br>
+
+<li>Holl HM, <b>Gao S, Fei Z</b>, Andrews C, Brooks SA (2015) <a href=http://www.ncbi.nlm.nih.gov/pubmed/26432030 target=_blank>Generation of a de novo transcriptome from equine lamellar tissue.</a> <b><i>BMC Genomics</i></b> 16:739</li><br>
+
+<li>Padmanabhan C, <b>Zheng Y</b>, Li R, Sun SE, Zhang D, Liu Y, <b>Fei Z</b>, Ling KS (2015) <a href=http://www.ncbi.nlm.nih.gov/pubmed/26494671 target=_blank>Complete Genome Sequence of Southern tomato virus Identified in China Using Next-Generation Sequencing.</a> <b><i>Genome Announc</i></b> 3:e01226-15.</li><br>
+
+<li>Luan JB, <b>Chen W</b>, Hasegawa DK, Simmons AM, Wintermantel WM, Ling KS, <b>Fei Z</b>, Liu SS, Douglas AE (2015) <a href=http://www.ncbi.nlm.nih.gov/pubmed/26377567 target=_blank>Metabolic coevolution in the bacterial symbiosis of whiteflies and related plant sap-feeding insects.</a> <b><i>Genome Biol Evol</i></b> 7:2635-2647</li><br>
+
+<li>Feder A, Burger J, <b>Gao S</b>, Lewinsohn E, Katzir N, Schaffer AA, Meir A, Davidovich-Rikanati R, Portnoy V, Gal-On A, <b>Fei Z</b>, Kashi Y, Tadmor Y (2015) <a href=http://www.ncbi.nlm.nih.gov/pubmed/26358418 target=_blank>A Kelch domain-containing F-box coding gene negatively regulates flavonoid accumulation in <i>Cucumis melo</i> L.</a> <b><i>Plant Physiol</i></b> 169:1714-1726</li><br>
+
+<li><b>Chen W</b><sup>#</sup>, Hasegawa DK<sup>#</sup>, Arumuganathan K, Simmons AM, Wintermantel WM, <b>Fei Z</b>*, Ling KS* (2015) <a href=http://www.mdpi.com/2075-4450/6/3/704 target=_blank>Estimation of the whitefly <i>Bemisia tabaci</i> genome size based on k-mer and flow cytometric analyses.</a> <b><i>Insects</i></b> 6:704-715</li><br>
+
+<li>Yuan H, Owsiany K, Sheeja TE, Zhou X, Rodriguez C, Li Y, Chayut N, Yang Y, Welsch R, Thannhauser T, Parthasarathy M, Xu Q, Deng X, <b>Fei Z</b>, Schaffer AA, Katzir N, Burger J, Tadmor Y, Li L (2015) <a href=http://www.ncbi.nlm.nih.gov/pubmed/26224804 target=_blank>A single amino acid substitution in an ORANGE protein promotes carotenoid overaccumulation in Arabidopsis.</a> <b><i>Plant Physiol</i></b> 169:421-431</li><br>
+
+<li>Spiegelman Z, Ham BK, Zhang Z, Toal TW, Brady SM, <b>Zheng Y, Fei Z</b>, Lucas WJ, Wolf S (2015) <a href=http://onlinelibrary.wiley.com/doi/10.1111/tpj.12932/abstract target=_blank>A tomato phloem-mobile protein regulates the shoot:root ratio by mediating auxin response in distant organs.</a> <b><i>Plant J</i></b> 83:853-863</li><br>
+
+<li>Wang N, <b>Zheng Y</b>, Duan N, Zhang Z, Ji X, Jiang S, Sun S, Yang L, <b>Bai Y, Fei Z</b>, Chen X (2015) <a href=http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0133468 target=_blank>Comparative transcriptomes analysis of red- and white-fleshed apples in an F1 population of <i>Malus sieversii f. niedzwetzkyana</i> crossed with <i>M. domestica</i> 'Fuji'.</a> <b><i>PLoS One</i></b> 10:e0133468</li><br>
+
+<li>Li R, <b>Zheng Y, Fei Z</b>, Ling KS (2015) <a href=http://genomea.asm.org/content/3/4/e00775-15.short target=_blank>Complete genome sequence of an emerging melon necrotic spot virus isolate infecting greenhouse cucumber in North America.</a> <b><i>Genome Announc</i></b> 3:e00775-15</li><br>
+
+<li>Sun L, Rodriguez GR, Clevenger JP, Illa-Berenguer E, Lin J, Joshua J, Blakeslee JJ, <b>Liu W, Fei Z</b>, Wijeratne A, Meulia T, van der Knaap E (2015) <a href=https://academic.oup.com/jxb/article/66/20/6471/553879y target=_blank>Candidate gene selection and detailed morphological evaluations of fs8.1, a quantitative trait locus controlling tomato fruit shape.</a> <b><i>Journal Experimental Botany</i></b> 66:6471-6482</li><br>
+
+<li>Pattison RJ<sup>#</sup>, Csukasi F<sup>#</sup>, <b>Zheng Y, Fei Z</b>, van der Knaap E, Catala C (2015) <a href=http://www.ncbi.nlm.nih.gov/pubmed/26099271 target=_blank>Comprehensive tissue-specific transcriptome analysis reveals distinct regulatory programs during early tomato fruit development.</a> <b><i>Plant Physiol</i></b> 168:1684-1701</li><br>
+
+<li>Wu T, Wang Y, <b>Zheng Y, Fei Z</b>, Dandekar AM, Xu K, Han Z, Cheng L (2015) <a href=http://www.ncbi.nlm.nih.gov/pubmed/26076968 target=_blank>Suppressing sorbitol synthesis substantially alters the global expression profile of stress response genes in apple (<i>Malus domestica</i>) leaves.</a> <b><i>Plant Cell Physiol</i></b> 56:1748-1761</li><br>
+
+<li>Guo S, <b>Sun H</b>, Zhang H, Liu J, Ren Y, Gong G, <b>Jiao C, Zheng Y,</b> Yang W, <b>Fei Z</b>*, Xu Y* (2015) <a href=http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0130267 target=_blank>Comparative transcriptome analysis of cultivated and wild watermelon during fruit development.</a> <b><i>PLoS ONE</i></b> 10:e0130267</li><br>
+
+<li>Zhang Z<sup>#</sup>, <b>Mao L</b><sup>#</sup>, Chen H, Bu F, Li G, Sun J, Li S, <b>Sun H, Jiao C, Blakely R</b>, Pan J, Cai R, Luo R, Van de Peer Y, Jacobsen E, <b>Fei Z</b>*, Huang S* (2015) <a href=http://www.ncbi.nlm.nih.gov/pubmed/26002866 target=_blank>Genome-wide mapping of structural variations reveals a copy number variant that determines reproductive morphology in cucumber.</a> <b><i>Plant Cell</i></b> 27:1595-1604</li><br>
+
+<li><b>Zheng Y</b><sup>#</sup>, Wang Y<sup>#</sup>, Wu J, Ding B*, <b>Fei Z</b>* (2015) <a href=http://www.biomedcentral.com/1741-7007/13/32 target=_blank>A dynamic evolutionary and functional landscape of plant phased small interfering RNAs.</a> <b><i>BMC Biology</i></b> 13:32</li><br>
+
+<li>Shinozaki Y, Hao S, Kojima M, Sakakibara H, Ozeki-Iida Y, <b>Zheng Y</b>, <b>Fei Z</b>, Zhong S, Giovannoni JJ, Rose JK, Okabe Y, Heta Y, Ezura H, Ariizumi T (2015) <a href=http://www.ncbi.nlm.nih.gov/pubmed/25996898 target=_blank>Ethylene suppresses tomato fruit set through modification of gibberellin metabolism.</a> <b><i>Plant J</i></b> 83:237-251</li><br>
+
+<li>Li R, <b>Zheng Y, Fei Z</b>, Ling K-S (2015) <a href=http://genomea.asm.org/content/3/3/e00452-15.full target=_blank>First complete genome sequence of an emerging <i>cucumber green mottle mosaic virus</i> isolate in North America.</a> <b><i>Genome Announc</i></b> 3:e00452-15</li><br>
+
+<li><b>Jiao C</b>, Gao M, Wang X*, <b>Fei Z</b>* (2015) <a href=http://www.biomedcentral.com/1471-2164/16/223/abstract target=_blank>Transcriptome characterization of three wild Chinese Vitis uncovers a large number of distinct disease related genes.</a> <b><i>BMC Genomics</i></b> 16:223</li><br>
+
+<li>Frank MH, Edwards MB, Schultz ER, McKain MR, <b>Fei Z</b>, Sorensen I, Rose JKC, Scanlon MJ (2015) <a href=http://onlinelibrary.wiley.com/doi/10.1111/nph.13407/abstract target=_blank>Dissecting the molecular signatures of apical cell-type shoot meristems from two ancient land plant lineages.</a> <b><i>New Phytologist</i></b> 207:893-904</li><br>
+
+<li>Tzuri G, Zhou X, Chayut N, Yuan H, Portnoy V, Meir A, Sa'ar U, Baumkoler F, Mazourek M, Lewinsohn E, <b>Fei Z</b>, Schaffer AA, Gepstein S, Li L, Burger J, Katzir N, Tadmor Y (2015) <a href=http://onlinelibrary.wiley.com/doi/10.1111/tpj.12814/abstract target=_blank>A "golden" SNP in CmOr governs fruit flesh color of melon (<i>Cucumis melo</i>).</a> <b><i>Plant J</i></b> 82:267-279</li><br>
+
+<li>Freilich S, Lev S, Gonda I, Reuveni E, Portnoy V, Oren E, Lohse M, Galpaz N, Bar E, Tzuri G, Wissotsky G, Meir A, Burger J, Tadmor Y, Schaffer A, <b>Fei Z</b>, Giovannoni J, Lewinsohn E, Katzir N (2015) <a href=http://www.biomedcentral.com/1471-2229/15/71/abstract target=_blank>Systems approach for exploring the intricate associations between sweetness, color and aroma in melon fruits.</a> <b><i>BMC Plant Biology</i></b> 15:71</li><br>
+
+<li>Cheng C, <b>Jiao C</b>, Singer SD, Gao M, Xu X, Zhou Y, Li Z, <b>Fei Z</b>, Wang Y, Wang X (2015) <a href=http://www.biomedcentral.com/1471-2164/16/128/abstract target=_blank>Gibberellin-induced changes in the transcriptome of grapevine (<i>Vitis labrusca x V. vinifera</i>) cv. Kyoho flowers.</a> <b><i>BMC Genomics</i></b> 16:128</li><br>
+
+<li>Zhang J, Yuan H, <b>Fei Z</b>, Pogson BJ, Zhang L, Li L (2015) <a href=http://link.springer.com/article/10.1007%2Fs00425-015-2262-z target=_blank>Molecular characterization and transcriptome analysis of orange head Chinese cabbage (<i>Brassica rapa</i> L. ssp. pekinensis).</a> <b><i>Planta</i></b> 241:1381-1394</li><br>
+
+<li>Li R, <b>Gao S</b>, Berendsen S, <b>Fei Z</b>, Ling KS (2015) <a href=http://genomea.asm.org/content/3/1/e01583-14.abstract target=_blank>Complete genome sequence of a novel genotype of squash mosaic virus infecting squash in Spain.</a> <b><i>Genome Announc</i></b> 3:e01583-14.</li><br>
+
+<li>Li N, Chen YR, Ding Z, Li P, Wu Y, Zhang A, Yu S, Giovannoni JJ, <b>Fei Z</b>, Zhang W, Xiang JZ, Xu C, Liu B, Zhong S (2015) <a href=http://www.nature.com/srep/2015/150126/srep08015/full/srep08015.html target=_blank>Nonuniform gene expression pattern detected along the longitudinal axis in the matured rice leaf.</a> <b><i>Scientific Reports</i></b> 5:8015</li><br>
+
+<li>Manohar M, Tian M, Moreau M, Park SW, Choi HW, <b>Fei Z</b>, Friso G, Asif M, Manosalva P, von Dahl CC, Shi K, Ma S, Dinesh-Kumar SP, O'Doherty I, Schroeder FC, van Wijk KJ, Klessig DF (2015) <a href=http://journal.frontiersin.org/Journal/10.3389/fpls.2014.00777/abstract target=_blank>Identification of multiple salicylic acid-binding proteins using two high throughput screens.</a> <b><i>Frontiers in Plant Science</i></b> 5:777</li><br>
+
+<li>Childers R, Danies G, Myers KL, <b>Fei Z</b>, Small IM, Fry W (2015) <a href=http://www.ncbi.nlm.nih.gov/pubmed/25226526 target=_blank>Acquired resistance to mefenoxam in sensitive isolates of <i>Phytophthora infestans</i>.</a> <b><i>Phytopathology</i></b> 105:342-349</li><br>
+
+<li>Chen S, Kim C, Lee JM, Lee HA, <b>Fei Z</b>, Wang L, Apel K (2015) <a href=http://www.ncbi.nlm.nih.gov/pubmed/25292361 target=_blank>Blocking the QB-binding site of photosystem II by tenuazonic acid, a non-host-specific toxin of <i>Alternaria alternata</i>, activates singlet oxygen-mediated and EXECUTER-dependent signaling in Arabidopsis.</a> <b><i>Plant Cell Environ</i></b> 38:1069-1080</li><br>
+</ul>
+
+<b>2014<!-- (14)--></b>
+<ul>
+<li>Li F, Cheng C, Cui F, de Oliveira MV, Yu X, Meng X, Intorne AC, Babilonia K, Li M, Li B, Chen S, Ma X, Xiao S, <b>Zheng Y</b>, <b>Fei Z</b>, Metz RP, Johnson CD, Koiwa H, Sun W, Li Z, Filho GA, Shan L, He P (2014) <a href=http://www.cell.com/cell-host-microbe/abstract/S1931-3128%2814%2900396-5 target=_blank>Modulation of RNA polymerase II phosphorylation downstream of pathogen perception orchestrates plant immunity.</a> <b><i>Cell Host Microbe</i></b> 16:748-758</li><br>
+
+<li>Lin T, Zhu G, Zhang J, Xu X, Yu Q, Zheng Z, Zhang Z, Lun Y, Li S, Wang X, Huang Z, Li J, Zhang C, Wang T, Zhang Y, Wang A, Zhang Y, Lin K, Li C, Xiong G, Xue Y, Mazzucato A, Causse M, <b>Fei Z</b>, Giovannoni JJ, Chetelat RT, Zamir D, Stadler T, Li J, Ye Z, Du Y, Huang S (2014) <a href=http://www.ncbi.nlm.nih.gov/pubmed/25305757 target=_blank>Genomic analyses provide insights into the history of tomato breeding.</a> <b><i>Nature Genetics</i></b> 46:1220-1226</li><br>
+
+<li>Pombo MA, <b>Zheng Y</b>, Fernandez-Pozo N, Dunham DM, <b>Fei Z</b>, Martin GB (2014) <a href=http://www.ncbi.nlm.nih.gov/pubmed/25323444 target=_blank>Transcriptomic analysis reveals tomato genes whose expression is induced specifically during effector-triggered immunity and identifies the Epk1 protein kinase which is required for the host response to three bacterial effector proteins.</a> <b><i>Genome Biology</i></b> 15:492</li><br>
+
+<li>Padmanabhan C, <b>Gao S</b>, Li R, Zhang S, <b>Fei Z</b>, Ling K-S (2014) <a href=http://genomea.asm.org/content/2/6/e01138-14.abstract target=_blank>Complete genome sequence of an emerging genotype of Tobacco streak virus in the United States.</a> <b><i>Genome Announc</i></b> 2:e01138-14</li><br>
+
+<li>Chen Y-R, Zhong S, <b>Fei Z, Gao S,</b> Zhang S, Li Z, Wang P, Blissard GW (2014) <a href=https://jvi.asm.org/content/88/23/13781.abstract target=_blank>Transcriptome responses of the host, <i>Trichoplusia ni</i>, to infection by the baculovirus, Autographa californica Multiple Nucleopolyhedrovirus (AcMNPV).</a> <b><i>J Virology</i></b> 88:13781-13797</li><br>
+
+<li>Bolger A, Scossa F, Bolger ME, Lanz C, Maumus F, Tohge T, Quesneville H, Alseekh S, Sorensen I, Lichtenstein G, Fich EA, Conte M, Keller H, Schneeberger K, Schwacke R, Ofner I, Vrebalov J, Xu Y, Osorio S, Aflitos SA, Schijlen E, Jimenez-Gomez JM, Ryngajllo M, Kimura S, Kumar R, Koenig D, Headland LR, Maloof JN, Sinha N, van Ham RC, Lankhorst RK, <b>Mao L</b>, Vogel A, Arsova B, Panstruga R, <b>Fei Z</b>, Rose JK, Zamir D, Carrari F, Giovannoni JJ, Weigel D, Usadel B, Fernie AR (2014) <a href=http://www.ncbi.nlm.nih.gov/pubmed/25064008 target=_blank>The genome of the stress-tolerant wild tomato species <i>Solanum pennellii</i>.</a> <b><i>Nature Genetics</i></b> 46:1034-1038</li><br>
+
+<li>Cohen S<sup>#</sup>, Itkin M<sup>#</sup>, Yeselson Y, Tzuri G, Portnoy V, Harel-Baja R, Lev S, Sa'ar U, Davidovitz-Rikanati R, Baranes N, Bar E, Wolf D, Petreikov M, Shen S, Ben-Dor S, Rogachev I, Aharoni A, Ast T, Schuldiner M, Belausov E, Eshed R, Ophir R, Sherman A, Frei B, Neuhaus HE, Xu Y, <b>Fei Z</b>, Giovannoni J, Lewinsohn E, Tadmor Y, Paris HS, Katzir N, Burger Y, Schaffer AA (2014) <a href=https://www.nature.com/articles/ncomms5026 target=_blank>The PH gene determines fruit acidity and contributes to the evolution of sweet melons</a>. <b><i>Nature Communications</i></b> 5:4026</li><br>
+
+<li>Yang Y, Ma C, Xu Y, Wei Q, Imtiaz M, Lan H, <b>Gao S</b>, Cheng L, Wang M, <b>Fei Z</b>, Hong B, Gao J (2014) <a href=http://www.ncbi.nlm.nih.gov/pubmed/24858937 target=_blank>A zinc finger protein regulates flowering time and abiotic stress tolerance in chrysanthemum by modulating gibberellin biosynthesis.</a> <b><i>Plant Cell</i></b> 26:2038-2054</li><br>
+
+<li>Liu N, Wu S, Van Houten J, Wang Y, Ding B, <b>Fei Z</b>, Clarke TH, Reed JW, van der Knaap E (2014) <a href=http://www.ncbi.nlm.nih.gov/pubmed/24723401 target=_blank>Down-regulation of AUXIN RESPONSE FACTORS 6 and 8 by microRNA 167 leads to floral development defects and female sterility in tomato.</a> <b><i>Journal Experimental Botany</i></b> 65:2507-2520</li><br>
+
+<li>Gao M, Zhang H, Guo C, Cheng C, Guo R, <b>Mao L</b>, <b>Fei Z</b>, Wang X (2014) <a href=http://link.springer.com/article/10.1007/s11105-014-0723-3 target=_blank>Evolutionary and expression analyses of basic zipper transcription factors in the highly homozygous model grape PN40024 (<i>Vitis vinifera</i> L.).</a> <b><i>Plant Molecular Biology Reporter</i></b> 32:1085-1102</li><br>
+
+<li>Milner MJ, Mitani-Ueno N, Yamaji N, Yokosho K, Craft E, <b>Fei Z</b>, Ebbs S, Zambrano MC, Ma JF, Kochian LV (2014) <a href=http://www.ncbi.nlm.nih.gov/pubmed/24547775 target=_blank>Root and shoot transcriptome analysis of two ecotypes of Noccaea caerulescens uncovers the role of NcNramp1 in Cd hyperaccumulation.</a> <b><i>Plant J</i></b> 78:398-410</li><br>
+
+<li>Nguyen CV, Vrebalov JT, Gapper NE, <b>Zheng Y</b>, Zhong S, <b>Fei Z</b>, Giovannoni JJ (2014) <a href=http://www.plantcell.org/content/26/2/585 target=_blank>Tomato GOLDEN2-LIKE transcription factors reveal molecular gradients that function during fruit development and ripening.</a> <b><i>Plant Cell</i></b> 26:585-601</li><br>
+
+<li>Li R, <b>Fei Z</b>, Ling K-S (2014) <a href=http://link.springer.com/article/10.1007%2Fs00705-013-1830-4 target=_blank>Molecular and biological properties of tomato necrotic stunt virus and development of a sensitive real-time RT-PCR assay.</a> <b><i>Archives Virology</i></b> 159:353-358</li><br>
+
+<li>Sorensen I, <b>Fei Z</b>, Andreas A, Willats WG, Domozych DS, Rose JK (2014) <a href=http://onlinelibrary.wiley.com/doi/10.1111/tpj.12375/abstract target=_blank>Stable transformation and reverse genetic analysis of <i>Penium margaritaceum</i>: A platform for studies of Charophyte green algae, the immediate ancestors of land plants.</a> <b><i>Plant J</i></b> 77:339-351</li><br>
+</ul>
+
+<b>2013<!-- (22)--></b>
+<ul>
+<li>Rosli HG, <b>Zheng Y</b>, Pombo MA, Zhong S, Bombarely A, <b>Fei Z</b>, Collmer A, Martin GB (2013) <a href=http://genomebiology.com/2013/14/12/R139/abstract target=_blank>Transcriptomics-based screen for genes induced by flagellin and repressed by pathogen effectors identifies a cell wall-associated kinase involved in plant immunity.</a> <b><i>Genome Biology</i></b> 14:R139</li><br>
+
+<li>Grassi S, Piro G, Lee JM, <b>Zheng Y</b>, <b>Fei Z</b>, Dalessandro G, Giovannoni JJ, S Lenucci MS (2013) <a href=http://www.biomedcentral.com/1471-2164/14/781/abstract target=_blank>Comparative genomics reveals candidate carotenoid pathway regulators of ripening watermelon fruit.</a> <b><i>BMC Genomics</i></b> 14:781</li><br>
+
+<li>Qi J, Liu X, Shen D, Miao H, Xie B, Li X, Zeng P, Wang S, Shang Y, Gu X, Du Y, Li Y, Lin T, Yuan J, Yang X, Chen J, Chen H, Xiong X, Huang K, <b>Fei Z</b>, <b>Mao L</b>, Tian L, Stadler T, Renner SS, Kamoun S, Lucas WJ, Zhang Z, Huang S (2013) <a href=http://dx.doi.org/10.1038/ng.2801 target=_blank>A genomic variation map provides insights into the genetic basis of cucumber domestication and diversity.</a> <b><i>Nature Genetics</i></b> 45: 1510-1515 </li><br>
+
+<li><b>Shen D</b><sup>#</sup>, <b>Sun H</b><sup>#</sup>, <b>Huang M</b>, <b>Zheng Y</b>, Qiu Y, Li X*, <b>Fei Z</b>* (2013) <a href=http://www.biomedcentral.com/1471-2164/14/721/abstract target=_blank>Comprehensive analysis of expressed sequence tags from cultivated and wild radish (Raphanus spp.).</a> <b><i>BMC Genomics</i></b> 14:721</li></br>
+
+<li>Huang S<sup>#</sup>, Ding J<sup>#</sup>, Deng D<sup>#</sup>, Tang W<sup>#</sup>, <b>Sun H</b><sup>#</sup>, Liu D<sup>#</sup>, Zhang L<sup>#</sup>, Niu X, Zhang X, Meng M, Yu J, Liu J, Han Y, Shi W, Zhang D, Cao S, Wei Z, Cui Y, Xia Y, Zeng H, <b>Bao K</b>, Lin L, Min Y, Zhang H, Miao M, Tang X, Zhu Y, Sui Y, Li G, Sun H, Yue J, Sun J, Liu F, Zhou L, Lei L, Zheng X, Liu M, Huang L, Song J, Xu C, Li J, Ye K, Zhong S, Lu B-R, He G, Xiao F, Wang H-L, Zheng H*, <b>Fei Z</b>*, Liu Y* (2013) <a href=https://www.nature.com/articles/ncomms3640 target=_blank>Draft genome of the kiwifruit <i>Actinidia chinensis</i></a>. <i><b>Nature Communications</b></i> 4:2640</li><br>
+
+<li>Li R, <b>Gao S, Fei Z,</b> Ling K-S (2013) <a href=http://genomea.asm.org/content/1/5/e00794-13.full target=_blank>Complete genome sequence of a new Tobamovirus naturally infecting tomatoes in Mexico.</a> <b><i>Genome Announc</i></b> 1:e00794-13</li><br>
+
+<li>Xu Y<sup>#</sup>, <b>Gao S</b><sup>#</sup>, Yang Y, <b>Huang M</b>, Cheng L, Wei Q, <b>Fei Z</b>, Gao J, Hong B (2013) <a href=http://www.biomedcentral.com/1471-2164/14/662/abstract target=_blank>Transcriptome sequencing and whole genome expression profiling of chrysanthemum under dehydration stress.</a> <b><i>BMC Genomics</i></b> 14:662</li><br>
+
+<li>Castandet B, Hotto AM, <b>Fei Z</b>, Stern DB (2013) <a href=https://www.sciencedirect.com/science/article/pii/S001457931300608X target=_blank>Strand-specific RNA sequencing uncovers chloroplast ribonuclease functions.</a> <b><i>FEBS Letters</b></i> 587:3096-3101</li><br>
+
+<li>Pei H, Ma N, Tian J, Luo J, Chen J, Li J, <b>Zheng Y</b>, Chen X, <b>Fei Z</b>, Gao J (2013) <a href=http://www.plantphysiol.org/content/163/2/775.abstract target=_blank>A NAC transcription factor controls ethylene-regulated cell expansion in flower petals.</a> <b><i>Plant Physiol</b></i> 163: 775-791</li><br>
+
+<li>Pei H, Ma N, Chen J, <b>Zheng Y</b>, Tian J, Zhang S, <b>Fei</b> Z, Gao J (2013) <a href=http://www.plosone.org/article/info:doi/10.1371/journal.pone.0064290 target=_blank>Integrative analysis of miRNA and mRNA profiles in response to ethylene in rose petals during flower opening.</a> <b><i>PLoS ONE</i></b> 8:e64290</li><br>
+
+<li>Chen D, Xu G, Tang W, Jing Y, Ji Q, <b>Fei Z</b>, Lin R (2013) <a href=http://www.plantcell.org/content/25/5/1657 target=_blank>Antagonistic bHLH/bZIP transcription factors form transcriptional modules that integrate light and reactive oxygen species signaling in Arabidopsis.</a> <b><i>Plant Cell</i></b> 25:1657-1673 </li><br>
+
+<li>Chen Y-R, Zhong S, <b>Fei Z</b>, Hashimoto Y, Xiang J, Zhang S, Blissard GW (2013) <a href=https://jvi.asm.org/content/87/11/6391.abstract target=_blank>The transcriptome of the baculovirus <i>Autographa californica</i> Multiple Nucleopolyhedrovirus (AcMNPV) in <i>Trichoplusia ni</i> cells.</a> <b><i>J Virology</i></b> 87:6391-6405</li><br>
+
+<li>Martin L, <b>Fei Z</b>, Giovannoni J, Rose JK (2013) <a href=https://www.frontiersin.org/articles/10.3389/fpls.2013.00066/full target=_blank>Catalyzing plant science research with RNA-seq.</a> <b><i>Front Plant Sci</i></b> 4:66</li><br>
+
+<li>Hou H, Li J, Gao M, Singer SD, Wang H, <b>Mao L, Fei Z</b>, Wang X (2013) <a href=http://www.plosone.org/article/info:doi/10.1371/journal.pone.0059358 target=_blank>Genomic organization, phylogenetic comparison and differential expression of the SBP-box family genes in grape.</a> <b><i>PLoS ONE</i></b> 8:e59358</li><br>
+
+<li>Gonda I, Lev S, Bar E, Sikron N, Portnoy V, Davidovich-Rikanati R, Burger J, Schaffer AA, Tadmor Y, Giovannonni JJ, <b>Huang M, Fei Z</b>, Katzir N, Fait A, Lewinsohn E (2013) <a href=http://www.ncbi.nlm.nih.gov/pubmed/23402686 target=_blank>Catabolism of L-methionine in the formation of sulfur and other volatiles in melon (<i>Cucumis melo</i> L.) fruit.</a> <b><i>Plant J</i></b> 74:458-472</li><br>
+
+<li>Zhong S<sup>#</sup>*, <b>Fei Z</b><sup>#</sup>*, Chen YR, <b>Zheng Y, Huang M</b>, Vrebalov J, McQuinn R, Gapper N, Liu B, Xiang J, Shao Y, Giovannoni JJ* (2013) <a href=https://www.nature.com/articles/nbt.2462 target=_black>Single-base resolution methylomes of tomato fruit development reveal epigenome modifications associated with ripening.</a> <b><i>Nature Biotechnology</i></b> 31:154-159</li><br>
+
+<li><b>Shen D, Sun H, Huang M, Zheng Y,</b> Li X, <b>Fei Z</b>* (2013) <a href=http://pcp.oxfordjournals.org/content/54/2/e3.full target=_blank>RadishBase: A database for genomics and genetics of radish.</a> <b><i>Plant Cell Physiol</i></b> 54:e3</li><br>
+
+<li>Wang YQ, Yang Y, <b>Fei Z</b>, Yuan H, Fish T, Thannhauser TW, Mazourek M, Kochian LV, Wang X, Li L (2013) <a href=https://academic.oup.com/jxb/article/64/4/949/435108 target=_blank>Proteomic analysis of chromoplasts from six crop species reveals insights into chromoplast function and development.</a> <b><i>Journal Experimental Botany</i></b> 64:949-961</li><br>
+
+<li><b>Guo S</b><sup>#</sup>, Zhang J<sup>#</sup>, <b>Sun H</b><sup>#</sup>, Salse J<sup>#</sup>, Lucas W<sup>#</sup>, Zhang H, <b>Zheng Y, Mao L</b>, Ren Y, Wang Z, Min J, Guo X, Murat F, Ham B, Zhang Z, <b>Gao S, Huang M</b>, Xu Y, Zhong S, Bombarely A, Mueller L, Zhao H, He H, Zhang Y, Zhang Z, Huang S, Tan T, Pang E, Lin K, Hu Q, Kuang H, Ni P, Wang B, Liu J, Kou Q, Hou W, Zou X, Jiang J, Gong G, Klee K, Schoof H, Huang Y, Hu X, Dong S, Liang D, Wang J, Wu K, Xia Y, Zhao X, Zheng Z, Xing M, Liang X, Huang B, Lv T, Wang J, Yin Y, Yi H, Li R, Wu M, Levi A, Zhang X, Giovannoni J, Wang J*, Li Y*, <b>Fei Z</b>*, Xu Y* (2013) <a href=https://www.nature.com/articles/ng.2470 target=_blank>The draft genome of watermelon (<i>Citrullus lanatus</i>) and resequencing of 20 diverse accessions.</a> <b><i>Nature Genetics</i></b> 45:51-58</li><br>
+
+<li>Melo JO, Lana UG, Pineros MA, Alves VM, Guimaraes CT, Liu J, <b>Zheng Y</b>, Zhong S, <b>Fei Z</b>, Maron LG, Schaffert RE, Kochian LV, Magalhaes JV (2013) <a href=http://www.ncbi.nlm.nih.gov/pubmed/22989115 target=_blank>Incomplete transfer of accessory loci influencing SbMATE expression underlies genetic background effects for aluminum tolerance in sorghum.</a> <b><i>Plant J</i></b> 73:276-288</li><br>
+
+<li>Levi A, Thies JA, Wechter P, Harrison HF, Simmons AM, Reddy UK, Nimmakayala P, <b>Fei Z</b> (2013) <a href=https://link.springer.com/article/10.1007/s10722-012-9845-3 target=_blank>High frequency oligonucleotides: targeting active gene (HFO-TAG) markers revealed wide genetic diversity among Citrullus spp. accessions useful for enhancing disease or pest resistance in watermelon cultivars.</a> <b><i>Genetic Resources Crop Evolution</i></b> 60:427-440</li><br>
+
+<li>Matas AJ, <b>Fei Z</b>, Giovannoni JJ, Rose JKC (2013) Developments in tomato transcriptomics. In <i>Genetics, Genomics and Breeding in Fruits and Vegetable Crops</i> Edited by Leidl B, Slade A, Hurst S, Labate JA, Stommel JR. pp382-402</li><br>
+</ul>
+
+<b>2012<!-- (11)--></b>
+<ul>
+<li>The Tomato Genome Consortium (2012) <a href=https://www.nature.com/articles/nature11119 target=_blank>The tomato genome sequence provides insights into fleshy fruit evolution.</a> <b><i>Nature</i></b> 485:635-641 (Authors from Fei lab: Fei Z, Zheng Y, Huang M, Gao S, Mao L)</li><br>
+
+<li>Chen Y-R, <b>Zheng Y</b>, Liu B, Zhong S*, Giovannoni J, <b>Fei Z</b>* (2012) <a href=http://www.ncbi.nlm.nih.gov/pubmed/22995534 target=_blank>A cost-effective method for Illumina small RNA-Seq library preparation using T4 RNA ligase 1 adenylated adapters.</a> <b><i>Plant Methods</i></b> 8:4</li><br>
+
+<li>Zhang Y, Gao M, Singer SD, <b>Fei Z</b>, Wang H, Wang X (2012) <a href=http://www.ncbi.nlm.nih.gov/pubmed/22984514 target=_blank>Genome-wide identification and analysis of the TIFY gene family in grape.</a> <b><i>PLoS ONE</i></b> 7:e44465</li><br>
+
+<li>Gao M, Niu J, Zhao S, Jiao C, Xu W, <b>Fei Z</b>, Wang X (2012) <a href=http://www.mdpi.com/1422-0067/13/9/11497 target=_blank>Characterization of <i>Erysiphe necator</i>-responsive genes in Chinese wild <i>Vitis quinquangularis</i>.</a> <b><i>Int J Mol Sci</i></b> 13:11497-11519</li><br>
+
+<li>Li R, <b>Gao S</b>, Hernandez AG, Wechter WP, <b>Fei Z</b>*, Ling K-S* (2012) <a href=http://www.plosone.org/article/info%3Adoi%2F10.1371%2Fjournal.pone.0037127 target=_blank>Deep sequencing of small RNAs in tomato for virus and viroid identification and strain differentiation.</a> <b><i>PLoS ONE</i></b> 7:e37127</li><br>
+
+<li>Huang S, Gao Y, Liu J, Peng X, Niu X, <b>Fei Z</b>, Cao S, Liu Y (2012) <a href=http://www.ncbi.nlm.nih.gov/pubmed/22570076 target=_blank>Genome-wide analysis of WRKY transcription factors in <i>Solanum lycopersicum</i>.</a> <b><i>Mol Genet Genomics</i></b> 287:495-513</li><br>
+
+<li>Gao M, Wang Q, Wan R, <b>Fei Z</b>, Wang X (2012) <a href=http://www.sciencedirect.com/science/article/pii/S0981942812001842 target=_blank>Identification of genes differentially expressed in grapevine associated with resistance to <i>Elsinoe ampelina</i> through suppressive subtraction hybridization.</a> <b><i>Plant Physiol Biochem</i></b> 58:253-268</li><br>
+
+<li>Ouyang B, <b>Fei Z</b>, <b>Joung JG</b>, Kolenovsky A, Koh C, Nowak J, Caplan A, Keller WA, Cui Y, Cutler AJ, Tsang EW (2012) <a href=http://www.ncbi.nlm.nih.gov/pubmed/22555436 target=_blank>Transcriptome profiling and methyl homeostasis of an Arabidopsis mutant deficient in S-adenosylhomocysteine hydrolase1 (SAHH1)</a>. <b><i>Plant Mol Biol</i></b> 79:315-331</li><br> 
+
+<li>Lee JM, <b>Joung JG</b>, McQuinn R, Chung MY, <b>Fei Z</b>, Tieman D, Klee H, Giovannoni J (2012) <a href=http://onlinelibrary.wiley.com/doi/10.1111/j.1365-313X.2011.04863.x/abstract target=_blank>Combined transcriptome, genetic diversity and metabolite profiling in tomato fruit reveals the ethylene response factor SlERF6 to play an important role in ripening and carotenoid accumulation.</a> <b><i>Plant J</i></b> 70:191-204</li><br>
+
+<li>Lopez-Casado G, Covey PA, Bedinger PA, Mueller LA, Thannhauser TW, Zhang S, <b>Fei Z</b>, Giovannoni JJ, Rose JK (2012) <a href=http://www.ncbi.nlm.nih.gov/pubmed/22539427 target=_blank>Enabling proteomic studies with RNA-Seq: The proteome of tomato pollen as a test case.</a> <b><i>Proteomics</i></b> 12:761-774</li><br>
+
+<li>Zhang Y, <b>Mao L</b>, Wang H, Brocker C, Yin X, Vasiliou V, <b>Fei Z</b>*, Wang X* (2012) <a href=http://www.plosone.org/article/info%3Adoi%2F10.1371%2Fjournal.pone.0032153 target=_blank>Genome-wide identification and analysis of grape aldehyde dehydrogenase (ALDH) gene superfamily.</a> <b><i>PLoS ONE</i></b> 7:e32153</li></br>
+</ul>
+
+<b>2011<!-- (17)--></b>
+<ul>
+
+<li><b>Zheng Y</b>, Zhao L, Gao J, <b>Fei Z</b>* (2011) <a href=http://www.biomedcentral.com/1471-2105/12/453 target=_blank>iAssembler: a package for de novo assembly of Roche-454/Sanger transcriptome sequences.</a> <b><i>BMC Bioinformatics</i></b> 12:453</li><br>
+
+<li>Hotto AM, Schmitz RJ, <b>Fei Z</b>, Ecker JR, Stern DB (2011) <a href=http://www.g3journal.org/content/1/7/559.long target=_blank>Unexpected diversity of chloroplast noncoding RNAs as revealed by deep sequencing of the Arabidopsis transcriptome.</a> <b><i>G3: Genes, Genomes, Genetics</i></b> 1:559-570</li><br>
+
+<li>Zhou X, <b>Fei Z</b>, Thannhauser TW, Li L (2011) <a href=http://www.biomedcentral.com/1471-2229/11/169/abstract target=_blank>Transcriptome analysis of ectopic chloroplast development in green curd cauliflower (<i>Brassica oleracea</i> L. var. botrytis).</a> <b><i>BMC Plant Biology</i></b> 11:169 </li><br>
+
+<li>Matas AJ, Yeats TH, Buda GJ, <b>Zheng Y</b>, Chatterjee S, Tohge T, Ponnala L, Adato A, Aharoni A, Stark R, Fernie AR, <b>Fei Z</b>, Giovannoni JJ, Rose JK (2011) <a href=http://www.plantcell.org/content/early/2011/10/29/tpc.111.091173.abstract target=_blank>Tissue- and cell-type specific transcriptome profiling of expanding tomato fruit provides insights into metabolic and regulatory specialization and cuticle formation</a>. <b><i>Plant Cell</i></b> 23:3893-3910</li><br>
+
+<li>Li Z, Zhang Z, Yan P, Huang S, <b>Fei Z</b>, Lin K (2011) <a href=http://www.biomedcentral.com/1471-2164/12/540 target=_blank>RNA-Seq improves annotation of protein-coding genes in the cucumber genome</a>. <b><i>BMC Genomics</i></b> 12:540</li><br>
+
+<li><b>Guo S</b>, Liu J, <b>Zheng Y</b>, <b>Huang M</b>, Zhang H, Gong G, He H, Ren Y, Zhong S, <b>Fei Z</b>*, Xu Y* (2011) <a href=http://www.biomedcentral.com/1471-2164/12/454 target=_blank>Characterization of transcriptome dynamics during watermelon fruit development: sequencing, assembly, annotation and gene expression profiles</a>. <b><i>BMC Genomics</i></b> 12:454</li><br>
+
+<li>Zhong S*, <b>Joung JG, Zheng Y</b>, Chen YR, Liu B, Shao Y, Xiang JZ, <b>Fei Z</b>*, Giovannoni JJ* (2011) <a href= http://cshprotocols.cshlp.org/cgi/content/abstract/2011/8/pdb.prot5652 target=_blank>High-throughput Illumina strand-specific RNA sequencing library preparation.</a> <b><i>Cold Spring Harb Protoc</i></b> 2011:940-949</li><br>
+
+<li><b>Fei Z</b>*, Liu Y (2011) Genomic and functional genomic resources of melon. In <i>Genetics, Genomics and Breeding of Cucurbits</i>. Edited by Wang Y-H, Behera TK, Kole C. pp286-308</li><br>
+
+<li>Rohrmann J, Tohge T, Alba R, Osorio S, Caldana C, McQuinn R, Arvidsson S, van der Merwe MJ, Riano-Pachon DM, Mueller-Roeber B, <b>Fei Z</b>, Nesi AN, Giovannoni JJ, Fernie AR (2011) <a href=http://onlinelibrary.wiley.com/doi/10.1111/j.1365-313X.2011.04750.x/abstract target=_blank>Combined transcription factor profiling, microarray analysis and metabolite profiling reveals the transcriptional control of metabolic shifts occurring during tomato fruit development.</a> <b><i>Plant J</i></b>  68:999-1013</li><br>
+
+<li>Osorio S, Alba R, Damasceno CM, Lopez-Casado G, Lohse M, Zanor MI, Tohge T, Usadel B, Rose JK, <b>Fei Z</b>, Giovannoni JJ, Fernie AR (2011) <a href= http://www.plantphysiol.org/content/early/2011/07/27/pp.111.175463.abstract target=_blank>Systems biology of tomato fruit development: combined transcript, protein and metabolite analysis of tomato transcription factor (nor, rin) and ethylene receptor (Nr) mutants reveals novel regulatory interactions.</a> <b><i>Plant Physiol</i></b> 157:405-425</li><br>
+
+<li>Sorensen I, Pettolino FA, Bacic A, Ralph J, Lu F, O'Neill MA, <b>Fei Z</b>, Rose JK, Domozych DS, Willats WG (2011) <a href= http://dx.doi.org/10.1111/j.1365-313X.2011.04686.x target=_blank>The charophycean green algae provide insights into the early origins of plant cell walls.</a> <b><i>Plant J</i></b> 68:201-211</li><br>
+
+<li>Diaz A, Fergany M, Formisano G, Ziarsolo P, Blanca J, <b>Fei Z</b>, Staub JE, Zalapa JE, Cuevas HE, Dace G, Oliver M, Boissot N, Dogimont C, Pitrat M, Hofstede R, van Koert P, Harel-Beja R, Tzuri G, Portnoy V, Cohen S, Schaffer A, Katzir N, Xu Y, Zhang H, Fukino N, Matsumoto S, Garcia-Mas J, Monforte AJ (2011) <a href= http://www.biomedcentral.com/1471-2229/11/111 target=_blank>A consensus linkage map for molecular markers and quantitative trait loci associated with economically important traits in melon (<i>Cucumis melo</i> L.).</a> <b><i>BMC Plant Biology</i></b> 11:111</li><br>
+
+<li>Lu G, Guo S, Zhang H, Geng L, Song F, <b>Fei Z</b>*, Xu Y* (2011) <a href=https://link.springer.com/article/10.1007/s10658-011-9833-z target=_blank>Transcriptional profiling of watermelon during its incompatible interaction with <i>Fusarium oxysporum</i> f. sp. <i>niveum</i>. </a> <b><i>European J Plant Pathology</i></b> 131:585-601</li><br>
+
+<li>Clepet C, Joobeur T, <b>Zheng Y</b>, Jublot D, <b>Huang M</b>, Truniger V, Boualem A, Hernandez-Gonzalez ME, Dolcet-Sanjuan R, Portnoy V, Mascarell-Creus A, Cano-Delgado AI, Katzir N, Bendahmane A, Giovannoni JJ, Aranda MA, Garcia-Mas J, <b>Fei Z</b>* (2011) <a href=http://www.biomedcentral.com/1471-2164/12/252 target=_blank>Analysis of expressed sequence tags generated from full-length enriched cDNA libraries of melon.</a> <b><i>BMC Genomics</i></b> 12:252</li><br>
+
+<li>Zhou X, McQuinn R, <b>Fei Z</b>, Wolters AM, Van Eck J, Brown C, Giovannoni JJ, Li L (2011) <a href=http://www.ncbi.nlm.nih.gov/pubmed/21388418 target=_blank>Regulatory control of high levels of carotenoid accumulation in potato tubers.</a> <b><i>Plant Cell Environment</i></b> 34:1020-1030</li><br>
+
+<li>Dai N, Cohen S, Portnoy V, Tzuri G, Harel-Beja R, Pompan-Lotan M, Carmi N, Zhang G, Diber A, Pollock S, Karchi H, Yeselson Y, Petreikov M, Shen S, Sahar U, Hovav R, Lewinsohn E, Tadmor Y, Granot D, Ophir R, Sherman A, <b>Fei Z</b>, Giovannoni J, Burger Y, Katzir N, Schaffer AA (2011) <a href=https://link.springer.com/article/10.1007%2Fs11103-011-9757-1 target=_blank>Metabolism of soluble sugars in developing melon fruit: a global transcriptional view of the metabolic transition to sucrose accumulation.</a> <b><i>Plant Mol Biol</i></b> 76:1-18</li><br>
+
+<li><b>Fei Z*, Joung JG</b>, Tang X, <b>Zheng Y, Huang M</b>, Lee JM, McQuinn R, Tieman DM, Alba R, Klee HJ, Giovannoni JJ (2011) <a href=http://www.ncbi.nlm.nih.gov/pubmed/20965973 target=_blank>Tomato functional genomics database: a comprehensive resource and analysis package for tomato functional genomics.</a> <b><i>Nucleic Acids Res</i></b> 39:D1156-D1163</li><br>
+</ul>
+
+<b>2010<!-- (8)--></b>
+<ul>
+<li>Costa F, Alba R, Schouten H, Soglio V, Gianfranceschi L, Serra S, Musacchi S, Sansavini S, Costa G, <b>Fei Z</b>, Giovannoni J (2010) <a href=http://www.ncbi.nlm.nih.gov/pubmed/20973957 target=_blank>Use of homologous and heterologous gene expression profiling tools to characterize transcription dynamics during apple fruit maturation and ripening.</a> <b><i>BMC Plant Biology</i></b> 10:229</li><br>
+
+<li>Gong P, Zhang J, Li H, Yang C, Zhang C, Zhang X, Khurram Z, Zhang Y, Wang T, <b>Fei Z</b>, Ye Z (2010) <a href=http://www.ncbi.nlm.nih.gov/pubmed/20643807 target=_blank>Transcriptional profiles of drought-responsive genes in modulating transcription signal transduction, and biochemical pathways in tomato.</a> <b><i>Journal Experimental Botany</i></b> 61:3563-3575</li><br>
+
+<li><b>Guo S, Zheng Y, Joung JG,</b> Liu S, Zhang Z, Crasta OR, Sobral BW, Xu Y, Huang S*, <b>Fei Z</b>* (2010) <a href=http://www.biomedcentral.com/1471-2164/11/384/abstract target=_blank>Transcriptome sequencing and comparative analysis of cucumber flowers with different sex types</a>. <b><i>BMC Genomics</i></b> 11:384</li><br>
+
+<li>Levi A, Wechter WP, Harris KR, Davis AR, <b>Fei Z</b> (2010) <a href=https://journals.ashs.org/jashs/view/journals/jashs/135/4/article-p369.xml target=_blank>High-frequency oligonucleotides in watermelon expressed sequenced tag-unigenes are useful in producing polymorphic polymerase chain reaction markers among watermelon genotypes.</a> <b><i>Journal American Society Horticulture Science</i></b> 135:369-378</li><br>
+
+<li>Harel-Beja R, Tzuri G, Portnoy V, Lotan-Pompan M, Lev S, Cohen S, Dai N, Yeselson L, Meir A, Libhaber SE, Avisar E, Melame T, van Koert P, Verbakel H, Hofstede R, Volpin H, Oliver M, Fougedoire A, Stalh C, Fauve J, Copes B, <b>Fei Z</b>, Giovannoni J, Ori N, Lewinsohn E, Sherman A, Burger J, Tadmor Y, Schaffer AA, Katzir N (2010) <a href=http://www.ncbi.nlm.nih.gov/pubmed/20401460 target=_blank>A genetic map of melon highly enriched with fruit quality QTLs and EST markers, including sugar and carotenoid metabolism genes.</a> <b><i>Theoretical Applied Genetics</i></b> 121:511-533</li><br>
+
+<li>Zeng S, Xiao G, Guo J, <b>Fei Z</b>, Xu Y, Roe BA, Wang Y (2010) <a href=http://www.biomedcentral.com/1471-2164/11/94 target=_blank>Development of a EST dataset and characterization of EST-SSRs in a traditional Chinese medicinal plant, <i>Epimedium sagittatum</i> (Sieb. Et Zucc.) Maxim.</a> <b><i>BMC Genomics</i></b> 11:94</li><br>
+
+<li>Joshi J, <b>Joung JG, Fei Z</b>, and Jander G (2010) <a href=https://link.springer.com/article/10.1007/s00726-010-0505-7 target=_blank>Interdependence of threonine, methionine and isoleucine metabolism in plants: Accumulation and transcriptional regulation under abiotic stress.</a> <b><i>Amino Acids</i></b> 39:933-947</li><br>
+</ul>
+
+<b>2009<!-- (8)--></b>
+<ul>
+<li>Rhee JK, <b>Joung JG</b>, Chang JH, <b>Fei Z</b>, Zhang BT (2009) <a href=http://www.biomedcentral.com/1471-2164/10/S3/S29/abstract target=_blank>Identification of cell cycle-related regulatory motifs using a kernel canonical correlation analysis.</a> <b><i>BMC Genomics</i></b> 10(Suppl 3):S29</li><br>
+
+<li>Huang S, Li R, Zhang Z, Li L, Gu X, Fan W, Lucas WJ, Wang X, Xie B, Ni P, Ren Y, Zhu H, Li J, Lin K, Jin W, <b>Fei Z</b>,  Li G, Staub J, Kilian A, van der Vossen EA, Wu Y, Guo J, He J, Jia Z, Ren Y, Tian G, Lu Y, Ruan J, Qian W, Wang M, Huang Q, Li B, Xuan Z, Cao J, Asan, Wu Z, Zhang J, Cai Q, Bai Y, Zhao B, Han Y, Li Y, Li X, Wang S, Shi Q, Liu S, Cho WK, Kim JY, Xu Y, Heller-Uszynska K, Miao H, Cheng Z, Zhang S, Wu J, Yang Y, Kang H, Li M, Liang H, Ren X, Shi Z, Wen M, Jian M, Yang H, Zhang G, Yang Z, Chen R, Liu S, Li J, Ma L, Liu H, Zhou Y, Zhao J, Fang X, Li G, Fang L, Li Y, Liu D, Zheng H, Zhang Y, Qin N, Li Z, Yang G, Yang S, Bolund L, Kristiansen K, Zheng H, Li S, Zhang X, Yang H, Wang J, Sun R, Zhang B, Jiang S, Wang J, Du Y, Li S (2009) <a href=https://www.nature.com/articles/ng.475 target=_blank>The genome of the cucumber, <i>Cucumis sativus</i> L.</a> <b><i>Nature Genetics</i></b> 41:1275-1281</li><br>
+
+<li><b>Joung JG, Corbett AM,</b> Fellman SM, Tieman DM, Klee HJ, Giovannoni JJ, <b>Fei Z</b>* (2009) <a href=http://www.plantphysiol.org/cgi/content/abstract/151/4/1758 target=_blank>Plant MetGenMAP: an integrative analysis system for plant systems biology.</a> <b><i>Plant Physiology</i></b> 151:1758-1768 </li><br>
+
+<li>Dal Cin V, Kevany B, <b>Fei Z</b>, Klee HJ (2009) <a href=https://link.springer.com/article/10.1007%2Fs00122-009-1119-x target=_blank>Identification of <i>Solanum habrochaites</i> loci that quantitatively influence tomato fruit ripening-associated ethylene emissions.</a> <b><i>Theoretical Applied Genetics</i></b> 119:1183-1192 </li><br>
+    
+<li>Marchive C, Yehudai-Resheff S, Germain A, <b>Fei Z</b>, Jiang X, Judkins J, Wu H, Fernie AR, Fait A, Stern DB (2009) <a href=http://www.plantphysiol.org/cgi/content/full/151/2/905 target=_blank>Abnormal physiological and molecular mutant phenotypes link chloroplast polynucleotide phosphorylase to the phosphorus deprivation response in Arabidopsis.</a> <b><i>Plant Physiology</i></b> 151:905-924</li><br>
+
+<li>Mueller L, Lankhorst RK, Tanksley SD, Giovannoni JJ, White R, Vrebalov J, <b>Fei Z</b>, et al. (2009) <a href=https://acsess.onlinelibrary.wiley.com/doi/full/10.3835/plantgenome2008.08.0005 target=_blank>A snapshot of the emerging tomato genome sequence</a>. <b><i>Plant Genome</i></b> 2:78-92</li><br>
+
+<li><b>Joung J-G, Fei Z</b>* (2009) <a href=http://www.biomedcentral.com/1471-2105/10/S1/S34/abstract target=_blank>Computational identification of condition-specific miRNA targets based on gene expression profiles and sequence information</a>. <b><i>BMC Bioinformatics</i></b> 10(Suppl 1):S34</li><br>
+
+<li><b>Joung J-G, Fei Z</b>* (2009) <a href=https://academic.oup.com/bioinformatics/article/25/3/387/243731 target=_blank>Identification of microRNA regulatory modules in Arabidopsis via a probabilistic graphical model.</a> <b><i>Bioinformatics</i></b> 25:387-393</li><br>
+
+<li>Mathieu S, Dal Cin V, <b>Fei Z</b>, Li H, Bliss P, Taylor M, Klee H, Tieman D (2009) <a href=https://academic.oup.com/jxb/article/60/1/325/571996 target=_blank>Flavor compounds in tomato fruits: identification of loci and potential pathways affecting volatile composition.</a> <b><i>Journal Experimental Botany</i></b> 60:325-337</li><br>
+
+</ul>
+<b>2008<!-- (6)--></b>
+<ul>
+
+<li>Liu S, Xu L, Xu Y, Yang Q, <b>Fei Z</b>, Chen H, Huang S (2008) <a href=https://link.springer.com/article/10.1007/s00122-008-0832-1 target=_blank>Genetic association of ETHYLENE-INSENSITIVE3-like sequence with the sex-determining M locus in cucumber (<i>Cucumis sativus</i> L.).</a> <b><i>Theoretical Applied Genetics</i></b> 117:927-933</li><br>
+
+<li>Crasta OR, Folkerts O, <b>Fei Z</b>, Mane SP, Evans C, Martino-Catt S, Bricker B, Yu G, Du L, Sobral BW (2008) <a href=http://www.plosone.org/article/info:doi/10.1371/journal.pone.0002193 target=_blank>Genome sequence of <i>Brucella abortus</i> vaccine strain S19 compared to virulent strains yields candidate virulence genes.</a> <b><i>PLoS ONE</i></b> 3:e2193.</li><br>
+
+<li>Zimmer S, <b>Fei Z</b>, Stern D (2008) <a href=http://www.genetics.org/cgi/content/abstract/179/1/125 target=_blank>Genome-based analysis of <i>Chlamydomonas reinhardtii</i> exoribonucleases and poly(A) polymerases predicts unexpected organellar and exosomal features.</a> <b><i>Genetics</i></b> 179:125-136</li><br>
+
+<li>Wechter P, Levi A, Harris K, Davis A, <b>Fei Z</b>, Katzir N, Giovannoni J, Salman-Minkov A, Hernandez A, Thimmapuram J, Tadmor Y, Portnoy V, Trebitsh T (2008) <a href=http://www.biomedcentral.com/1471-2164/9/275 target=_blank>Gene expression in developing watermelon fruit.</a> <b><i>BMC Genomics</i></b> 9:275</li><br>
+
+<li>Wang XP, Wang Y, <b>Fei Z</b> (2008) <a href=https://www.tandfonline.com/doi/abs/10.1080/14620316.2008.11512390 target=_blank>Identification and characterization of resistance gene analogues from wild Chinese Vitis species.</a> <b><i>Journal Horticulture Science Biotechnology</i></b> 83:345-350</li><br>
+
+<li>Itaya A, Bundschuh R, Archual A, <b>Joung J, Fei Z</b>, Dai X, Zhao P, Tang Y, Nelson R, Ding B (2008) <a href=http://dx.doi.org/10.1016/j.bbagrm.2007.09.003 target=_blank>Small RNAs in tomato fruit and leaf development.</a> <b><i>BBA - Gene Regulatory Mechanisms</i></b> 1779:99-107</li><br>
+
+</ul>
+<b>2007<!-- (3)--></b>
+<ul>
+
+<li>Djavani MM, Crasta OR, Zapata JC, <b>Fei Z</b>, Folkerts O, Sobral B, Swindells M, Bryant JL, Davis H, Pauza CD, Lukashevich IS, Hammamieh R, Jett M, Salvato MS (2007) <a href=http://jvi.asm.org/cgi/content/abstract/81/15/7960 target=_blank>Early blood profiles of virus infection in a monkey model for Lassa Fever.</a> <b><i>Journal Virology</i></b> 81:7960-7973</li><br>
+
+<li>Dan Y, <b>Fei Z</b>, Rothan C (2007) <a href=http://www.globalsciencebooks.info/Online/GSBOnline/images/0712/GGG_1(2)/GGG_1(2)167-179o.pdf target=_blank>MicroTom - A new model system for plant genomics.</a> <b><i>Genes Genomes Genomics</i></b> 1:167-179 </li><br>
+
+<li>Ouyang B, Yang T, Li H, Zhang L, Zhang Y, Zhang J, <b>Fei Z</b>*, Ye Z* (2007) <a href=https://academic.oup.com/jxb/article/58/3/507/561050 target=_blank>Identification of early salt stress response genes in tomato root by suppression subtractive hybridization and microarray analysis.</a> <b><i>Journal Experimental Botany</i></b> 58:207-220</li><br>
+
+</ul>
+<b>2006 and before <!--(5)--></b>
+<ul>
+
+<li>Gilchrist C, Houpt E, Trapaidze N, <b>Fei Z</b>, Crasta O, Asgharpour A, Evans C, Martino-Catt C, Baba D, Stroup S, Hamano S, Ehrenkaufer G, Okada O, Singh U, Nozaki T, Mann B, Petri Jr. W (2006) <a href=http://dx.doi.org/10.1016/j.molbiopara.2006.02.007 target=_blank>Impact of intestinal colonization and invasion on the <i>E. histolytica</i> transcriptome.</a> <b><i>Molecular Biochemical Parasitology</i></b> 147:163-176</li><br>
+
+<li><b>Fei Z</b>*, Tang X, Alba R, Giovannoni J* (2006) <a href=http://nar.oxfordjournals.org/cgi/content/short/34/suppl_1/D766 target=_blank>Tomato Expression Database (TED): A suite of data presentation and analysis tools.</a> <b><i>Nucleic Acids Research</i></b> 34:D766-770</li><br>
+
+<li>Alba R, Payton P, <b>Fei Z</b>, McQuinn R, Debbie P, Martin GB, Tanksley SD, Giovannoni JJ (2005) <a href=http://www.plantcell.org/cgi/content/abstract/17/11/2954 target=_blank>Transcriptome and selected metabolite analyses reveal multiple points of ethylene control during tomato fruit development.</a> <b><i>Plant Cell</i></b> 17:2954-2965</li><br>
+
+<li><b>Fei Z</b>, Tang X, Alba R, White J, Ronning C, Martin G, Tanksley S, Giovannoni J (2004) <a href=https://onlinelibrary.wiley.com/doi/full/10.1111/j.1365-313X.2004.02188.x target=_blank>Comprehensive EST analysis of tomato and comparative genomics of fruit ripening.</a> <b><i>Plant Journal</i></b> 40:47-59</li><br>
+
+<li>Alba R, <b>Fei Z</b>, Payton P, Liu Y, Moore S, Debbie P, Gordon J, Rose J, Martin G, Tanksley S, Bouzayen M, Jahn M, Giovannoni J (2004) <a href=https://onlinelibrary.wiley.com/doi/full/10.1111/j.1365-313X.2004.02178.x target=_blank>ESTs, cDNA microarrays, and gene expression profiling: tools for dissecting plant physiology and development.</a> <b><i>Plant Journal</i></b> 39:697-714</li>
+
+</ul>
+
+<!--<center><img src=image/publication.png border=1></center>-->
+</td></tr></table>
+
+<br>
+<table width=750 cellpadding=7 align=center border=0 cellspacing=0>
+<tr><td align=center background=/lab/homepage/image/bar_bg.png>&nbsp;</td></tr>
+<!--<tr align=center><td>
+<table align=center>
+<tr><td><a href=http://bti.cornell.edu><img src=/lab/homepage/image/BTI.jpg border=0></a></td>
+<td><a href=http://www.ars.usda.gov/><img src=/lab/homepage/image/USDA.gif border=0></a></td>
+<td><a href=http://www.cornell.edu><img src=/lab/homepage/image/cornell.gif border=0></a></td></tr></table>-->
+</table></td></tr></table><br>
+</body></html>
+
