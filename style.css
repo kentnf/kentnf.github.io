@@ -64,6 +64,15 @@ nav {
 }
 .nav-links a:hover { color: var(--text); text-decoration: none; }
 .nav-links a.active { color: var(--text); }
+.nav-social { display: flex; gap: 16px; margin-left: 24px; }
+.nav-social a {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text-light);
+  transition: color 0.2s;
+}
+.nav-social a:hover { color: var(--text); text-decoration: none; }
+.nav-right { display: flex; align-items: center; gap: 24px; }
 
 /* --- Hero --- */
 .hero {
