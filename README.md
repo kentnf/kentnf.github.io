@@ -1,44 +1,34 @@
-# MOILab Website
+# Yi Zheng — Personal Academic Site
 
-Static website for **MOILab** — Laboratory of Horticultural Omics Big Data Integration and Utilization, Beijing University of Agriculture.
+Personal academic homepage of **Yi Zheng (郑轶)**, Researcher at Yazhouwan National Laboratory, former Professor at Beijing University of Agriculture.
 
-**Live:** [lab.moilab.net](https://lab.moilab.net)
+**Live:** [kentnf.github.io](https://kentnf.github.io)
 
 ## Structure
 
 ```
-moilab-web/
-├── index.html        # Home — lab intro + research projects
-├── members.html      # Lab members (current + former)
-├── databases.html    # Databases & tools listing
-├── news.html         # News & publications
-├── style.css         # Shared stylesheet
-├── images/           # All site images
-└── wordpress_backup/ # Original WP backup (not deployed)
+.
+├── index.html           # Personal homepage
+├── publications.html    # Full publication list (89 papers)
+├── moilab.html          # MOILab — BUA lab members & news
+├── databases.html       # 12 databases & bioinformatics tools
+├── style.css            # Shared stylesheet
+├── images/              # Site images
+└── wordpress_backup/    # Original WP backup (not deployed)
 ```
 
 ## How to Update
 
-The site is pure static HTML/CSS. To make changes:
+Pure static HTML/CSS. Edit files directly and push to `main`.
 
-1. Edit the relevant `.html` file directly
-2. Replace images in `images/` if needed
-3. Push to GitHub → auto-deploys to GitHub Pages
-
-### Common Tasks
-
-**Add a member:** Copy a `.member-card` block in `members.html`, update name, email, and image src.
-
-**Add a publication:** Add a `<li>` to the `.pub-list` in `news.html`.
-
-**Add a database/tool:** Add a `.media-row` block in `databases.html`.
+- **Add publication:** Edit `publications.html`
+- **Update members:** Edit `moilab.html`
+- **Add tool:** Edit `databases.html`
 
 ## Deployment
 
-This site is deployed via **GitHub Pages**. Push to the `main` branch to trigger deployment.
+GitHub Pages on `kentnf/kentnf.github.io`. Push to `main` → auto-deploys.
 
-For custom domain (`lab.moilab.net`), set up a CNAME record pointing to `<username>.github.io`.
+## History
 
-## Original Site
-
-This site was migrated from WordPress + Hestia theme. The original backup is in `wordpress_backup/`.
+Migrated from WordPress + Hestia theme in June 2026.
